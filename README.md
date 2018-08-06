@@ -1,4 +1,5 @@
 # Leisure Game - Group 
+ + By Zhongtao Chen, Qianran Li, Jinwoong Lee
 
 ## Theme:
 1. Project name: Leisure Game
