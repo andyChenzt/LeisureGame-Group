@@ -19,7 +19,7 @@
 	+ back-end: Node.js 
 
 2. Web socket
-	+ weB socket for real time connection with different user
+	+ web socket for real time connection with different user
 
 3. Version Control
 	+ Github
