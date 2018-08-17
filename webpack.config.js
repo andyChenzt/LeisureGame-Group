@@ -11,7 +11,7 @@ var config = {
     output: {
         path: DIST_DIR + '/bundle/',
         filename: 'bundle.js',
-        // publicPath: "/app/"
+        // publicPath: "/bundle/"
     },
     mode: "development",
     module: {
