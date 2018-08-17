@@ -1,0 +1,62 @@
+.App {
+
+    background-color: #151a21;
+}
+
+.App-userinfo{
+    font-size: 1.5em;
+    color: aliceblue;
+    position: relative;
+    bottom: 30px;
+
+}
+
+.App-position{
+    background-color: #1c232c;
+    height: 120px;
+    weight: 200PX;
+    padding: 2px;
+    position: absolute;
+    left: 1200px;
+    top:150px;
+}
+
+.App-header {
+    text-align: center;
+    background-color: #151a21;
+    height: 80px;
+    padding: 10px;
+}
+
+.App-footer{
+    text-align: center;
+    background-color: #151a21;
+    height: 20px;
+}
+
+.App-text{
+    font-size: 0.8em;
+    color: aliceblue;
+    padding: 2px;
+}
+
+.App-icon{
+    height: 40px;
+    weight: 40PX;
+    padding: 20px;
+}
+
+.App-test{
+    background-color: #151a21;
+    height: 665px;
+    padding: 10px;
+}
+
+.App-title {
+    font-size: 1.5em;
+}
+
+.App-intro {
+    font-size: large;
+}
+
