@@ -14,27 +14,27 @@
     }
 .App-link{
         display:block;
-        /*width:120px;*/
+        width:220px;
         font-weight:bold;
         color:#FFFFFF;
         background-color:#151a21;
         text-align:center;
-        padding:10px;
+        padding:20px;
         text-decoration:none;
         text-transform:uppercase;
     }
 .App-bar{
 
-        background-color:#1c232c;
+        background-color:#151a21;
     }
 
 
 .App-Draw{
     /*background-color: #1c232c;*/
-    weight: 1000px;
+    /*weight: 1000px;*/
     position: absolute;
     left: 430px;
-    top: 150px;
+    top: 200px;
 }
 
 .App-userinfo{
@@ -53,7 +53,7 @@
     padding: 2px;
     position: absolute;
     left: 100px;
-    top:150px;
+    top:200px;
 }
 
 .App-position{
@@ -63,7 +63,7 @@
     padding: 2px;
     position: absolute;
     left: 1150px;
-    top:150px;
+    top:200px;
 }
 
 .App-header {
