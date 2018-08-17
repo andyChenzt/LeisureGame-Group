@@ -3,6 +3,32 @@
     background-color: #151a21;
 }
 
+.App-ul{
+        list-style-type:none;
+        margin:0;
+        padding:0;
+        overflow:hidden;
+    }
+.App-li{
+        float:left;
+    }
+.App-link{
+        display:block;
+        /*width:120px;*/
+        font-weight:bold;
+        color:#FFFFFF;
+        background-color:#151a21;
+        text-align:center;
+        padding:10px;
+        text-decoration:none;
+        text-transform:uppercase;
+    }
+.App-bar{
+
+        background-color:#1c232c;
+    }
+
+
 .App-Draw{
     /*background-color: #1c232c;*/
     weight: 1000px;

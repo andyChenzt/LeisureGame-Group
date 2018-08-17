@@ -4,7 +4,7 @@ import Foot from './Foot';
 import Draw from './Draw';
 import User from "./UserInfo";
 import OtherUser from "./OtherUser";
-
+import NavigationBar from "./NavigationBar";
 
 class App extends Component {
 	construct() {
@@ -14,6 +14,7 @@ class App extends Component {
         return (
             <div className="App">
                 <Head />
+                <NavigationBar />
                 {/*<p> app </p>*/}
                 <div className="App-test">
                     <User />
