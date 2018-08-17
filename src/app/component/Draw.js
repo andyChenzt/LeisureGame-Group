@@ -6,7 +6,7 @@ class Draw extends Component {
 
 	render() {
 		return (
-		  <div>
+		  <div className="App-Draw">
 		    <P5Wrapper sketch={sketch} />
 		  </div>
 		);
