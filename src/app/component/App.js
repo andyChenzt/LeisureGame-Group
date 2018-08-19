@@ -52,11 +52,10 @@ class App extends Component {
                 <Head />
                 <NavigationBar />
                 {/*<p> app </p>*/}
+                <Draw />
                 <div className="App-test">
                     <User />
-                    {/*<GameScoreInfo />*/}
                     <OtherUser />
-                    <Draw />
                     <GameScoreInfoList />
                 </div>
                 <Foot />
@@ -64,7 +63,7 @@ class App extends Component {
                 {/* < Game Score register in Score list  << 
           onCreate={this.handleCreateScoreList}
         /> */}
-        <GameScoreInfoList data={this.state.GameScoreInformation}/>
+
             </div>
      
         );

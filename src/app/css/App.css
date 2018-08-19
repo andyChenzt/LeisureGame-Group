@@ -32,9 +32,12 @@
 .App-Draw{
     /*background-color: #1c232c;*/
     /*weight: 1000px;*/
-    position: absolute;
-    left: 430px;
-    top: 200px;
+    height: 550px;
+    width: 40%;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
 }
 
 .App-userinfo{
@@ -117,6 +120,11 @@
     background-color: #151a21;
     height: 645px;
     padding: 10px;
+    width: 100%;
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
 }
 
 .App-title {
