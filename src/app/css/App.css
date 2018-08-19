@@ -49,21 +49,43 @@
 .App-otheruser{
     background-color: #1c232c;
     height: 120px;
-    weight: 200PX;
+    width: 280PX;
     padding: 2px;
     position: absolute;
-    left: 100px;
+    left: 50px;
     top:200px;
 }
 
 .App-position{
     background-color: #1c232c;
     height: 120px;
-    weight: 200PX;
+    width: 280PX;
     padding: 2px;
     position: absolute;
-    left: 1150px;
+    right: 50px;
     top:200px;
+}
+
+.App-GameScore{
+    background-color: #1c232c;
+    color: #FFFFFF;
+    height: 120px;
+    width: 280PX;
+    padding: 2px;
+    position: absolute;
+    right: 50px;
+    top:350px;
+}
+
+.App-GameScorelist{
+    background-color: #1c232c;
+    color: #FFFFFF;
+    height: 120px;
+    width: 280PX;
+    padding: 2px;
+    position: absolute;
+    right: 50px;
+    top:350px;
 }
 
 .App-header {

@@ -54,9 +54,10 @@ class App extends Component {
                 {/*<p> app </p>*/}
                 <div className="App-test">
                     <User />
+                    {/*<GameScoreInfo />*/}
                     <OtherUser />
                     <Draw />
-                    
+                    <GameScoreInfoList />
                 </div>
                 <Foot />
                 <Login />

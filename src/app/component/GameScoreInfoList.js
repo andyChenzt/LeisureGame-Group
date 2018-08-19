@@ -14,7 +14,7 @@ export default class GameScoreInfoList extends Component {
     );
 
     return (
-      <div>
+      <div className="App-GameScorelist">
           High Game Score !
         {ScoreList}    
       </div>

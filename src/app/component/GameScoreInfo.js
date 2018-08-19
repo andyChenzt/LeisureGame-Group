@@ -12,18 +12,18 @@ export default class GameScoreInfo extends Component {
       }
     
       render() {
-        const style = {
-          border: '1px solid black',
-          padding: '8px',
-          margin: '8px'
-        };
+        // const style = {
+        //   border: '1px solid black',
+        //   padding: '8px',
+        //   margin: '8px'
+        // };
     
         const {
             ID, Score, Index
         } = this.props.info;
     
         return (
-          <div style={style}>
+          <div className="App-GameScore">
             <div><b>{ID}</b></div>
             <div>{Score}</div>
           </div>
