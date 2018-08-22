@@ -21,6 +21,7 @@
   "homepage": "https://github.com/andyChenzt/LeisureGame-Group#readme",
   "dependencies": {
     "bcrypt": "^3.0.0",
+    "body-parser": "^1.18.3",
     "react": "^16.4.2",
     "react-dom": "^16.4.2"
   },
@@ -33,6 +34,7 @@
     "css-loader": "^1.0.0",
     "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^1.1.11",
+    "nodemon": "^1.18.3",
     "r": "0.0.5",
     "react-p5-wrapper": "0.0.4",
     "socket.io-client": "^2.1.1",
