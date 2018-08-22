@@ -15,22 +15,33 @@ User: {
 		string
 		required
 	},
-	Score: {
-		Scores
+	History: {
+		game1: Game,
+		game2: Game,
 	}
-}
+},
+
+Game: {
+	times: {
+		int
+		default: 0
+	},
+	scores: [int],
+},
 
 
-High Score: {
+High Scores: {
 	Score
-}
+},
 
 Score: {
 	game1: {
 		[int]
-	}
+	},
 	game2: {
 		[int]
-	}
+	},
 }
+
+
 
