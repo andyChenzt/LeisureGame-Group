@@ -7,12 +7,12 @@ var SRC_DIR = path.resolve(__dirname, "src");
 
 var config = {
 	entry: {
-		main: SRC_DIR + "/app/index.js",
+		main: SRC_DIR + '/app/index.js',
 	},
     output: {
         path: DIST_DIR + '/bundle/',
         filename: 'bundle.js',
-        // publicPath: "/bundle/"
+        publicPath: "/"
     },
     mode: "development",
     module: {
@@ -41,7 +41,6 @@ var config = {
 
     devServer: {
         contentBase: DIST_DIR,
-        // colors: true,
         historyApiFallback: true,
         inline: true,
         hot: true,

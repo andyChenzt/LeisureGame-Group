@@ -1,0 +1,36 @@
+User: {
+	id: {
+		number
+		required
+	},
+	nick name: {
+		string
+		required
+	},
+	email: {
+		email
+		required
+	},
+	password: {
+		string
+		required
+	},
+	Score: {
+		Scores
+	}
+}
+
+
+High Score: {
+	Score
+}
+
+Score: {
+	game1: {
+		[int]
+	}
+	game2: {
+		[int]
+	}
+}
+
