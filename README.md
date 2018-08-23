@@ -28,6 +28,10 @@
 4. Deploing
 	+ Heroku for deploying the final project
 
+## Running App
+ + open root folder in terminal, run "npm start" to open the app
+ + Webpage is on port 3000 (localhost: 3000)
+
 ## Principles of Code Style:
 1. camel case for variable name
 
@@ -40,3 +44,7 @@
 5. whole english comment
 
 6. export moduel at end, export function at same line ??
+
+7. each file need a short description for member ??
+
+8.

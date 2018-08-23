@@ -17,6 +17,7 @@ module.exports = (app) => {
             email
         } = body;
 
+        // we could do validation at front end, because in this way is waste resorce
         if (!firstName){
             return res.send({
                 success: false,
