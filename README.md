@@ -27,3 +27,16 @@
 
 4. Deploing
 	+ Heroku for deploying the final project
+
+## Principles of Code Style:
+1. camel case for variable name
+
+2. Config file parth full upper case
+
+3. sami col for each line ??
+
+4. 4 space retract
+
+5. whole english comment
+
+6. export moduel at end, export function at same line ??
