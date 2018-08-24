@@ -47,4 +47,22 @@
 
 7. each file need a short description for member ??
 
-8.
+8. Make the variable names easy to pronounce
+
+9. Organize the functions in a file according to the step down rule
+
+10. Always declare variables with var in the appropriate scope
+
+11. Use line breaks after open and before close array brackets if an array has multiple lines
+
+12. Do not unnecessarily escape characters in strings.
+
+13. Always put default parameters last.
+
+14. Multiline imports should be indented just like multiline array and object literals.
+
+15. Assign variables where you need them, but place them in a reasonable place.
+
+16. Use shortcuts for booleans, but explicit comparisons for strings and numbers.
+
+17. If using multi-line blocks with if and else put else on the same line.
