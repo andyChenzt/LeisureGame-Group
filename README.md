@@ -29,6 +29,8 @@
 	+ Heroku for deploying the final project
 
 ## Running App
+ + install node.js and react.js on your OS
+ + only first time, open root folder in terminal, run "npm install" to set modules
  + open root folder in terminal, run "npm start" to open the app
  + Webpage is on port 3000 (localhost: 3000)
 
@@ -37,7 +39,7 @@
 
 2. Config file parth full upper case
 
-3. sami col for each line ??
+3. Semicolon for each line ??
 
 4. 4 space retract
 
