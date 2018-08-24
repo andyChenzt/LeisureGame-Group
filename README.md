@@ -35,7 +35,7 @@
  + Webpage is on port 3000 (localhost: 3000)
 
 ## Principles of Code Style:
-1. camel case for variable name
+1. Camel case for variable name
 
 2. Config file parth full upper case
 
@@ -43,11 +43,11 @@
 
 4. 4 space retract
 
-5. whole english comment
+5. Whole english comments
 
-6. export moduel at end, export function at same line ??
+6. Export moduel at end, export function at same line ??
 
-7. each file need a short description for member ??
+7. Each file need a short description for member ??
 
 8. Make the variable names easy to pronounce
 
