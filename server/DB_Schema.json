@@ -1,6 +1,6 @@
 User: {
 	id: {
-		number
+		number,
 		required
 	},
 	nick name: {
