@@ -6,20 +6,17 @@ const HighScorePlayerSchema = new mongoose.Schema({
 });
 
 const HighScoreSchema = new mongoose.Schema({
-    drawingGame: {
-    	count: {
-    		type: Number,
-    		default: 0
-    	},
-    	highScores: [HighScorePlayerSchema]
-    },
-    snameGame: {
-    	count: {
+	game: {
+		type: String,
+	},
+	// highScores:[HighScorePlayerSchema]
+	scores: {
+		count: {
     		type: Number,
     		default: 0
     	},
     	highScores:[HighScorePlayerSchema]
-    }
+	}
 });
 
 const HighScore = mongoose.model('highScore', HighScoreSchema);
