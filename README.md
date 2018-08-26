@@ -32,30 +32,30 @@
  + install node.js and react.js on your OS
  + only first time, open root folder in terminal, run "npm install" to set modules
  + open root folder in terminal, run "npm start" to open the app
- + Webpage is on port 3000 (localhost: 3000)
+ + Webpage is on port 3000 (localhost: 3000) and back-end server is on 3001.
 
 ## Principles of Code Style:
-1. Camel case for variable name
+1. Camel case for variable name.
 
-2. Config file parth full upper case
+2. Config file parth full upper case.
 
-3. Semicolon for each line ??
+3. Semicolon for each line.
 
-4. 4 space retract
+4. 4 space retract.
 
-5. Whole english comments
+5. Whole english comments.
 
-6. Export moduel at end, export function at same line ??
+6. Export moduel at end, export function at same line.
 
-7. Each file need a short description for member ??
+7. Each file need a short description for member.
 
-8. Make the variable names easy to pronounce
+8. Make the variable names easy to pronounce.
 
-9. Organize the functions in a file according to the step down rule
+9. Organize the functions in a file according to the step down rule.
 
-10. Always declare variables with var in the appropriate scope
+10. Always declare variables with var in the appropriate scope.
 
-11. Use line breaks after open and before close array brackets if an array has multiple lines
+11. Use line breaks after open and before close array brackets if an array has multiple lines.
 
 12. Do not unnecessarily escape characters in strings.
 

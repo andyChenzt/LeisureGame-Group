@@ -4,10 +4,11 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 // const UserSession = require("../../models/UserSession");
 
+// connect to localhost db, will transfor to mlab, which could deploy to heroku
 mongoose.connect('mongodb://localhost/LeisureGame');
 mongoose.Promise = global.Promise;
 
-// search id or nick name (unique)
+// search all
 router.get("/account/", function(req, res, next) {
     User.find({}).then(function(result) {
         res.send({success: 1,
@@ -21,7 +22,6 @@ router.get("/account/", function(req, res, next) {
 // input finish editing check directly
 // otherwise cannot register
 router.get("/account/:nickName", function(req, res, next) {
-
     User.find({nickName: req.params.nickName}).count(function(err, results) {
         console.log(results);
         if(results < 1) {

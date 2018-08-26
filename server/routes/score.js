@@ -4,9 +4,11 @@ const mongoose = require("mongoose");
 const User = require("../models/User");
 const HighScore = require("../models/Score");
 
+// connect to localhost db
 mongoose.connect('mongodb://localhost/LeisureGame');
 mongoose.Promise = global.Promise;
 
+// define the game, if add more games, add in the array
 const games = ["drawingGame", "snakeGame"];
 function initHighScore() {
 	for(var i = 0; i <= games.length - 1; i++) {
@@ -21,10 +23,9 @@ function initHighScore() {
 			}
 		});
 	}
-	
 }
 
-// create collection first
+// create scores collection first
 router.get("/score/init", function(req, res, next) {
 	for(var i = 0; i <= games.length - 1; i++) {
 		var gameScore = new HighScore({
@@ -36,7 +37,7 @@ router.get("/score/init", function(req, res, next) {
 	}
 });
 
-// get high score, high score board
+// get high score from db
 router.get("/score/", function(req, res, next) {
 	HighScore.find({}).then(function(result) {
 		console.log(result.length);
@@ -48,8 +49,6 @@ router.get("/score/", function(req, res, next) {
 
 // get player high score, for specific player
 router.get("/score/:nickName", function(req, res, next) {
-	console.log(req.body);
-
 	User.findOne({nickName: req.params.nickName}).then(function(result) {
 		console.log(result);
 		var drawingGameScores = result.drawingGame.scores;
@@ -74,16 +73,11 @@ router.post("/score/:game/", function(req, res, next) {
 	console.log(highScorePlayer);
 	console.log(req.params.game);
 	HighScore.findOne({game: req.params.game}).then(function(result) {
-		// console.log(result.socres);
-		if(req.params.game === "drawingGame") {
-			console.log(result);
-
-			result.scores.highScores.push(highScorePlayer);
-			result.save();
-		} else if(req.params.game === "snakeGame") {
-			result.scores.highScores.push(highScorePlayer);
-			result.save();
-		}
+		// push new score
+		result.scores.highScores.push(highScorePlayer);
+		result.save();
+		
+		// update number
 		HighScore.update({game: req.params.game}, {$inc: {'scores.count': 1}})
 			.then(function(result){
 				console.log(result);

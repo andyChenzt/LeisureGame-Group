@@ -5,11 +5,11 @@ const HighScorePlayerSchema = new mongoose.Schema({
 	score: Number
 });
 
+// high score schema
 const HighScoreSchema = new mongoose.Schema({
 	game: {
 		type: String,
 	},
-	// highScores:[HighScorePlayerSchema]
 	scores: {
 		count: {
     		type: Number,
