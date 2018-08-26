@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import { Route, BrowserRouter } from 'react-router-dom';
 import Head from './Head';
 import Foot from './Foot';
 import Draw from './Draw';
+import Snake from './Snake';
 import User from "./UserInfo";
 import OtherUser from "./OtherUser";
 import NavigationBar from "./NavigationBar";
@@ -37,10 +39,10 @@ class App extends Component {
       ]
     }
     handleCreateScoreList = (data) => {
-      const { GameScoreInformation } = this.state;
-      this.setState({
-          GameScoreInformation: GameScoreInformation.concat({ Index: this.Index++, ...data })
-      })
+        const { GameScoreInformation } = this.state;
+        this.setState({
+            GameScoreInformation: GameScoreInformation.concat({ Index: this.Index++, ...data })
+        })
     }
 
 	construct() {
@@ -50,16 +52,18 @@ class App extends Component {
         return (
             <div className="App">
                 <Head />
-                <NavigationBar />
-                {/*<p> app </p>*/}
-                <Draw />
-                <div className="App-test">
-                    <User />
-                    <OtherUser />
-                    <GameScoreInfoList />
-                </div>
+                <BrowserRouter>
+                    <div>
+                        <NavigationBar />
+                        <Route exact path='/' component={Login} />
+                        <Route path='/snake' component={Snake} />
+                        <Route path='/drawing' component={Draw} />
+                        <Route path='/gameScoreInfo' component={GameScoreInfo} />
+                    </div>
+                </BrowserRouter>
+                
                 <Foot />
-                <Login />
+                
                 {/* < Game Score register in Score list  << 
           onCreate={this.handleCreateScoreList}
         /> */}

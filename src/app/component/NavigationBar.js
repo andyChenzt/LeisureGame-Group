@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { NavLink } from 'react-router-dom';
 import "../css/App.css";
 
 
@@ -8,11 +9,11 @@ export default class NavigationBar extends Component {
 
             <div className="App-bar">
                 <ul className="App-ul">
-                    <li className="App-li"><a className="App-link" href="#home">Home</a></li>
-                    <li className="App-li"><a className="App-link" href="#gane1">Game1</a></li>
-                    <li className="App-li"><a className="App-link" href="#game2">Game2</a></li>
-                    <li className="App-li"><a className="App-link" href="#personal information">Personal Information</a></li>
-                    <li className="App-li"><a className="App-link" href="#score">Score</a></li>
+                    <li className="App-li"><NavLink className="App-link" to="/home">Home</NavLink></li>
+                    <li className="App-li"><NavLink className="App-link" to="/drawing">Game1</NavLink></li>
+                    <li className="App-li"><NavLink className="App-link" to="/snake">Game2</NavLink></li>
+                    <li className="App-li"><NavLink className="App-link" to="/userInformation">Personal Information</NavLink></li>
+                    <li className="App-li"><NavLink className="App-link" to="/score">Score</NavLink></li>
                 </ul>
             </div>
         );

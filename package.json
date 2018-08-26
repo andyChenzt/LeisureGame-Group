@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "webpack-dev-server",
-    "start": "npm run build | npm run start_server",
+    "start": "npm run build && npm run start_server",
     "build": "webpack-dev-server --open --hot",
     "start_server": "node ./server/server.js"
   },
@@ -25,7 +25,8 @@
     "body-parser": "^1.18.3",
     "mongoose": "^5.2.9",
     "react": "^16.4.2",
-    "react-dom": "^16.4.2"
+    "react-dom": "^16.4.2",
+    "react-router-dom": "^4.3.1"
   },
   "devDependencies": {
     "babel-core": "^6.26.3",
