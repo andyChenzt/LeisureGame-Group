@@ -10,9 +10,9 @@ var config = {
 		main: SRC_DIR + '/app/index.js',
 	},
     output: {
-        path: DIST_DIR + '/bundle/',
+        path: DIST_DIR,
         filename: 'bundle.js',
-        publicPath: "/"
+        // publicPath: "/"
     },
     mode: "development",
     module: {
@@ -38,11 +38,11 @@ var config = {
     },
     plugins: [
     ],
-
     devServer: {
         contentBase: DIST_DIR,
         historyApiFallback: true,
         inline: true,
+        open: true,
         hot: true,
         port: 3000,
         progress: true,
