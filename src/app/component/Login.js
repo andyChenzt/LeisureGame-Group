@@ -17,11 +17,11 @@ export default class Login extends Component {
         })
     }
     handleSubmit = (e) => {
-        // 페이지 리로딩 방지
+        // prevent page reloding 
         e.preventDefault();
-        // 상태값을 onCreate 를 통하여 부모에게 전달
+        // send state to parent through onCreate
         this.props.onCreate(this.state);
-        // 상태 초기화
+        // initialize state
         this.setState({
          ID: '',
          Password: ''
