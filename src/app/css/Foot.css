@@ -1,0 +1,11 @@
+.App-footer{
+    text-align: center;
+    background-color: #151a21;
+    height: 20px;
+}
+
+.App-text{
+    font-size: 0.8em;
+    color: aliceblue;
+    padding: 2px;
+}

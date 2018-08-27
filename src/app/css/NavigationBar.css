@@ -1,0 +1,24 @@
+.App-ul{
+    list-style-type:none;
+    margin:0;
+    padding:0;
+    overflow:hidden;
+}
+.App-li{
+    float:left;
+}
+.App-link{
+    display:block;
+    width:220px;
+    font-weight:bold;
+    color:#FFFFFF;
+    background-color:#151a21;
+    text-align:center;
+    padding:20px;
+    text-decoration:none;
+    text-transform:uppercase;
+}
+.App-bar{
+
+    background-color:#151a21;
+}

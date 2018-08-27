@@ -1,0 +1,22 @@
+.App-position{
+    background-color: #1c232c;
+    height: 120px;
+    width: 280PX;
+    padding: 2px;
+    position: absolute;
+    right: 50px;
+    top:200px;
+}
+.App-userinfo{
+    text-align: center;
+    font-size: 1.5em;
+    color: aliceblue;
+    position: relative;
+    bottom: 30px;
+
+}
+.App-icon{
+    height: 40px;
+    weight: 40PX;
+    padding: 20px;
+}

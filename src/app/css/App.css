@@ -3,135 +3,121 @@
     background-color: #151a21;
 }
 
-.App-ul{
-        list-style-type:none;
-        margin:0;
-        padding:0;
-        overflow:hidden;
-    }
-.App-li{
-        float:left;
-    }
-.App-link{
-        display:block;
-        width:220px;
-        font-weight:bold;
-        color:#FFFFFF;
-        background-color:#151a21;
-        text-align:center;
-        padding:20px;
-        text-decoration:none;
-        text-transform:uppercase;
-    }
-.App-bar{
+/*.App-ul{*/
+        /*list-style-type:none;*/
+        /*margin:0;*/
+        /*padding:0;*/
+        /*overflow:hidden;*/
+    /*}*/
+/*.App-li{*/
+        /*float:left;*/
+    /*}*/
+/*.App-link{*/
+        /*display:block;*/
+        /*width:220px;*/
+        /*font-weight:bold;*/
+        /*color:#FFFFFF;*/
+        /*background-color:#151a21;*/
+        /*text-align:center;*/
+        /*padding:20px;*/
+        /*text-decoration:none;*/
+        /*text-transform:uppercase;*/
+    /*}*/
+/*.App-bar{*/
 
-        background-color:#151a21;
-    }
+        /*background-color:#151a21;*/
+    /*}*/
 
 
-.App-Draw{
+
+
+/*.App-userinfo{*/
+    /*text-align: center;*/
+    /*font-size: 1.5em;*/
+    /*color: aliceblue;*/
+    /*position: relative;*/
+    /*bottom: 30px;*/
+
+/*}*/
+
+/*.App-otheruser{*/
     /*background-color: #1c232c;*/
-    /*weight: 1000px;*/
-    height: 550px;
-    width: 40%;
-    overflow: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-}
+    /*height: 120px;*/
+    /*width: 280PX;*/
+    /*padding: 2px;*/
+    /*position: absolute;*/
+    /*left: 50px;*/
+    /*top:200px;*/
+/*}*/
 
-.App-userinfo{
-    text-align: center;
-    font-size: 1.5em;
-    color: aliceblue;
-    position: relative;
-    bottom: 30px;
+/*.App-position{*/
+    /*background-color: #1c232c;*/
+    /*height: 120px;*/
+    /*width: 280PX;*/
+    /*padding: 2px;*/
+    /*position: absolute;*/
+    /*right: 50px;*/
+    /*top:200px;*/
+/*}*/
 
-}
+/*.App-GameScore{*/
+    /*background-color: #1c232c;*/
+    /*color: #FFFFFF;*/
+    /*height: 120px;*/
+    /*width: 280PX;*/
+    /*padding: 2px;*/
+    /*position: absolute;*/
+    /*right: 50px;*/
+    /*top:350px;*/
+/*}*/
 
-.App-otheruser{
-    background-color: #1c232c;
-    height: 120px;
-    width: 280PX;
-    padding: 2px;
-    position: absolute;
-    left: 50px;
-    top:200px;
-}
+/*.App-GameScorelist{*/
+    /*background-color: #1c232c;*/
+    /*color: #FFFFFF;*/
+    /*height: 120px;*/
+    /*width: 280PX;*/
+    /*padding: 2px;*/
+    /*position: absolute;*/
+    /*right: 50px;*/
+    /*top:350px;*/
+/*}*/
 
-.App-position{
-    background-color: #1c232c;
-    height: 120px;
-    width: 280PX;
-    padding: 2px;
-    position: absolute;
-    right: 50px;
-    top:200px;
-}
 
-.App-GameScore{
-    background-color: #1c232c;
-    color: #FFFFFF;
-    height: 120px;
-    width: 280PX;
-    padding: 2px;
-    position: absolute;
-    right: 50px;
-    top:350px;
-}
 
-.App-GameScorelist{
-    background-color: #1c232c;
-    color: #FFFFFF;
-    height: 120px;
-    width: 280PX;
-    padding: 2px;
-    position: absolute;
-    right: 50px;
-    top:350px;
-}
+/*.App-footer{*/
+    /*text-align: center;*/
+    /*background-color: #151a21;*/
+    /*height: 20px;*/
+/*}*/
 
-.App-header {
-    text-align: center;
-    background-color: #151a21;
-    height: 80px;
-    padding: 10px;
-}
+/*.App-text{*/
+    /*font-size: 0.8em;*/
+    /*color: aliceblue;*/
+    /*padding: 2px;*/
+/*}*/
 
-.App-footer{
-    text-align: center;
-    background-color: #151a21;
-    height: 20px;
-}
+/*.App-icon{*/
+    /*height: 40px;*/
+    /*weight: 40PX;*/
+    /*padding: 20px;*/
+/*}*/
 
-.App-text{
-    font-size: 0.8em;
-    color: aliceblue;
-    padding: 2px;
-}
+/*.App-main{*/
+    /*background-color: #151a21;*/
+    /*height: 645px;*/
+    /*padding: 10px;*/
+    /*width: 100%;*/
+    /*overflow: auto;*/
+    /*margin-left: auto;*/
+    /*margin-right: auto;*/
+    /*margin-top: 60px;*/
+/*}*/
 
-.App-icon{
-    height: 40px;
-    weight: 40PX;
-    padding: 20px;
-}
+/*.App-title {*/
+    /*font-size: 1.5em;*/
+/*}*/
 
-.App-test{
-    background-color: #151a21;
-    height: 645px;
-    padding: 10px;
-    width: 100%;
-    overflow: auto;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 60px;
-}
-
-.App-title {
-    font-size: 1.5em;
-}
-
-.App-intro {
-    font-size: large;
-}
+/*.App-intro {*/
+    /*font-size: large;*/
+/*}*/
 
