@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import Head from './Head';
-import Foot from './Foot';
-import Draw from './Draw';
-import Snake from './Snake';
-import User from "./UserInfo";
-import OtherUser from "./OtherUser";
-import NavigationBar from "./NavigationBar";
-import Login from "./Login";
-import GameScoreInfo from "./GameScoreInfo";
-import GameScoreInfoList from "./GameScoreInfoList";
+import Head from './Frame/Head';
+import Foot from './Frame/Foot';
+import Draw from './Game/Draw';
+import Snake from './Game/Snake';
+import User from "./User/UserInfo";
+import OtherUser from "./User/OtherUser";
+import NavigationBar from "./Navigation/NavigationBar";
+import Login from "./Login/Login";
+import GameScoreInfo from "./GameScore/GameScoreInfo";
+import GameScoreInfoList from "./GameScore/GameScoreInfoList";
 
 class App extends Component {
     //GameScore data set and create list function

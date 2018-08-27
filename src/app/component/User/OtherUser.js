@@ -1,6 +1,6 @@
 import React, { Component } from "react";
-import "../css/App.css";
-import usericon from "../assert/image/usericon2.png";
+import "../../css/App.css";
+import usericon from "../../assert/image/usericon2.png";
 
 // same conponent just use same component is ok, just different data
 export default class OtherUser extends Component {

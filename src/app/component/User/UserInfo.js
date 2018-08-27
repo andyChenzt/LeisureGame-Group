@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import "../css/App.css";
-import usericon from "../assert/image/usericon1.png";
+import "../../css/App.css";
+import usericon from "../../assert/image/usericon1.png";
 
 export default class User extends Component {
     render() {

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
 import sketch from './DrawSketch';
-import User from "./UserInfo";
-import OtherUser from "./OtherUser";
-import GameScoreInfoList from "./GameScoreInfoList";
+import User from "../User/UserInfo";
+import OtherUser from "../User/OtherUser";
+import GameScoreInfoList from "../GameScore/GameScoreInfoList";
+import "../../css/App.css";
 
 class Draw extends Component {
 

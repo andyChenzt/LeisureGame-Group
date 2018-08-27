@@ -3,9 +3,10 @@ import P5Wrapper from 'react-p5-wrapper';
 import sketch from './SnakeSketch';
 import ReactDOM from 'react-dom';
 import { score } from './SnakeGame';
-import User from "./UserInfo";
-import OtherUser from "./OtherUser";
-import GameScoreInfoList from "./GameScoreInfoList";
+import User from "../User/UserInfo";
+import OtherUser from "../User/OtherUser";
+import GameScoreInfoList from "../GameScore/GameScoreInfoList";
+import "../../css/App.css";
 
 class Snake extends Component {
   render() {

@@ -1,9 +1,9 @@
-var express = require("express");
-var bodyParser = require("body-parser");
-var app = express();
-var server = require("http").Server(app);
-var accountRoutes = require("./routes/account");
-var scoreRoutes = require("./routes/score");
+const express = require("express");
+const bodyParser = require("body-parser");
+const app = express();
+const server = require("http").Server(app);
+const accountRoutes = require("./routes/account");
+const scoreRoutes = require("./routes/score");
 // var socketServer = 
 
 // app.use(bodyParser.urlencoded({ extended: false}));
