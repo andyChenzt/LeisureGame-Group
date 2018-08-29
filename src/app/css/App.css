@@ -1,7 +1,7 @@
 .App {
     overflow: hidden;
     background-color: #151a21;
-    height:100%;
+    /*height:100%;*/
 }
 
 .App-ul{
@@ -114,7 +114,7 @@
 
 .App-main{
     background-color: #151a21;
-    height: 645px;
+    height: 590px;
     padding: 10px;
     /*width: 100%;*/
     overflow: auto;
@@ -145,12 +145,12 @@
     /*background-color: #1c232c;*/
     /*weight: 1000px;*/
     color: #648a78;
-    height: 570px;
+    height: 560px;
     width: 850px;
     overflow: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 30px;
+    /*margin-top: 30px;*/
 }
 .App-ID{
     /*width: 100%;*/

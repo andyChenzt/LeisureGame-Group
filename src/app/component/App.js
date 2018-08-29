@@ -57,12 +57,14 @@ class App extends Component {
                 <BrowserRouter>
                     <div className="App">
                         <NavigationBar />
+                        <div className="App-main">
                         <Route exact path='/' component={Login} />
                         <Route path='/snake' component={Snake} />
                         <Route path='/drawing' component={Draw} />
                         <Route path='/gameScoreInfo' component={GameScoreInfo} />
                         <Route path='/home' component={home} />
                         <Route path='/score' component={score} />
+                        </div>
                     </div>
                 </BrowserRouter>
                 
