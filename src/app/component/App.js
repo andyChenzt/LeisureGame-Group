@@ -17,24 +17,24 @@ class App extends Component {
     state = {
       GameScoreInformation: [
         {
-          Index: 0,
-          ID: 'Player1',
-          Score: '111111111'
+            Index: 0,
+            ID: 'Player1',
+            Score: '111111111'
         },
         {
-          Index: 1,
-          ID: 'Player2',
-          Score: '222222222'
+            Index: 1,
+            ID: 'Player2',
+            Score: '222222222'
         },
         {
-          Index: 3,
-          ID: 'Player3',
-          Score: '33333333333'
+            Index: 3,
+            ID: 'Player3',
+            Score: '33333333333'
         },
         {
-          Index: 4,
-          ID: 'Player3',
-          Score: '4444444444'
+            Index: 4,
+            ID: 'Player3',
+            Score: '4444444444'
           }
       ]
     }

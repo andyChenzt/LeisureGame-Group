@@ -57,15 +57,31 @@ router.post("/account/signup", function(req, res, next) {
 router.post("/account/signin", function(req, res, next) {
     console.log(req.body);
 
-    User.find({email: req.body.nickName}).then(function(record) {
+    User.findOne({email: req.body.email}).then(function(record) {
         console.log(record);
-        if(req.body.password === record.password ) {
-            res.send({ success: 1,
-                        user: record });
-        } else {
-            res.send({ success: 0,
-                        user: record });
-        }
+        // validation password
+        record.validPassword(req.body.password, record.password, function(err, result) {
+            if(result) {
+                console.log("correct");
+                var info = resord.deleteSensitiveInfo()
+                res.send({ success: 1,
+                        user: info });
+            } else {
+                console.log("wrong");
+                res.send({ success: 0,
+                        user: {} });
+            } 
+        });
+        
+
+
+        // if(req.body.password === record.password ) {
+        //     res.send({ success: 1,
+        //                 user: record });
+        // } else {
+        //     res.send({ success: 0,
+        //                 user: record });
+        // }
     });
 });
 

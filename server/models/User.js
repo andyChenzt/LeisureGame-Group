@@ -43,11 +43,42 @@ const UserSchema = new mongoose.Schema({
     // }
 });
 
-// finish auth and crypt password in the future
+// crypt password before save
+UserSchema.pre('save', function(next) {
+    const user = this;
+    const SALT_FACTOR = 10;
 
-// UserSchema.methods.generateHash = function(password){
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-// };
+    bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+        if(err) {
+            return next(err);
+        }
+        bcrypt.hash(user.password, salt).then(function(hash) {
+            user.password = hash;
+            next();
+        });
+    });
+});
+
+UserSchema.methods.validPassword = function(password) {
+    bcrypt.compare(password, this.password).then(function(result, next) {
+        console.log(password, this.password);
+        console.log(result);
+        // return result;
+        next();
+    });
+};
+
+UserSchema.methods.deleteSensitiveInfo = function() {
+    next({
+        email: this.email,
+        nickName: this.nickName,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        drawingGame: this.drawingGame,
+        snakeGame: this.snakeGame
+    });
+};
+
 
 // UserSchema.methods.validPassword = function(password){
 //     return bcrypt.compareSync(password, this.password);
