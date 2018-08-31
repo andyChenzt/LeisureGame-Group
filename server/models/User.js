@@ -59,12 +59,28 @@ UserSchema.pre('save', function(next) {
     });
 });
 
-UserSchema.methods.validPassword = function(password) {
-    bcrypt.compare(password, this.password).then(function(result, next) {
+UserSchema.methods.validPassword = function(password, cb) {
+    console.log("valid");
+    bcrypt.compare(password, this.password, function(err, isMatch) {
+        if(err) {
+            return err;
+        }
+        console.log("after compare");
         console.log(password, this.password);
-        console.log(result);
+        console.log(isMatch);
+        cb(isMatch);
+        // cb(null, isMatch);
+        // if(res === true) {
+        //     console.log("correct");
+        //     var info = resord.deleteSensitiveInfo()
+        //     return { success: 1,
+        //             user: info };
+        // } else {
+        //     console.log("wrong");
+        //     return { success: 0,
+        //             user: {} };
+        // } 
         // return result;
-        next();
     });
 };
 

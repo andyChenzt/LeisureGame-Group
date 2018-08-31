@@ -55,23 +55,54 @@ router.post("/account/signup", function(req, res, next) {
 // sign in
 // maybe verify at here, doing auth
 router.post("/account/signin", function(req, res, next) {
-    console.log(req.body);
+    console.log("body: " + req.body.password);
 
-    User.findOne({email: req.body.email}).then(function(record) {
-        console.log(record);
+    User.findOne({email: req.body.email}).then(function(user) {
+        console.log("user: " + user);
         // validation password
-        record.validPassword(req.body.password, record.password, function(err, result) {
-            if(result) {
+        var isMatch = user.validPassword(req.body.password, function(isMatch) {
+            if(isMatch) {
                 console.log("correct");
-                var info = resord.deleteSensitiveInfo()
-                res.send({ success: 1,
-                        user: info });
+                    res.send({ success: 0,
+                                user: {} 
+                });
             } else {
-                console.log("wrong");
-                res.send({ success: 0,
-                        user: {} });
+                res.status(403).json({
+                    error: 'invaild username or password'
+                });
             } 
         });
+        
+        // .then(function(result) {
+        //     if(result) {
+        //         console.log("correct");
+        //         var info = resord.deleteSensitiveInfo()
+        //         res.send({ success: 1,
+        //                 user: info });
+        //     } else {
+        //         console.log("wrong");
+        //         res.send({ success: 0,
+        //                 user: {} });
+        //     }
+        // })
+        // , user.password, function(err, isMatch) {
+        //     if(err) {
+        //         console.log(err);
+        //     }
+
+        //     if(isMatch) {
+        //         console.log("correct");
+        //         res.send({ success: 0,
+        //                     user: {} 
+        //         });
+        //     } else {
+        //         res.status(403).json({
+        //             error: 'invaild username or password'
+        //         });
+        //     }
+            
+             
+    });
         
 
 
@@ -82,7 +113,7 @@ router.post("/account/signin", function(req, res, next) {
         //     res.send({ success: 0,
         //                 user: record });
         // }
-    });
+    // });
 });
 
 // change name or information
