@@ -50,7 +50,6 @@ router.get("/score/", function(req, res, next) {
 // get player high score, for specific player
 router.get("/score/:nickName", function(req, res, next) {
 	User.findOne({nickName: req.params.nickName}).then(function(result) {
-		console.log(result);
 		var drawingGameScores = result.drawingGame.scores;
 		var snakeGameScores = result.snakeGame.scores;
 		var response = {
@@ -66,15 +65,35 @@ router.get("/score/:nickName", function(req, res, next) {
 // update player score after game
 router.post("/score/:game/", function(req, res, next) {
 	initHighScore();
-	var highScorePlayer = {
+	var game = req.params.game;
+	var playerScore = {
 		nickName: req.body.nickName,
 		score: req.body.score
 	};
-	console.log(highScorePlayer);
-	console.log(req.params.game);
+
+	// save score in player scoreboard
+	User.findOne({nickName: playerScore.nickName}).then(function(result) {
+		if(game === "drawingGame") {
+			result.drawingGame.scores.push(playerScore.score);
+			result.save();
+			User.update({nickName: playerScore.nickName}, {$inc: {'drawingGame.times': 1}})
+				.then(function() {
+					console.log("saved in person");
+				});
+		} else if(game === "snakeGame"){
+			result.snakeGame.scores.push(playerScore.score);
+			result.save();
+			User.update({nickName: playerScore.nickName}, {$inc: {'snakeGame.times': 1}})
+				.then(function() {
+					console.log("saved in person");
+				});
+		}
+	});
+
+	// save score in game high scoreboard
 	HighScore.findOne({game: req.params.game}).then(function(result) {
 		// push new score
-		result.scores.highScores.push(highScorePlayer);
+		result.scores.highScores.push(playerScore);
 		result.save();
 		
 		// update number

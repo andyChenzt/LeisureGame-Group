@@ -58,13 +58,19 @@ router.post("/account/signin", function(req, res, next) {
     console.log("body: " + req.body.password);
 
     User.findOne({email: req.body.email}).then(function(user) {
-        console.log("user: " + user);
+        console.log("found user: " + user);
         // validation password
-        var isMatch = user.validPassword(req.body.password, function(isMatch) {
+        var isMatch = user.validPassword(req.body.password, function(err, isMatch) {
+            if(err) {
+                res.status(500).json({
+                    error: 'server error'
+                });
+            }
             if(isMatch) {
                 console.log("correct");
-                    res.send({ success: 0,
-                                user: {} 
+                var info = user.deleteSensitiveInfo();
+                res.send({ success: 0,
+                    user: {info} 
                 });
             } else {
                 res.status(403).json({
@@ -72,48 +78,8 @@ router.post("/account/signin", function(req, res, next) {
                 });
             } 
         });
-        
-        // .then(function(result) {
-        //     if(result) {
-        //         console.log("correct");
-        //         var info = resord.deleteSensitiveInfo()
-        //         res.send({ success: 1,
-        //                 user: info });
-        //     } else {
-        //         console.log("wrong");
-        //         res.send({ success: 0,
-        //                 user: {} });
-        //     }
-        // })
-        // , user.password, function(err, isMatch) {
-        //     if(err) {
-        //         console.log(err);
-        //     }
-
-        //     if(isMatch) {
-        //         console.log("correct");
-        //         res.send({ success: 0,
-        //                     user: {} 
-        //         });
-        //     } else {
-        //         res.status(403).json({
-        //             error: 'invaild username or password'
-        //         });
-        //     }
-            
-             
+          
     });
-        
-
-
-        // if(req.body.password === record.password ) {
-        //     res.send({ success: 1,
-        //                 user: record });
-        // } else {
-        //     res.send({ success: 0,
-        //                 user: record });
-        // }
-    // });
 });
 
 // change name or information

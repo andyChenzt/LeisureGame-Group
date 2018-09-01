@@ -59,8 +59,11 @@ UserSchema.pre('save', function(next) {
     });
 });
 
+// create validate password instance method
 UserSchema.methods.validPassword = function(password, cb) {
     console.log("valid");
+    console.log("before compare");
+    console.log(password, this.password);
     bcrypt.compare(password, this.password, function(err, isMatch) {
         if(err) {
             return err;
@@ -68,37 +71,21 @@ UserSchema.methods.validPassword = function(password, cb) {
         console.log("after compare");
         console.log(password, this.password);
         console.log(isMatch);
-        cb(isMatch);
-        // cb(null, isMatch);
-        // if(res === true) {
-        //     console.log("correct");
-        //     var info = resord.deleteSensitiveInfo()
-        //     return { success: 1,
-        //             user: info };
-        // } else {
-        //     console.log("wrong");
-        //     return { success: 0,
-        //             user: {} };
-        // } 
-        // return result;
+        cb(err, isMatch);
     });
 };
 
+// create delete sensitive information instance method for deleting password before return json data
 UserSchema.methods.deleteSensitiveInfo = function() {
-    next({
+    return {
         email: this.email,
         nickName: this.nickName,
         firstName: this.firstName,
         lastName: this.lastName,
         drawingGame: this.drawingGame,
         snakeGame: this.snakeGame
-    });
+    };
 };
-
-
-// UserSchema.methods.validPassword = function(password){
-//     return bcrypt.compareSync(password, this.password);
-// };
 
 const User = mongoose.model('user', UserSchema);
 

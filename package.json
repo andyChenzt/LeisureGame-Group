@@ -4,7 +4,7 @@
   "description": "Leisur Game",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "mocha ./src/test/*js",
     "dev": "webpack-dev-server",
     "start": "npm run build | npm run start_server",
     "build": "webpack-dev-server --hot",
@@ -23,6 +23,7 @@
   "dependencies": {
     "bcrypt": "^3.0.0",
     "body-parser": "^1.18.3",
+    "mocha": "^5.2.0",
     "mongoose": "^5.2.9",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
