@@ -16,11 +16,11 @@ class Snake extends Component {
 		  		score = {score}
 		    	<P5Wrapper sketch={sketch} />
 		  	</div>
-		  	<div className="App-test">
-	            <User />
-	            <OtherUser />
-	            <GameScoreInfoList />
-	        </div>
+            <div>
+                <User />
+                <OtherUser />
+                {/*<GameScoreInfoList />*/}
+            </div>
 		</div>  	
     );
   }
