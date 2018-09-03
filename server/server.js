@@ -21,6 +21,6 @@ app.use(function(err, req, res, next) {
 
 // init socket
 
-server.listen(process.env.port || 3001, function() {
+server.listen(process.env.port || 3001, ()=> {
   console.log("listening 3001");
 });
