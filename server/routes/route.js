@@ -1,6 +1,6 @@
-import React from 'react';
-import { renderToString } from 'react-dom/server';
-import App from '../../src/app/component/App';
+// import React from 'react';
+// import { renderToString } from 'react-dom/server';
+// import App from '../../src/app/component/App';
 // const React = require('react');
 // const renderToString = require('react-dom/server');
 // const App = require('../../src/app/component/App');
