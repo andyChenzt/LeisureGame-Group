@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../../css/Head.css";
+import "../../css/App.css";
 import header from "../../assert/image/header.png";
 
 export default class Head extends Component {

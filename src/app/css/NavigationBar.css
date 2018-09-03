@@ -9,18 +9,16 @@
 }
 .App-link{
     display:block;
-    width: 350px;
-    overflow: hidden;
-    margin-left: auto;
-    margin-right: auto;
+    width:220px;
     font-weight:bold;
     color:#FFFFFF;
     background-color:#151a21;
     text-align:center;
-    /*padding:10px;*/
+    padding:20px;
     text-decoration:none;
     text-transform:uppercase;
 }
 .App-bar{
+
     background-color:#151a21;
 }

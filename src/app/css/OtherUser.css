@@ -1,22 +1,22 @@
+.App-otheruser{
+    background-color: #1c232c;
+    height: 120px;
+    width: 280PX;
+    padding: 2px;
+    position: absolute;
+    left: 50px;
+    top:200px;
+}
 .App-userinfo{
     text-align: center;
     font-size: 1.5em;
     color: aliceblue;
     position: relative;
     bottom: 30px;
-}
 
-.App-otheruser{
-    background-color: rgba(28, 35, 44, 0);
-    height: 120px;
-    width: 20%;
-    padding: 2px;
-    position: absolute;
-    left: 10px;
-    top:133px;
 }
 .App-icon{
     height: 40px;
-    width: 40PX;
+    weight: 40PX;
     padding: 20px;
 }

@@ -17,7 +17,7 @@ router.get("/account/", function(req, res, next) {
     });
     
 });
-accountRoutes
+
 // search id or nick name (unique)
 // input finish editing check directly
 // otherwise cannot register

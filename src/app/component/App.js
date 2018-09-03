@@ -10,8 +10,6 @@ import NavigationBar from "./Navigation/NavigationBar";
 import Login from "./Login/Login";
 import GameScoreInfo from "./GameScore/GameScoreInfo";
 import GameScoreInfoList from "./GameScore/GameScoreInfoList";
-import home from "./User/UserInfomation";
-import score from "./GameScore/scorepage";
 
 class App extends Component {
     //GameScore data set and create list function
@@ -55,16 +53,12 @@ class App extends Component {
             <div className="App">
                 <Head />
                 <BrowserRouter>
-                    <div className="App">
+                    <div>
                         <NavigationBar />
-                        <div className="App-main">
                         <Route exact path='/' component={Login} />
                         <Route path='/snake' component={Snake} />
                         <Route path='/drawing' component={Draw} />
                         <Route path='/gameScoreInfo' component={GameScoreInfo} />
-                        <Route path='/home' component={home} />
-                        <Route path='/score' component={score} />
-                        </div>
                     </div>
                 </BrowserRouter>
                 
