@@ -46,6 +46,10 @@ var config = {
         hot: true,
         port: 3000,
         progress: true,
+        proxy: {
+          '/api': 'http://localhost:3001',
+          pathRewrite: {'^/api' : ''}
+        }
     },
 
 };

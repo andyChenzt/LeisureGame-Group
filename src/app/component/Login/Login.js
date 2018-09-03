@@ -1,14 +1,24 @@
 import React, { Component } from 'react';
 import {StyleShee,View,TextInput} from 'react';
+import axios from 'axios';
 
 export default class Login extends Component {
-    state = {
-        ID:'',
-        Password:''
+    constructor() {
+      super();
+      this.state = {
+        Name:'',
+        Password:'',
+        saved: false,
+        msg: "save"
+      } 
+      this.handleChangeID = this.handleChangeID.bind(this);
+      this.handleChangePassword = this.handleChangePassword.bind(this);
+      this.handleSubmit = this.handleSubmit.bind(this);
     }
+
     handleChangeID = (e)=> {
         this.setState({
-            ID: e.target.value
+            Name: e.target.value
         })
     }
     handleChangePassword = (e)=> {
@@ -17,15 +27,23 @@ export default class Login extends Component {
         })
     }
     handleSubmit = (e) => {
+        console.log("clicked");
         // prevent page reloding 
         e.preventDefault();
         // send state to parent through onCreate
-        this.props.onCreate(this.state);
+        // this.props.onCreate(this.state);
         // initialize state
         this.setState({
          ID: '',
-         Password: ''
+         Password: '',
+         saved: true,
+         msg: "saved"
         })
+        console.log(this.state);
+        axios.post('/api/account/signup', { firstName: this.state.Name }).then(res => {
+            console.log(res);
+            console.log(res.data);
+        });
       }
     render() {
         return (
@@ -37,7 +55,7 @@ export default class Login extends Component {
               onChange={this.handleChangeID}
               //style={styles.input}
             />
-            <div>{this.state.ID}</div>
+            // <div>{this.state.ID}</div>
             
              <input
                 placeholder="Password"
@@ -46,8 +64,8 @@ export default class Login extends Component {
             //   style={styles.input}
 
              />
-            <div>{this.state.Password}</div>
-            <button type="submit">Send</button>
+            // <div>{this.state.Password}</div>
+            <button type="submit" onClick={this.handleSubmit}>{this.state.msg}</button>
          </form>
 
         );
