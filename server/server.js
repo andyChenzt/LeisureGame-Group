@@ -9,7 +9,9 @@ const scoreRoutes = require("./routes/score");
 // app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-// init route
+// init react route
+
+// init api route
 app.use("/api", accountRoutes);
 app.use("/api", scoreRoutes);
 
