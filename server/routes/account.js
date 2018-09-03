@@ -55,17 +55,30 @@ router.post("/account/signup", function(req, res, next) {
 // sign in
 // maybe verify at here, doing auth
 router.post("/account/signin", function(req, res, next) {
-    console.log(req.body);
+    console.log("body: " + req.body.password);
 
-    User.find({email: req.body.nickName}).then(function(record) {
-        console.log(record);
-        if(req.body.password === record.password ) {
-            res.send({ success: 1,
-                        user: record });
-        } else {
-            res.send({ success: 0,
-                        user: record });
-        }
+    User.findOne({email: req.body.email}).then(function(user) {
+        console.log("found user: " + user);
+        // validation password
+        var isMatch = user.validPassword(req.body.password, function(err, isMatch) {
+            if(err) {
+                res.status(500).json({
+                    error: 'server error'
+                });
+            }
+            if(isMatch) {
+                console.log("correct");
+                var info = user.deleteSensitiveInfo();
+                res.send({ success: 0,
+                    user: {info} 
+                });
+            } else {
+                res.status(403).json({
+                    error: 'invaild username or password'
+                });
+            } 
+        });
+          
     });
 });
 

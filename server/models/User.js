@@ -43,15 +43,49 @@ const UserSchema = new mongoose.Schema({
     // }
 });
 
-// finish auth and crypt password in the future
+// crypt password before save
+UserSchema.pre('save', function(next) {
+    const user = this;
+    const SALT_FACTOR = 10;
 
-// UserSchema.methods.generateHash = function(password){
-//     return bcrypt.hashSync(password, bcrypt.genSaltSync(8), null);
-// };
+    bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+        if(err) {
+            return next(err);
+        }
+        bcrypt.hash(user.password, salt).then(function(hash) {
+            user.password = hash;
+            next();
+        });
+    });
+});
 
-// UserSchema.methods.validPassword = function(password){
-//     return bcrypt.compareSync(password, this.password);
-// };
+// create validate password instance method
+UserSchema.methods.validPassword = function(password, cb) {
+    console.log("valid");
+    console.log("before compare");
+    console.log(password, this.password);
+    bcrypt.compare(password, this.password, function(err, isMatch) {
+        if(err) {
+            return err;
+        }
+        console.log("after compare");
+        console.log(password, this.password);
+        console.log(isMatch);
+        cb(err, isMatch);
+    });
+};
+
+// create delete sensitive information instance method for deleting password before return json data
+UserSchema.methods.deleteSensitiveInfo = function() {
+    return {
+        email: this.email,
+        nickName: this.nickName,
+        firstName: this.firstName,
+        lastName: this.lastName,
+        drawingGame: this.drawingGame,
+        snakeGame: this.snakeGame
+    };
+};
 
 const User = mongoose.model('user', UserSchema);
 
