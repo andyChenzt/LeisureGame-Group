@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "../../css/App.css";
+import "../../css/OtherUser.css";
 import usericon from "../../assert/image/usericon2.png";
 
 // same conponent just use same component is ok, just different data

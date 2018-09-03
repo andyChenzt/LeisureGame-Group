@@ -4,7 +4,7 @@ import sketch from './DrawSketch';
 import User from "../User/UserInfo";
 import OtherUser from "../User/OtherUser";
 import GameScoreInfoList from "../GameScore/GameScoreInfoList";
-import "../../css/App.css";
+import "../../css/Draw.css";
 
 class Draw extends Component {
 
@@ -14,10 +14,10 @@ class Draw extends Component {
 			  	<div className="App-Draw">
 			   		<P5Wrapper sketch={sketch} />
 			  	</div>
-			  	<div className="App-test">
+			  	<div>
 		            <User />
 		            <OtherUser />
-		            <GameScoreInfoList />
+		            {/*<GameScoreInfoList />*/}
 		        </div>
 		    </div>
 		);
