@@ -4,6 +4,7 @@ var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 var DIST_DIR = path.resolve(__dirname, "public");
 var SRC_DIR = path.resolve(__dirname, "src");
+var SERVER_DIR = path.resolve(__dirname, "server");
 
 var config = {
 	entry: {
@@ -18,8 +19,8 @@ var config = {
     module: {
         rules: [
             {
-                test: /\.(js|jsx)$/,
-                include: SRC_DIR,
+                test: /\.(js|jsx|ejs)$/,
+                include: [SRC_DIR, SERVER_DIR],
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {

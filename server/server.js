@@ -2,13 +2,15 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const app = express();
 const server = require("http").Server(app);
+const route = require("./routes/route");
 const accountRoutes = require("./routes/account");
 const scoreRoutes = require("./routes/score");
 // var socketServer = 
-
+app.set('view engine', 'ejs');
 // app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+app.use("/", route);
 // init route
 app.use("/api", accountRoutes);
 app.use("/api", scoreRoutes);
