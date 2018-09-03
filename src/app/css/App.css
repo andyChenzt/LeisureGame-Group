@@ -131,16 +131,16 @@
     font-size: large;
 }
 
-/*.App-main{*/
-/*background-color: #151a21;*/
-/*height: 500px;*/
-/*padding: 10px;*/
-/*width: 100%;*/
-/*overflow: auto;*/
-/*margin-left: auto;*/
-/*margin-right: auto;*/
-/*margin-top: 60px;*/
-/*}*/
+.App-main{
+background-color: #151a21;
+height: 500px;
+padding: 10px;
+width: 100%;
+overflow: auto;
+margin-left: auto;
+margin-right: auto;
+margin-top: 60px;
+}
 .App-Draw{
     /*background-color: #1c232c;*/
     /*weight: 1000px;*/

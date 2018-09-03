@@ -10,7 +10,7 @@ function sketch(p) {
 	var socket;
 
 	p.setup = function() {
-		p.createCanvas(840, 540)
+		p.createCanvas(840, 480)
 
 		p.background(51);
 
