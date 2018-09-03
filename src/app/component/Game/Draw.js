@@ -14,11 +14,11 @@ class Draw extends Component {
 			  	<div className="App-Draw">
 			   		<P5Wrapper sketch={sketch} />
 			  	</div>
-			  	<div className="App-test">
-		            <User />
-		            <OtherUser />
-		            <GameScoreInfoList />
-		        </div>
+                <div>
+                    <User />
+                    <OtherUser />
+                    {/*<GameScoreInfoList />*/}
+                </div>
 		    </div>
 		);
 	}
