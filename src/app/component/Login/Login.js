@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {StyleShee,View,TextInput} from 'react';
 import axios from 'axios';
+import "../../css/Login.css";
 
 export default class Login extends Component {
     constructor() {
@@ -48,25 +49,32 @@ export default class Login extends Component {
     render() {
         return (
 
-         <form >
-            <input
-              placeholder="ID"
-              value={this.state.ID}
-              onChange={this.handleChangeID}
-              //style={styles.input}
-            />
-            // <div>{this.state.ID}</div>
-            
-             <input
-                placeholder="Password"
-                value={this.state.Password}
-                onChange={this.handleChangePassword}
-            //   style={styles.input}
+            <div className="App-Draw">
+                <div className="App-Form" >
+                    <form>
+                        <input className="App-ID"
+                               placeholder="ID"
+                               value={this.state.ID}
+                               onChange={this.handleChangeID}
+                            //style={styles.input}
+                        />
 
-             />
-            // <div>{this.state.Password}</div>
-            <button type="submit" onClick={this.handleSubmit}>{this.state.msg}</button>
-         </form>
+                        {/*<div>{this.state.ID}</div>*/}
+
+                        <input className="App-Password"
+                               placeholder="Password"
+                               value={this.state.Password}
+                               onChange={this.handleChangePassword}
+                               type="password"
+                            //   style={styles.input}
+
+                        />
+                        {/*<div>{this.state.Password}</div>*/}
+                        <button className="App-Button" type="submit">Send</button>
+
+                    </form>
+                </div>
+            </div>
 
         );
     }

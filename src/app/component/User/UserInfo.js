@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../../css/App.css";
+import "../../css/UserInfo.css";
 import usericon from "../../assert/image/usericon1.png";
 
 export default class User extends Component {

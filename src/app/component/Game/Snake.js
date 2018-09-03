@@ -6,7 +6,7 @@ import { score } from './SnakeGame';
 import User from "../User/UserInfo";
 import OtherUser from "../User/OtherUser";
 import GameScoreInfoList from "../GameScore/GameScoreInfoList";
-import "../../css/App.css";
+import "../../css/Draw.css";
 
 class Snake extends Component {
   render() {
