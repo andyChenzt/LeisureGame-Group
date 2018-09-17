@@ -25,7 +25,6 @@ describe('update test', function() {
 
 	//create tests, update user information
 	it('update user', function(done) {
-
 		User.findOneAndUpdate({nickName: user.nickName}, {nickName: 'andy'}).then(function() {
 			User.findOne({_id: user._id}).then(function(result) {
 				assert(result.nickName === 'andy');
@@ -34,15 +33,4 @@ describe('update test', function() {
 		});
 	});
 
-
-	// it('update age records', function(done) {
-
-	// 	User.update({}, {$inc: {age: 1} }).then(function() {
-	// 		User.findOne({name: 'Andy'}).then(function(result) {
-	// 			assert(result.age === 19);
-	// 			done();
-	// 		});
-	// 	});
-
-	// });
 });

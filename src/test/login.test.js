@@ -3,7 +3,7 @@ const assert = require('assert');
 const User = require('../../server/models/User');
 
 
-describe('bcrypt test', function() {
+describe('finding test', function() {
 
 	var user;
 
@@ -22,16 +22,19 @@ describe('bcrypt test', function() {
 		});
 	});
 
-	// test password encryption
-	it('test bcrypt password', function(done) {
-		User.findOne({_id: user._id}).then(function(result) {
-			result.validPassword(user.password, function(err, isMatch) {
-				assert(isMatch);
-				done();
-			});
-		});
-	});
-
 	
 
+
 })
+
+
+
+
+
+
+
+
+
+
+
+

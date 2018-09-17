@@ -9,7 +9,7 @@ mongoose.connect('mongodb://localhost/LeisureGame');
 mongoose.Promise = global.Promise;
 
 // search all
-router.get("/account/", function(req, res, next) {
+router.get("/account", function(req, res, next) {
     User.find({}).then(function(result) {
         res.send({success: 1,
                   users:  result

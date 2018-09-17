@@ -38,4 +38,23 @@ describe('finding test', function() {
 			done();
 		});
 	});
+
+	// find user who do not exit
+	it('find user who do not exit by nickName', function(done) {
+		
+	});
+
+
 })
+
+
+
+
+
+
+
+
+
+
+
+

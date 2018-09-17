@@ -12,12 +12,15 @@ app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
 app.use(cors());
-// root routes
-app.use("/", route);
+
+
 // init route
 app.use("/api", accountRoutes);
 app.use("/api", scoreRoutes);
 
+app.use("/", (req, res) => {
+	res.sendFile(path.join(__dirname + '../public/index.html'));
+});
 // error handling middleware
 // send error message and change the status
 app.use(function(err, req, res, next) {
