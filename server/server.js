@@ -3,13 +3,16 @@ const bodyParser = require("body-parser");
 const app = express();
 const server = require("http").Server(app);
 const route = require("./routes/route");
+const cors = require("cors");
 const accountRoutes = require("./routes/account");
 const scoreRoutes = require("./routes/score");
 // var socketServer = 
 app.set('view engine', 'ejs');
-// app.use(bodyParser.urlencoded({ extended: false}));
+app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
+app.use(cors());
+// root routes
 app.use("/", route);
 // init route
 app.use("/api", accountRoutes);
@@ -23,6 +26,6 @@ app.use(function(err, req, res, next) {
 
 // init socket
 
-server.listen(process.env.port || 3001, function() {
+server.listen(process.env.port || 3001, () => {
   console.log("listening 3001");
 });

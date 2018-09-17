@@ -2,75 +2,86 @@ import React, { Component } from 'react';
 import {StyleShee,View,TextInput} from 'react';
 import axios from 'axios';
 import "../../css/Login.css";
+import { connect } from 'react-redux';
+import { login } from '../../actions/validateActions'
 
-export default class Login extends Component {
+class Login extends Component {
     constructor() {
       super();
       this.state = {
-        Name:'',
+        Email:'',
         Password:'',
         saved: false,
         msg: "save"
       } 
-      this.handleChangeID = this.handleChangeID.bind(this);
-      this.handleChangePassword = this.handleChangePassword.bind(this);
-      this.handleSubmit = this.handleSubmit.bind(this);
+      // this.handleChangeID = this.handleChangeID.bind(this);
+      // this.handleChangePassword = this.handleChangePassword.bind(this);
+      // this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleChangeID = (e)=> {
-        this.setState({
-            Name: e.target.value
-        })
-    }
-    handleChangePassword = (e)=> {
-        this.setState({
-            Password: e.target.value
-        })
-    }
+    // handleChangeID = (e)=> {
+    //     this.setState({
+    //         Email: e.target.value
+    //     })
+    // }
+    // handleChangePassword = (e)=> {
+    //     this.setState({
+    //         Password: e.target.value
+    //     })
+    // }
+
     handleSubmit = (e) => {
         console.log("clicked");
+        console.log(this.props);
         // prevent page reloding 
         e.preventDefault();
         // send state to parent through onCreate
         // this.props.onCreate(this.state);
         // initialize state
-        this.setState({
-         ID: '',
-         Password: '',
-         saved: true,
-         msg: "saved"
-        })
-        console.log(this.state);
-        axios.post('/api/account/signup', { firstName: this.state.Name }).then(res => {
-            console.log(res);
-            console.log(res.data);
-        });
-      }
-    render() {
-        return (
+        // this.setState({
+        //  Email: '',
+        //  Password: '',
+        //  saved: true,
+        //  msg: "saved"
+        // })
+        // console.log(this.state);
+        // axios.post('/api/account/signup', { firstName: this.state.Email }).then(res => {
+        //     console.log(res);
+        //     console.log(res.data);
+        // });
 
+        this.props.doLogin();
+      }
+
+    // componentDidMount() {
+    //     // check is login or not, if not redirect to login page, 
+    //     console.log("did mout");
+    //     console.log(this.props);
+    // }
+
+
+    render() {
+        console.log(this.props);
+        const { onSubmitClick } = this.props;
+        return (
             <div className="App-Draw">
                 <div className="App-Form" >
                     <form>
-                        <input className="App-ID"
-                               placeholder="ID"
-                               value={this.state.ID}
-                               onChange={this.handleChangeID}
-                            //style={styles.input}
-                        />
+                        <input className="App-ID" placeholder="EMAIL" 
+                                // value={this.state.ID} 
+                                onChange={this.handleChangeID} />
 
                         {/*<div>{this.state.ID}</div>*/}
 
-                        <input className="App-Password"
-                               placeholder="Password"
-                               value={this.state.Password}
+                        <input className="App-Password" placeholder="Password"
+                               // value={this.state.Password} 
                                onChange={this.handleChangePassword}
-                               type="password"
-                            //   style={styles.input}
-
-                        />
+                               type="password" />
                         {/*<div>{this.state.Password}</div>*/}
-                        <button className="App-Button" type="submit">Send</button>
+                        <button className="App-Button" type="submit"
+                                onClick={this.handleSubmit}>
+                            Login
+                        </button>
 
                     </form>
                 </div>
@@ -78,17 +89,21 @@ export default class Login extends Component {
 
         );
     }
+
+};
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogin: state.userReducer.isLogin,
+
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        doLogin: () => {dispatch(login())},
+        doLogout: () => {dispatch(logout())},
+    }
 }
 
-// const styles = StyleSheet.create({
-//     container : {
-//      padding: 20
-//     },
-//     input: { 
-//         height : 40,
-//         backgorundColor: 'rgba(255,255,255,0,2)',
-//         marginBottom:20,
-//         color: '#FFF',
-//         paddingHorizontal: 10
-//     }
-// });
+export default connect(mapStateToProps, mapDispatchToProps)(Login);
