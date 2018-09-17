@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {StyleShee,View,TextInput} from 'react';
+import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import "../../css/Login.css";
 import { connect } from 'react-redux';
@@ -29,6 +30,12 @@ class Login extends Component {
     //         Password: e.target.value
     //     })
     // }
+    componentWillMount = () => {
+        console.log("will mout");
+        if(this.props.isLogin) {
+            this.props.history.push('/Home');
+        }
+    }
 
     handleSubmit = (e) => {
         console.log("clicked");
@@ -51,6 +58,7 @@ class Login extends Component {
         // });
 
         this.props.doLogin();
+        this.props.history.push('/Home');
       }
 
     // componentDidMount() {

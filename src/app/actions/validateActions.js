@@ -9,6 +9,7 @@ export const login = () => {
 }
 
 export const logout = () => {
+	console.log("logout action");
 	return {
 		type: types.USER_LOGOUT,
 		payload: false

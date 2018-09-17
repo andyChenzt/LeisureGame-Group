@@ -1,2 +1,7 @@
 export const USER_LOGIN = 'USER_LOGIN';
-export const LOGOUT = 'USER_LOGOUT';
+export const USER_LOGOUT = 'USER_LOGOUT';
+export const USER_REGISTER = 'USER_LOGOUT';
+export const USER_UPDATEINFO = 'USER_LOGOUT';
+export const USER_CHANGEPASSWORD = 'USER_LOGOUT';
+export const USER_FETCHINFO = 'USER_LOGOUT';
+export const USER_FETCHSCORES = 'USER_LOGOUT';

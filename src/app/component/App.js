@@ -10,7 +10,7 @@ import NavigationBar from "./Navigation/NavigationBar";
 import Login from "./Login/Login";
 import GameScoreInfo from "./GameScore/GameScoreInfo";
 import GameScoreInfoList from "./GameScore/GameScoreInfoList";
-import home from "./User/UserInforChange";
+import Home from "./User/Home";
 import score from "./GameScore/ScorePage";
 
 class App extends Component {
@@ -58,12 +58,12 @@ class App extends Component {
                     <div className="App">
                         <NavigationBar />
                         <div className="App-main">
-                        <Route exact path='/' component={Login} />
-                        <Route path='/snake' component={Snake} />
-                        <Route path='/drawing' component={Draw} />
-                        <Route path='/gameScoreInfo' component={GameScoreInfo} />
-                        <Route path='/home' component={home} />
-                        <Route path='/score' component={score} />
+                            <Route exact path='/' component={Login} />
+                            <Route path='/snake' component={Snake} />
+                            <Route path='/drawing' component={Draw} />
+                            <Route path='/gameScoreInfo' component={GameScoreInfo} />
+                            <Route path='/home' component={Home} />
+                            <Route path='/score' component={score} />
                         </div>
                     </div>
                 </BrowserRouter>
