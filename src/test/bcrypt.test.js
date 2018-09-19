@@ -15,7 +15,7 @@ describe('bcrypt test', function() {
 			email: "me@me.com",
 			password: "123qwe"
 		});
-
+		testPassword = user.password;
 		user.save().then(function() {
 			assert(user.isNew === false);
 			done();
@@ -25,7 +25,7 @@ describe('bcrypt test', function() {
 	// test password encryption
 	it('test bcrypt password', function(done) {
 		User.findOne({_id: user._id}).then(function(result) {
-			result.validPassword(user.password, function(err, isMatch) {
+			result.validPassword(testPassword, function(err, isMatch) {
 				assert(isMatch);
 				done();
 			});
