@@ -32,3 +32,6 @@ app.use(function(err, req, res, next) {
 server.listen(process.env.port || 3001, () => {
   console.log("listening 3001");
 });
+
+// for test
+module.exports = server;

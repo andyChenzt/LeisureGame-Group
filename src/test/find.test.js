@@ -49,22 +49,6 @@ describe('finding test', () => {
 		});
 	});
 
-	// search user through api using http request
-	// it('find user test', (done) => {
-	// 	chai.request('http://localhost:3001')
-	// 		.get('/api/account')
-	// 		.end((err, res) => {
-
-	// 		})
-
-
-
-	// 	User.findOne({nickName: "notExist"}).then((result) => {
-	// 		assert(result === null);
-	// 		done();
-	// 	});
-	// });
-
 })
 
 
