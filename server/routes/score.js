@@ -13,6 +13,11 @@ const games = ["drawingGame", "snakeGame"];
 function initHighScore() {
 	for(var i = 0; i <= games.length - 1; i++) {
 		HighScore.findOne({game: games[i]}).countDocuments(function(error, result) {
+			if(error) {
+				res.status(500).json({
+                    error: 'server error'
+                });
+			}
 			if(result = 0) {
 				var gameScore = new HighScore({
 			        game: games[i],
@@ -31,7 +36,12 @@ router.get("/score/init", function(req, res, next) {
 		var gameScore = new HighScore({
 	        game: games[i],
 	    });
-	    gameScore.save().then(function() {
+	    gameScore.save().then(function(error) {
+	    	if(error) {
+	    		res.status(500).json({
+                    error: 'server error'
+                });
+	    	}
 	    	console.log("save success");
 	    });
 	}
@@ -39,8 +49,13 @@ router.get("/score/init", function(req, res, next) {
 
 // get high score from db
 router.get("/score/", function(req, res, next) {
-	HighScore.find({}).then(function(result) {
+	HighScore.find({}).then(function(error, result) {
 		console.log(result.length);
+		if(error) {
+			res.status(500).json({
+                error: 'server error'
+            });
+		}
 		res.send({ success: 1,
 		 			socres: result});
 	});
@@ -49,7 +64,12 @@ router.get("/score/", function(req, res, next) {
 
 // get player high score, for specific player
 router.get("/score/:nickName", function(req, res, next) {
-	User.findOne({nickName: req.params.nickName}).then(function(result) {
+	User.findOne({nickName: req.params.nickName}).then(function(error, result) {
+		if(error) {
+			res.status(500).json({
+                error: 'server error'
+            });
+		}
 		var drawingGameScores = result.drawingGame.scores;
 		var snakeGameScores = result.snakeGame.scores;
 		var response = {
@@ -72,7 +92,12 @@ router.post("/score/:game/", function(req, res, next) {
 	};
 
 	// save score in player scoreboard
-	User.findOne({nickName: playerScore.nickName}).then(function(result) {
+	User.findOne({nickName: playerScore.nickName}).then(function(error, result) {
+		if(error) {
+			res.status(500).json({
+                error: 'server error'
+            });
+		}
 		if(game === "drawingGame") {
 			result.drawingGame.scores.push(playerScore.score);
 			result.save();
@@ -104,6 +129,9 @@ router.post("/score/:game/", function(req, res, next) {
 		res.send({sucess: 1});
 	}).catch(function(error) {
 		console.log(error);
+		res.status(500).json({
+            error: 'server error'
+        });
 	});
 	
     

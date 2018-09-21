@@ -14,6 +14,11 @@ router.get("/account", function(req, res, next) {
         res.send({success: 1,
                   users:  result
               });
+    }).catch((next) => {
+        res.status(500).json({
+            success: 0,
+            error: 'server error'
+        });
     });
     
 });
@@ -27,8 +32,14 @@ router.get("/account/:nickName", function(req, res, next) {
         if(results < 1) {
             res.send({ success: 1 });
         } else {
-            res.send({ success: 0 });
+            res.send({ success: 0,
+                        error: "the nick name has been taken" });
         }
+    }).catch(() => {
+        res.status(403).json({
+            success: 0,
+            error: 'server error!'
+        });
     });
     
 });
@@ -46,39 +57,57 @@ router.post("/account/signup", function(req, res, next) {
     });
 
     user.save().then(function() {
-        res.send(user);
+        res.send({success: 1,
+                  user: user.deleteSensitiveInfo()});
+    }).catch((next) => {
+        res.status(500).json({
+            success: 0,
+            error: 'server error'
+        });
     });
-    // catch error
-    //.catch(next);
 });
 
-// sign in
+// login in
 // maybe verify at here, doing auth
-router.post("/account/signin", function(req, res, next) {
-    console.log("body: " + req.body.password);
+router.post("/account/login", function(req, res, next) {
+    console.log("body: " + req.body.password, req.body.email);
 
     User.findOne({email: req.body.email}).then(function(user) {
-        console.log("found user: " + user);
+        
+        if(!user) {
+            console.log("found user: " + user);
+            res.status(403).json({
+                    success: 0,
+                    error: 'invaild username or password'
+            });
+        }
         // validation password
         var isMatch = user.validPassword(req.body.password, function(err, isMatch) {
             if(err) {
                 res.status(500).json({
+                    success: 0,
                     error: 'server error'
                 });
             }
             if(isMatch) {
                 console.log("correct");
                 var info = user.deleteSensitiveInfo();
-                res.send({ success: 0,
+                res.send({ success: 1,
                     user: {info} 
                 });
             } else {
                 res.status(403).json({
+                    success: 0,
                     error: 'invaild username or password'
                 });
             } 
         });
           
+    }).catch(() => {
+        res.status(403).json({
+            success: 0,
+            error: 'server error!'
+        });
     });
 });
 
@@ -96,14 +125,19 @@ router.put("/account/:id", function(req, res, next) {
     User.findOneAndUpdate({_id: req.params.id}, newInfo).then(function() {
         res.send({ success: 1,
                     user: newInfo });
+    }).catch(() => {
+        res.status(403).json({
+            success: 0,
+            error: 'server error!'
+        });
     });
     
 });
 
 // delete the account
 // do we need delete one account 
-router.delete("/:id", function(req, res, next) {
-    res.send({ type: "DELETE" });
-});
+// router.delete("/:id", function(req, res, next) {
+//     res.send({ type: "DELETE" });
+// });
 
 module.exports = router;
