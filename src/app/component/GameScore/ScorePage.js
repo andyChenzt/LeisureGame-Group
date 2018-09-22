@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
 import "../../css/App.css";
+import { connect } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 class score extends Component {
+	componentWillMount = () => {
+        console.log("will mount");
+        if(!this.props.isLogin) {
+            this.props.history.push('/');
+        }
+    }
+
     render() {
         return (
             <div>
@@ -14,6 +23,12 @@ class score extends Component {
         );
     }
 }
+
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogin: state.userReducer.isLogin,
+    }
+};
 
 export default score;
 

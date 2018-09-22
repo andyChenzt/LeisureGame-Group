@@ -3,7 +3,7 @@ import P5Wrapper from 'react-p5-wrapper';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import "../../css/App.css";
-import { logout } from '../../actions/validateActions'
+import { logout, removeUserInfo } from '../../actions/userActions'
 
 class Home extends Component {
 
@@ -17,6 +17,7 @@ class Home extends Component {
     handleLogout = (e) => {
         console.log("clicked");
         e.preventDefault();
+        this.props.removeUserInfo();
         this.props.doLogout();
         this.props.history.push('/');
     }
@@ -44,8 +45,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        doLogin: () => {dispatch(login())},
-        doLogout: () => {dispatch(logout())},
+        doLogout: () => { dispatch(logout()) },
+        removeUserInfo: () => { dispatch(removeUserInfo()) }
     }
 }
 

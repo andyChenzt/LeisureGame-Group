@@ -1,20 +1,21 @@
 import React, { Component } from 'react';
 import {StyleShee,View,TextInput} from 'react';
+import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
 import "../../css/Login.css";
 import { connect } from 'react-redux';
-import { login } from '../../actions/validateActions'
+import { login, saveUserInfo } from '../../actions/userActions'
 
 class Login extends Component {
     constructor() {
       super();
-      this.state = {
-        Email:'',
-        Password:'',
-        saved: false,
-        msg: "save"
-      } 
+      // this.state = {
+      //   Email:'',
+      //   Password:'',
+      //   saved: false,
+      //   msg: "save"
+      // } 
       // this.handleChangeID = this.handleChangeID.bind(this);
       // this.handleChangePassword = this.handleChangePassword.bind(this);
       // this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,29 +39,41 @@ class Login extends Component {
     }
 
     handleSubmit = (e) => {
-        console.log("clicked");
+        console.log("clicked login");
+        e.preventDefault();
+        
+        // const email = ReactDOM.findDOMNode(this.refs.email).value;
+        // const password = ReactDOM.findDOMNode(this.refs.password).value;
+        // console.log(email, password);
+        const user = {
+            email: ReactDOM.findDOMNode(this.refs.email).value,
+            password: ReactDOM.findDOMNode(this.refs.password).value
+        }
+
+        axios.post('/api/account/login', user).then(res => {
+            console.log("login success");
+            const userInfo = res.data.user;
+            console.log(userInfo);
+            this.props.doLogin();
+            this.props.saveUserInfo(userInfo);
+            
+            this.props.history.push('/Home');
+        }).catch((error) => {
+            console.log("err");
+            console.log(error.response.data);
+        });
+
+        
+        // this.props.history.push('/Home');
+      }
+
+    handleRegister = (e) => {
+        console.log("clicked login");
         console.log(this.props);
         // prevent page reloding 
         e.preventDefault();
-        // send state to parent through onCreate
-        // this.props.onCreate(this.state);
-        // initialize state
-        // this.setState({
-        //  Email: '',
-        //  Password: '',
-        //  saved: true,
-        //  msg: "saved"
-        // })
-        // console.log(this.state);
-        // axios.post('/api/account/signup', { firstName: this.state.Email }).then(res => {
-        //     console.log(res);
-        //     console.log(res.data);
-        // });
 
-        this.props.doLogin();
-        this.props.history.push('/Home');
-      }
-
+    }
     // componentDidMount() {
     //     // check is login or not, if not redirect to login page, 
     //     console.log("did mout");
@@ -77,12 +90,14 @@ class Login extends Component {
                     <form>
                         <input className="App-ID" placeholder="EMAIL" 
                                 // value={this.state.ID} 
+                                ref="email"
                                 onChange={this.handleChangeID} />
 
                         {/*<div>{this.state.ID}</div>*/}
 
                         <input className="App-Password" placeholder="Password"
                                // value={this.state.Password} 
+                               ref="password"
                                onChange={this.handleChangePassword}
                                type="password" />
                         {/*<div>{this.state.Password}</div>*/}
@@ -90,7 +105,10 @@ class Login extends Component {
                                 onClick={this.handleSubmit}>
                             Login
                         </button>
-
+                        <button type="submit"
+                                onClick={this.handleRegister}>
+                            Register
+                        </button>
                     </form>
                 </div>
             </div>
@@ -109,8 +127,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        doLogin: () => {dispatch(login())},
-        doLogout: () => {dispatch(logout())},
+        doLogin: () => { dispatch(login()) },
+        saveUserInfo: (userInfo) => { dispatch(saveUserInfo(userInfo)) }
     }
 }
 

@@ -6,7 +6,6 @@ import io from 'socket.io-client';
 
 
 function sketch(p) {
-
 	var socket;
 
 	p.setup = function() {
