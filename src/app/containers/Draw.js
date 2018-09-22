@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-import sketch from './DrawSketch';
-import User from "../User/UserInfo";
-import OtherUser from "../User/OtherUser";
-import GameScoreInfoList from "../GameScore/GameScoreInfoList";
-import "../../css/Draw.css";
+import sketch from '../components/Game/DrawSketch';
+import User from "../components/User/UserInfo";
+import OtherUser from "../components/User/OtherUser";
+import GameScoreInfoList from "../components/GameScore/GameScoreInfoList";
+import "../css/Draw.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 class Draw extends Component {
 	componentWillMount = () => {
-        console.log("will mount");
+        console.log("will mount", this.props.isLogin);
         if(!this.props.isLogin) {
             this.props.history.push('/');
         }
@@ -20,7 +20,7 @@ class Draw extends Component {
 		return (
 			<div>	
 			  	<div className="App-Draw">
-			   		<P5Wrapper sketch={sketch()} />
+			   		<P5Wrapper sketch={sketch} />
 			  	</div>
                 <div>
                     <User />
@@ -38,4 +38,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default Draw;
+export default connect(mapStateToProps)(Draw);

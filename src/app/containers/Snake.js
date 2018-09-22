@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-import sketch from './SnakeSketch';
 import ReactDOM from 'react-dom';
-import { score } from './SnakeGame';
-import User from "../User/UserInfo";
-import OtherUser from "../User/OtherUser";
-import GameScoreInfoList from "../GameScore/GameScoreInfoList";
-import "../../css/Draw.css";
+import sketch from '../components/Game/SnakeSketch';
+import { score } from '../components/Game/SnakeGame';
+import User from "../components/User/UserInfo";
+import OtherUser from "../components/User/OtherUser";
+import GameScoreInfoList from "../components/GameScore/GameScoreInfoList";
+import "../css/Draw.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 // import {  } from '../../actions/userActions';
@@ -36,5 +36,11 @@ class Snake extends Component {
     }
 }
 
-export default Snake;
+const mapStateToProps = (state, ownProps) => {
+    return {
+        isLogin: state.userReducer.isLogin,
+    }
+};
+
+export default connect(mapStateToProps)(Snake);
 

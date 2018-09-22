@@ -1,17 +1,17 @@
 import React, { Component } from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
-import Head from './Frame/Head';
-import Foot from './Frame/Foot';
-import Draw from './Game/Draw';
-import Snake from './Game/Snake';
-import User from "./User/UserInfo";
-import OtherUser from "./User/OtherUser";
-import NavigationBar from "./Navigation/NavigationBar";
-import Login from "./Login/Login";
-import GameScoreInfo from "./GameScore/GameScoreInfo";
-import GameScoreInfoList from "./GameScore/GameScoreInfoList";
-import Home from "./User/Home";
-import score from "./GameScore/ScorePage";
+import Head from '../components/Frame/Head';
+import Foot from '../components/Frame/Foot';
+import Draw from './Draw';
+import Snake from './Snake';
+import User from "../components/User/UserInfo";
+import OtherUser from "../components/User/OtherUser";
+import NavigationBar from "../components/Navigation/NavigationBar";
+import Login from "../components/Login/Login";
+import GameScoreInfo from "../components/GameScore/GameScoreInfo";
+import GameScoreInfoList from "../components/GameScore/GameScoreInfoList";
+import Home from "../components/User/Home";
+import Score from "../components/GameScore/ScorePage";
 
 class App extends Component {
     //GameScore data set and create list function
@@ -50,6 +50,7 @@ class App extends Component {
 	construct() {
 	}
 
+    // using container to wrap the component
     render() {
         return (
             <div className="App">
@@ -58,12 +59,14 @@ class App extends Component {
                     <div className="App">
                         <NavigationBar />
                         <div className="App-main">
-                            <Route exact path='/' component={Login} />
+                            <Route exact path='/' component={Login} />   
                             <Route path='/snake' component={Snake} />
                             <Route path='/drawing' component={Draw} />
-                            <Route path='/gameScoreInfo' component={GameScoreInfo} />
+                            {/*<Route path='/gameScoreInfo' component={GameScoreInfo} />*/}
                             <Route path='/home' component={Home} />
-                            <Route path='/score' component={score} />
+                            <Route path='/score' component={Score} />
+                            <Route path='/userInformation' component={Score} />
+
                         </div>
                     </div>
                 </BrowserRouter>

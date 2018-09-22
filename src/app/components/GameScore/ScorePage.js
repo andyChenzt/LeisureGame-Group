@@ -4,7 +4,7 @@ import "../../css/App.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
-class score extends Component {
+class Score extends Component {
 	componentWillMount = () => {
         console.log("will mount");
         if(!this.props.isLogin) {
@@ -17,7 +17,6 @@ class score extends Component {
             <div>
                 <div className="App-Draw">
                     <h1>  GameScoreInfo in this page (also cloud in Home page) </h1>
-
                 </div>
             </div>
         );
@@ -30,5 +29,5 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default score;
+export default Score;
 
