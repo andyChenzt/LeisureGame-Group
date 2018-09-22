@@ -33,7 +33,7 @@ describe('finding test', () => {
 		});
 	});
 
-	// find user by _id 
+	// find user by _id which is the primary key in the mongo db
 	it('find user by id', (done) => {
 		User.findOne({_id: user._id}).then(function(result) {
 			assert( result._id.toString() === user._id.toString() );
@@ -41,7 +41,7 @@ describe('finding test', () => {
 		});
 	});
 
-	// find user who do not exit
+	// find user who do not exit, 
 	it('find user who do not exist by nickName', (done) => {
 		User.findOne({nickName: "notExist"}).then(function(result) {
 			assert(result === null);

@@ -9,16 +9,17 @@ const request = require('supertest');
 
 chai.use(chaiHttp);
 
-describe('login test', function() {
+describe('login api test', function() {
 
 	// test login with correct user information
 	it('test correct info login api', function(done) {
 		this.timeout(15000);
 		let testInfo = {
-			"email": "a@aaa",
+			"email": "a@aaa",		// the email is exist in the db
 			"password": "123"
 		}
-
+		
+		// send http request to the api
 		request('http://localhost:3001')
 			.post('/api/account/login')
 			.send(testInfo)
@@ -34,10 +35,11 @@ describe('login test', function() {
 	it('test wrong info login api', function(done) {
 		this.timeout(15000);
 		let testInfo = {
-			"email": "a@aaaaaa",
+			"email": "a@aaaaaa", 	// the email is not exist in the db
 			"password": "123"
 		}
 		
+		// send http request to the api
 		request('http://localhost:3001')
 			.post('/api/account/login')
 			.send(testInfo)

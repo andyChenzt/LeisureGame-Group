@@ -22,8 +22,8 @@ describe('delete test', function() {
 
 	});
 	
-	it('delete records', function(done) {
-
+	// test delete one record in the db
+	it('delete record', function(done) {
 		User.findOneAndDelete({firstName: 'Andy'}).then(function() {
 			User.findOne({firstName: "Andy"}).then(function(result) {
 				assert(result === null);

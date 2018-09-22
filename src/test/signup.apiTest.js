@@ -8,10 +8,11 @@ const request = require('supertest');
 
 chai.use(chaiHttp);
 
-describe('sign up  test', function() {
+describe('sign up api test', function() {
 
 	// test sign up with exist nickname, otherwise cannot sign up with the nick name
 	it('test check nickname api', function(done) {
+		// call api
 		request('http://localhost:3001')
 			.get('/api/account/rr')  // rr is in db
 			.set('Accept', 'application/json')
@@ -32,6 +33,8 @@ describe('sign up  test', function() {
 			"email": "test@api",
 			"password": "123"
 		}
+
+		// call api
 		request('http://localhost:3001')
 			.post('/api/account/signup')  
 			.send(user)
@@ -39,7 +42,7 @@ describe('sign up  test', function() {
 			.end(function(err, res) {
 	          	expect(res.statusCode).to.equal(200);
 	          	assert(res.body.success === 1);
-	          	assert(res.body.user.firstName === "andyt");
+	          	assert(res.body.user.firstName === user.firstName);
 	          	done();
 	      	});
 	});

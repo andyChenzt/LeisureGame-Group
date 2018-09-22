@@ -22,7 +22,7 @@ describe('bcrypt test', function() {
 		});
 	});
 
-	// test password encryption
+	// test password encryption or plain text
 	it('test bcrypt password', function(done) {
 		User.findOne({_id: user._id}).then(function(result) {
 			result.validPassword(testPassword, function(err, isMatch) {

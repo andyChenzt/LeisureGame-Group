@@ -17,6 +17,7 @@ before(function(done) {
 });
 
 // before every sigle test
+// drop the user collection in the test db
 beforeEach(function(done) {
 	mongoose.connection.collections.users.drop(function() {
 		done();
