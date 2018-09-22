@@ -2,12 +2,14 @@ import React, { Component } from 'react';
 import { Route, BrowserRouter } from 'react-router-dom';
 import Head from '../components/Frame/Head';
 import Foot from '../components/Frame/Foot';
+import Landing from './LandingPage';
+import Login from '../components/Landing/Login';
+import Register from '../components/Landing/Register';
 import Draw from './Draw';
 import Snake from './Snake';
 import User from "../components/User/UserInfo";
 import OtherUser from "../components/User/OtherUser";
 import NavigationBar from "../components/Navigation/NavigationBar";
-import Login from "../components/Login/Login";
 import GameScoreInfo from "../components/GameScore/GameScoreInfo";
 import GameScoreInfoList from "../components/GameScore/GameScoreInfoList";
 import Home from "../components/User/Home";
@@ -60,6 +62,7 @@ class App extends Component {
                         <NavigationBar />
                         <div className="App-main">
                             <Route exact path='/' component={Login} />   
+                            <Route exact path='/register' component={Register} />   
                             <Route path='/snake' component={Snake} />
                             <Route path='/drawing' component={Draw} />
                             {/*<Route path='/gameScoreInfo' component={GameScoreInfo} />*/}
