@@ -1,11 +1,13 @@
 const server = require("../server");
 const io = require("./index");
 
-exports.snakeSocketServer = () => {
+// exports.snakeSocketServer = () => {
+module.exports.snakeSocketServer = () => {
+	console.log("start snake socker server");
 	const snakeGame = io.of('/snakeGame');
 
 	snakeGame.on('connection', function(socket) {
-	    console.log('socket connect' + socket.id);
+		console.log('socket connect' + socket.id);
 	    socketServer.emit('newMsg', "hello");
 
 	    socket.on('disconnect', function() {

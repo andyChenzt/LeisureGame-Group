@@ -5,7 +5,7 @@ import Foot from '../components/Frame/Foot';
 import Landing from './LandingPage';
 import Login from '../components/Landing/Login';
 import Register from '../components/Landing/Register';
-import Draw from './Draw';
+import {Draw} from './Draw';
 import Snake from './Snake';
 import User from "../components/User/UserInfo";
 import OtherUser from "../components/User/OtherUser";

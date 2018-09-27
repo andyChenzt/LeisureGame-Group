@@ -3,15 +3,18 @@ import P5Wrapper from 'react-p5-wrapper';
 import p5 from 'p5';
 import ReactDOM from 'react-dom';
 import io from 'socket.io-client';
+import {sok} from '../../containers/Draw';
 
 
 function sketch(p) {
 	var socket;
+	console.log("room: ", sok);
 
 	p.setup = function() {
-		p.createCanvas(840, 480)
-
+		p.createCanvas(840, 480);
 		p.background(51);
+
+		// var input = p.createInput();
 
 		socket = io('http://localhost:3001');
     	socket.on('connect', function (data) {

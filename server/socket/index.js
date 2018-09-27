@@ -1,6 +1,6 @@
 const server = require("../server");
-
-const io = require("socket.io")(server);
+var allowedOrigins = "http://localhost:3000";
+const io = require("socket.io")(server, {origins:allowedOrigins});
 
 module.exports = io;
 

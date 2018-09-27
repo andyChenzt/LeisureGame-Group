@@ -1,3 +1,5 @@
-export const CONNECT = 'CONNECT';
-export const DISCONNECT = 'DISCONNECT';
-export const UPDATESCORE = 'UPDATESCORE';
+export const GAME_CONNECT = 'GAME_CONNECT';
+export const GAME_PENDING = 'GAME_PENDING';
+export const GAME_STARTGAME = 'GAME_STARTGAME';
+export const GAME_DISCONNECT = 'GAME_DISCONNECT';
+export const GAME_UPDATESCORE = 'GAME_UPDATESCORE';
