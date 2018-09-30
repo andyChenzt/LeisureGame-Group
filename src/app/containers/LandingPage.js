@@ -3,7 +3,7 @@ import {StyleShee,View,TextInput} from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import "../css/Login.css";
+import "../../../public/css/Login.css";
 import Login from "../components/Landing/Login";
 import Register from '../components/Landing/Register';
 import { connect } from 'react-redux';

@@ -56,13 +56,14 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Head />
+                {/*<Head />*/}
+
                 <BrowserRouter>
                     <div className="App">
                         <NavigationBar />
                         <div className="App-main">
-                            <Route exact path='/' component={Login} />   
-                            <Route exact path='/register' component={Register} />   
+                            <Route exact path='/' component={Login} />
+                            <Route exact path='/register' component={Register} />
                             <Route path='/snake' component={Snake} />
                             <Route path='/drawing' component={Draw} />
                             {/*<Route path='/gameScoreInfo' component={GameScoreInfo} />*/}

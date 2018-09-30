@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "../../css/Head.css";
+import "../../../../public/css/Head.css";
 import header from "../../assert/image/header.png";
 
 

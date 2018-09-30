@@ -2,8 +2,11 @@ import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import "../../css/App.css";
+import "../../../../public/css/App.css";
 import { logout, removeUserInfo } from '../../actions/userActions'
+import User from "./UserInfo";
+import OtherUser from "./OtherUser";
+import sketch from "../Game/DrawSketch";
 
 class Home extends Component {
 
@@ -25,13 +28,31 @@ class Home extends Component {
     render() {
         console.log(this.props);
         return (
-            <div>
-                <div className="App-Draw">
-                    <h1>  User Information in this page</h1>
-                    <h1>  Logout in this page</h1>
-                    <button onClick={this.handleLogout}>Logout</button>
+            <div className="container-fluid h-100">
+                <div className="row justify-content-center h-100">
+
+                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+
+                    </div>
+
+                    <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                        <h1>  User Information in this page</h1>
+                        <h1>  Logout in this page</h1>
+                        <button onClick={this.handleLogout}>Logout</button>
+                    </div>
+
+                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+
+                    </div>
                 </div>
             </div>
+            // <div>
+            //     <div className="App-Draw">
+            //         <h1>  User Information in this page</h1>
+            //         <h1>  Logout in this page</h1>
+            //         <button onClick={this.handleLogout}>Logout</button>
+            //     </div>
+            // </div>
         );
     }
 }
