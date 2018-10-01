@@ -1,30 +1,30 @@
 const server = require("../server");
-const io = require("./index");
-// const io = require('socket.io');
+// const io = require("./index");
+const io = require("socket.io");
 
-// exports.drawingSocketServer = () => {
-module.exports.drawingSocketServer = () => {
+module.exports.drawingSocketServer = function(server) {
 	console.log("start drawing socker server");
-	socketServer = io.of('/api/drawingGame');
+	drawingGame = io(server).of('/drawingGameSocket');
 
-	socketServer.on('connection', function(socket) {
-	    console.log('socket connect' + socket.id);
-	    socketServer.emit('newMsg', "hello");
+	drawingGame.on('connection', function(socket) {
+	    console.log('socket connect ' + socket.id + " drawingGame");
+	    drawingGame.emit('newMsg', "hello");
 
 	    socket.on('disconnect', function() {
-	        console.log(socket, ' socket disconnect');
+	        console.log(socket.id, ' socket disconnect');
 	    });
 
 	    socket.on('findRoom', function(){
 	    	// find a room in pending room,
 	    	// start game
-	    	socketServer.to('room').emit('getQuestion', question);
+	    	const question = "question"
+	    	socket.to('room').emit('getQuestion', question);
 
 	    	// if not, find a empty room, -> pending
 	    	var room = "empty-room"
 	    	// no empty, create one room, -> pending
 	    	var room = "new-room";
-	    	socketServer.to(socket.id).emit('getRoom', room);
+	    	drawingGame.to(socket.id).emit('getRoom', room);
 	    });
 
 	    socket.on('start', function(){

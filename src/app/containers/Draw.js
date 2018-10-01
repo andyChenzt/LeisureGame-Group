@@ -11,15 +11,15 @@ import io from 'socket.io-client';
 import { startGame } from '../actions/gameActions';
 
 
-var allowedOrigins = "http://localhost:3001 ";       //domain_1:* domain_2:*
-export const sok = io.connect('http://localhost:3001/api/drawingGame', { transport : ['websocket'] }); //{origins: allowedOrigins}
+// var allowedOrigins = "http://localhost:3001 ";       //domain_1:* domain_2:*
+// export const sok = io('http://localhost:3001', {"transports": ["websocket"]}); //{origins: allowedOrigins}
+let socket;
 
 class DrawCon extends Component {
     constructor() {
         super();
     }
 
-    socket;
 
 	componentWillMount = () => {
         // if(!this.props.isLogin) {
@@ -35,17 +35,23 @@ class DrawCon extends Component {
         this.socket.emit('findRoom');
     }
 
+    componentWillUnmount = () => {
+        this.socket.disconnect();
+        console.log("unmount ", this.socket);
+    }
+
     socketConnect = () => {
-        this.socket = io.connect('http://localhost:3001/api/drawingGame', {origins: allowedOrigins});
+        console.log("try to connect");
+        this.socket = io.connect('http://localhost:3001/drawingGameSocket'); //, {origins: allowedOrigins}
         console.log(this.socket);
         this.socket.on('connect', () => {
-            console.log(this.socket);
+            console.log(this.socket, "connect to drawingGameSocket");
         });
 
         this.socket.on('getRoom', (roomName) => {
             console.log(roomName);
             // join the room
-            this.socket.join();
+            // this.socket.join();
             // change state in reducer -> pending
             // loading,
         });

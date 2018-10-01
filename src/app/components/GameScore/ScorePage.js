@@ -5,11 +5,14 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
 class Score extends Component {
+    
 	componentWillMount = () => {
         console.log("will mount");
         if(!this.props.isLogin) {
-            this.props.history.push('/');
+            // this.props.history.push('/');
         }
+
+        
     }
 
     render() {

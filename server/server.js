@@ -7,22 +7,28 @@ const route = require("./routes/route");
 const cors = require("cors");
 const accountRoutes = require("./routes/account");
 const scoreRoutes = require("./routes/score");
-const drawingSocket = require("./socket/drawingSocketServer");
-const snakeSocket = require("./socket/snakeSocketServer");
-// var socketServer = 
-app.set('view engine', 'ejs');
+const {drawingSocketServer} = require("./socket/drawingSocketServer");
+const {snakeSocketServer} = require("./socket/snakeSocketServer");
+const {socketServer} = require("./socket/index.js");
+
+// app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 
-app.use(cors({ origin: '*' }));
+const staticAssetsPath = path.join(__dirname, '/../public');
+app.use(express.static(staticAssetsPath));
+
+app.use(cors({
+  origin: 'http://localhost:3000'
+}));
 
 // init route
 app.use("/api", accountRoutes);
 app.use("/api", scoreRoutes);
 
-app.use("/", (req, res) => {
-	res.sendFile(path.join(__dirname + '/public/index.html'));  // try this
-});
+// app.use("/", (req, res) => {
+// 	res.sendFile(path.join(__dirname + '/public/index.html'));  // try this
+// });
 // error handling middleware
 // send error message and change the status
 app.use(function(err, req, res, next) {
@@ -31,13 +37,14 @@ app.use(function(err, req, res, next) {
 
 // init socket
 
-server.listen(process.env.port || 3001, () => {
+const myServer = server.listen(process.env.port || 3001, () => {
   console.log("listening 3001");
 });
 
-drawingSocket.drawingSocketServer(); // not a function
-snakeSocket.snakeSocketServer();
-
+// socketServer(myServer);
+drawingSocketServer(myServer); 
+// snakeSocketServer(myServer);
 // for socket 
 module.exports = server;
+
 

@@ -31,13 +31,19 @@ class Login extends Component {
             console.log(userInfo);
             this.props.doLogin();
             this.props.saveUserInfo(userInfo);
-            
-            this.props.history.push('/Home');
+            const nickName = userInfo.nickName;
+            this.props.history.push('/Home/',nickName);
         }).catch((error) => {
             console.log("err");
             console.log(error.response);
         });
         // this.props.history.push('/Home');
+    }
+
+    handleGoToRegister = (e) => {
+        console.log("got go to reigister");
+        e.preventDefault(); 
+        this.props.history.push('/register');
     }
 
     render() {
@@ -50,7 +56,6 @@ class Login extends Component {
                         <input className="App-ID" placeholder="EMAIL" 
                             ref="email"
                             onChange={this.handleChangeID} />
-
                         <input className="App-Password" placeholder="PASSWORD"
                             ref="password"
                             onChange={this.handleChangePassword}
@@ -66,7 +71,6 @@ class Login extends Component {
                     </form>
                 </div>
             </div>
-
         );
     }
 

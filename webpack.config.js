@@ -11,9 +11,9 @@ var config = {
 		main: SRC_DIR + '/app/index.js',
 	},
     output: {
-        path: DIST_DIR,
+        path: DIST_DIR + '/bundle',
         filename: 'bundle.js',
-        // publicPath: "/"
+        // publicPath: "/public/bundle"
     },
     mode: "development",
     module: {
@@ -23,7 +23,7 @@ var config = {
                 include: [SRC_DIR, SERVER_DIR],
                 exclude: /node_modules/,
                 loader: 'babel-loader',
-                query: {
+                options: {
                 	presets: ["env","react", "es2015", "stage-2"]
                 }
             },
@@ -33,7 +33,9 @@ var config = {
             },
             {
                 test: /\.(png|jp(e*)g|svg)$/,  
-                use: ['file-loader']
+                use: [
+                    {loader: 'url-loader'}
+                ]
             }   
         ]
     },

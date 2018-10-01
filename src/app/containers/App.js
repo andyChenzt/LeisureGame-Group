@@ -66,8 +66,8 @@ class App extends Component {
                             <Route path='/snake' component={Snake} />
                             <Route path='/drawing' component={Draw} />
                             {/*<Route path='/gameScoreInfo' component={GameScoreInfo} />*/}
-                            <Route path='/home' component={Home} />
-                            <Route path='/score' component={Score} />
+                            <Route path='/home/:nickName' component={Home} />
+                            <Route path='/score/:nickName' component={Score} />
                             <Route path='/userInformation' component={Score} />
 
                         </div>
