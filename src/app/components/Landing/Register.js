@@ -53,37 +53,112 @@ class Register extends Component {
     render() {
 
         return (
-            <div className="App-Draw">
-                <div className="App-Form" >
-                    <form>
-                        <input className="" placeholder="First Name" 
-                            ref="firstName"
-                            onChange={this.handleChangeID} />
+            <div className="container-fluid h-100">
+                <div className="row justify-content-center h-100">
 
-                        <input className="" placeholder="Last Name" 
-                            ref="lastName"
-                            onChange={this.handleChangeID} />
+                    <div className="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
 
-                        <input className="" placeholder="Nick Name" 
-                            ref="nickName"
-                            onChange={this.handleChangeID} />
+                    </div>
 
-                        <input className="" placeholder="eMail" 
-                            ref="email"
-                            onChange={this.handleChangeID} />
+                    <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
+                        <div className="container mt-3">
+                            <h2 class="title">Join us NOW!</h2>
+                            <br/>
 
-                        <input className="" placeholder="Password"
-                            ref="password"
-                            onChange={this.handleChangePassword}
-                            type="password" />
+                            <form>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">First Name</span>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="First Name" ref="firstName"
+                                           onChange={this.handleChangeID}/>
+                                </div>
+                            </form>
 
-                         <button type="submit" onClick={this.handleRegister}>
-                            Register
-                        </button>
+                            <form>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">Last Name</span>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="Last Name" ref="lastName"
+                                           onChange={this.handleChangeID}/>
+                                </div>
+                            </form>
 
-                    </form>
+                            <form>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">Nick Name</span>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="Nick Name" ref="nickName"
+                                           onChange={this.handleChangeID}/>
+                                </div>
+                            </form>
+
+                            <form>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">eMail</span>
+                                    </div>
+                                    <input type="text" className="form-control" placeholder="eMail" ref="email"
+                                           onChange={this.handleChangeID}/>
+                                </div>
+                            </form>
+
+                            <form>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">Password</span>
+                                    </div>
+                                    <input type="password" className="form-control" placeholder="Password" ref="password"
+                                           onChange={this.handleChangePassword}/>
+                                </div>
+                            </form>
+                            <div >
+                                <button className="btn btn-primary" type="submit" onClick={this.handleRegister}>
+                                    Register
+                                </button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div className="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+
+                    </div>
                 </div>
             </div>
+            // <div className="App-Draw">
+            //     <div className="App-Form" >
+            //         <form>
+            //             <input className="" placeholder="First Name"
+            //                 ref="firstName"
+            //                 onChange={this.handleChangeID} />
+            //
+            //             <input className="" placeholder="Last Name"
+            //                 ref="lastName"
+            //                 onChange={this.handleChangeID} />
+            //
+            //             <input className="" placeholder="Nick Name"
+            //                 ref="nickName"
+            //                 onChange={this.handleChangeID} />
+            //
+            //             <input className="" placeholder="eMail"
+            //                 ref="email"
+            //                 onChange={this.handleChangeID} />
+            //
+            //             <input className="" placeholder="Password"
+            //                 ref="password"
+            //                 onChange={this.handleChangePassword}
+            //                 type="password" />
+            //
+            //              <button type="submit" onClick={this.handleRegister}>
+            //                 Register
+            //             </button>
+            //
+            //         </form>
+            //     </div>
+            // </div>
         );
     }
     

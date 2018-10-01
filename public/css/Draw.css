@@ -2,10 +2,14 @@
     /*background-color: #1c232c;*/
     /*weight: 1000px;*/
     color: #648a78;
-    height: 520px;
-    width: 850px;
+    height: 100%;
+    width: 100%;
     overflow: auto;
     margin-left: auto;
     margin-right: auto;
+
     /*margin-top: 30px;*/
+}
+.container-fluid{
+    /*padding-bottom: 50px;*/
 }

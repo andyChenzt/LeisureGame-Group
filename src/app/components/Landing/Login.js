@@ -58,28 +58,62 @@ class Login extends Component {
                     </div>
 
                     <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                        <div className="App-Draw">
-                            <div className="App-Form" >
-                                <form>
-                                    <input className="App-ID" placeholder="EMAIL"
+                        <div className="container">
+                            <h2 class="title">Start your free time</h2>
+                            <br/>
+                            <br/>
+
+                            {/*<p class="text">The form below contains two input elements; one of type text and one of type*/}
+                                {/*password:</p>*/}
+                            <form>
+                                <div className="form-group">
+                                    <label class="text" htmlFor="usr">Name:</label>
+                                    <input type="text" class="form-control" id="usr" placeholder="EMAIL"
                                            ref="email"
                                            onChange={this.handleChangeID} />
-
-                                    <input className="App-Password" placeholder="PASSWORD"
+                                </div>
+                                <div className="form-group">
+                                    <label class="text" htmlFor="pwd">Password:</label>
+                                    <input class="form-control" id="pwd" placeholder="PASSWORD"
                                            ref="password"
                                            onChange={this.handleChangePassword}
                                            type="password" />
-                                    <button className="App-Button" type="submit" onClick={this.handleSubmit}>
+                                </div>
+                                <div>
+                                    <button class="btn btn-primary" type="submit" onClick={this.handleSubmit}>
                                         Login
                                     </button>
-
-                                    <button type="submit" onClick={this.handleGoToRegister}>
+                                </div>
+                                <div>
+                                    <p> </p>
+                                    <button  type="submit" onClick={this.handleGoToRegister}>
                                         Do no have account? Register now
                                     </button>
-
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
+                        {/*<div className="App-Draw">*/}
+                            {/*<div className="App-Form" >*/}
+                                {/*<form>*/}
+                                    {/*<input type="text" className="App-ID" placeholder="EMAIL"*/}
+                                           {/*ref="email"*/}
+                                           {/*onChange={this.handleChangeID} />*/}
+
+                                    {/*<input className="App-Password" placeholder="PASSWORD"*/}
+                                           {/*ref="password"*/}
+                                           {/*onChange={this.handleChangePassword}*/}
+                                           {/*type="password" />*/}
+                                    {/*<button className="App-Button" type="submit" onClick={this.handleSubmit}>*/}
+                                        {/*Login*/}
+                                    {/*</button>*/}
+
+                                    {/*<button type="submit" onClick={this.handleGoToRegister}>*/}
+                                        {/*Do no have account? Register now*/}
+                                    {/*</button>*/}
+
+                                {/*</form>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
                     </div>
 
                     <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
