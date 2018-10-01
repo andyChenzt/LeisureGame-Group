@@ -5,7 +5,8 @@ import * as types from '../types/userTypes';
 const initState = {
 	isLogin: false,
 	isRegister: false,
-	user: {}
+	user: {},
+	isChangeInfo: false
 };
 
 const userReducer = (state = initState, action) => {
@@ -36,6 +37,20 @@ const userReducer = (state = initState, action) => {
 			return {
 				...state,
 				user: action.payload
+			}
+		case types.USER_GOCHANGEINFO:
+			console.log("reducer chagne info");
+			console.log(action.payload);
+			return {
+				...state,
+				isChangeInfo: action.payload
+			}
+		case types.USER_BACKCHANGEINFO:
+			console.log("reducer back info");
+			console.log(action.payload);
+			return {
+				...state,
+				isChangeInfo: action.payload
 			}
 		default:
 			return state;

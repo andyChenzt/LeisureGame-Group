@@ -31,8 +31,9 @@ class Login extends Component {
             console.log(userInfo);
             this.props.doLogin();
             this.props.saveUserInfo(userInfo);
-            const nickName = userInfo.nickName;
-            this.props.history.push('/Home/',nickName);
+            const nickName = userInfo.info.nickName;
+            console.log("nickName", nickName);
+            this.props.history.push('/Home/' + nickName);
         }).catch((error) => {
             console.log("err");
             console.log(error.response);

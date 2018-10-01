@@ -32,6 +32,22 @@ export const removeUserInfo = () => {
 	}
 }
 
+export const goChangeInfo = () => {
+	console.log("change info");
+	return {
+		type: types.USER_GOCHANGEINFO,
+		payload: true
+	}
+}
+
+export const backChangeInfo = () => {
+	console.log("change info");
+	return {
+		type: types.USER_BACKCHANGEINFO,
+		payload: false
+	}
+}
+
 // need to do
 export const register = () => {
 	console.log("register");

@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import "../../../../public/css/UserInfo.css";
 import usericon from "../../assert/image/usericon1.png";
 
-export default class User extends Component {
-    render() {
-        return (
+const UserInfo = (props) => {
+	return (
+        <div>
+            <h3>{props.user.info.nickName}</h3>
+            <h3>drawingGame</h3>
 
-                    <div>
-                        <img className="App-icon" src={usericon} alt="usericon" />
-                        <a name="username" className="App-userinfo">Hello Petter</a>
-                        <p className="App-userinfo">Your Score: 9999999</p>
-                    </div>
-        );
-    }
+        </div>
+    );
 }
+
+export default UserInfo;
+
+
 
