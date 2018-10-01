@@ -3,7 +3,7 @@ import {StyleShee,View,TextInput} from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
 import axios from 'axios';
-import "../../css/Login.css";
+import "../../../../public/css/Login.css";
 import { connect } from 'react-redux';
 import { login, saveUserInfo } from '../../actions/userActions'
 
@@ -50,27 +50,64 @@ class Login extends Component {
         console.log(this.props);
         const { onSubmitClick } = this.props;
         return (
-            <div className="App-Draw">
-                <div className="App-Form" >
-                    <form>
-                        <input className="App-ID" placeholder="EMAIL" 
-                            ref="email"
-                            onChange={this.handleChangeID} />
-                        <input className="App-Password" placeholder="PASSWORD"
-                            ref="password"
-                            onChange={this.handleChangePassword}
-                            type="password" />
-                        <button className="App-Button" type="submit" onClick={this.handleSubmit}>
-                            Login
-                        </button>
+            <div className="container-fluid h-100">
+                <div className="row justify-content-center h-100">
 
-                        <button type="submit" onClick={this.handleGoToRegister}>
-                            Do no have account? Register now
-                        </button>
-                       
-                    </form>
+                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+
+                    </div>
+
+                    <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                        <div className="App-Draw">
+                            <div className="App-Form" >
+                                <form>
+                                    <input className="App-ID" placeholder="EMAIL"
+                                           ref="email"
+                                           onChange={this.handleChangeID} />
+
+                                    <input className="App-Password" placeholder="PASSWORD"
+                                           ref="password"
+                                           onChange={this.handleChangePassword}
+                                           type="password" />
+                                    <button className="App-Button" type="submit" onClick={this.handleSubmit}>
+                                        Login
+                                    </button>
+
+                                    <button type="submit" onClick={this.handleGoToRegister}>
+                                        Do no have account? Register now
+                                    </button>
+
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+
+                    </div>
                 </div>
             </div>
+            // <div className="App-Draw">
+            //     <div className="App-Form" >
+            //         <form>
+            //             <input className="App-ID" placeholder="EMAIL"
+            //                 ref="email"
+            //                 onChange={this.handleChangeID} />
+            //             <input className="App-Password" placeholder="PASSWORD"
+            //                 ref="password"
+            //                 onChange={this.handleChangePassword}
+            //                 type="password" />
+            //             <button className="App-Button" type="submit" onClick={this.handleSubmit}>
+            //                 Login
+            //             </button>
+            //
+            //             <button type="submit" onClick={this.handleGoToRegister}>
+            //                 Do no have account? Register now
+            //             </button>
+            //
+            //         </form>
+            //     </div>
+            // </div>
         );
     }
 

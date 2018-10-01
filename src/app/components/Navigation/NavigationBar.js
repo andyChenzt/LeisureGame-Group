@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
-import "../../css/NavigationBar.css";
+import "../../../../public/css/NavigationBar.css";
 
 
 export default class NavigationBar extends Component {
     render() {
         return (
+            <div>
+                <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
 
-            <div className="App-bar">
-                <ul className="App-ul">
-                    <li className="App-li"><NavLink className="App-link" to="/Home">Home</NavLink></li>
-                    <li className="App-li"><NavLink className="App-link" to="/drawing">Game1</NavLink></li>
-                    <li className="App-li"><NavLink className="App-link" to="/snake">Game2</NavLink></li>
-                    {/*<li className="App-li"><NavLink className="App-link" to="/userInformation">Personal Information</NavLink></li>*/}
-                    <li className="App-li"><NavLink className="App-link" to="/score">Score</NavLink></li>
-                </ul>
+                    {/*<img src={header} alt="header" style="width:400px;"/>*/}
+
+                    <ul className="navbar-nav">
+
+                        <li className="nav-item">
+                            <a className="nav-link" href="/Home">Home</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/drawing">Game1</a>
+                        </li>
+                        <li className="nav-item">
+                            <a className="nav-link" href="/snake">Game2</a>
+                        </li>
+                        {/*<li className="nav-item">*/}
+                        {/*<a className="nav-link" href="/score">Score</a>*/}
+                        {/*</li>*/}
+                    </ul>
+                </nav>
             </div>
         );
     }

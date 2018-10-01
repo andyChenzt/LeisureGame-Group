@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-import "../../css/App.css";
+import "../../../../public/css/App.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 

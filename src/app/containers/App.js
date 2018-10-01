@@ -56,10 +56,11 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                <Head />
+                {/*<Head />*/}
+                <NavigationBar />
                 <BrowserRouter>
                     <div className="App">
-                        <NavigationBar />
+
                         <div className="App-main">
                             <Route exact path='/' component={Login} />   
                             <Route exact path='/register' component={Register} />   

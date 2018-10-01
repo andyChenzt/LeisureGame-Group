@@ -4,7 +4,7 @@ import sketch from '../components/Game/DrawSketch';
 import User from "../components/User/UserInfo";
 import OtherUser from "../components/User/OtherUser";
 import GameScoreInfoList from "../components/GameScore/GameScoreInfoList";
-import "../css/Draw.css";
+import "../../../public/css/Draw.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import io from 'socket.io-client';
@@ -80,28 +80,58 @@ class DrawCon extends Component {
 	render() {
         if(this.props.isWaiting) {
             return (
-                <div>   
-                    <button>waiting</button>
-                    <button onClick={this.handleStart}>start</button>
-                    <button>exit</button>
+                <div className="container-fluid h-100">
+                    <div className="row justify-content-center h-100">
+
+                        <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+
+                        </div>
+
+                        <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                            <button>waiting</button>
+                            <button onClick={this.handleStart}>start</button>
+                            <button>exit</button>
+                        </div>
+
+                        <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+
+                        </div>
+                    </div>
                 </div>
             );
         } else {
             return (
-                <div>   
-                    <div className="App-Draw">
-                        <P5Wrapper sketch={sketch} />
-                    </div>
-                    <div>
-                        <input></input>
-                        <button>send</button>
-                    </div>
-                    
-                    <div>
-                        <User />
-                        <OtherUser />
+                <div className="container-fluid h-100">
+                    <div className="row justify-content-center h-100">
+
+                        <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                            <User />
+                            <OtherUser />
+                        </div>
+
+                        <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                            <P5Wrapper sketch={sketch} />
+                        </div>
+
+                        <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+
+                        </div>
                     </div>
                 </div>
+                // <div>
+                //     <div className="App-Draw">
+                //         <P5Wrapper sketch={sketch} />
+                //     </div>
+                //     <div>
+                //         <input></input>
+                //         <button>send</button>
+                //     </div>
+                //
+                //     <div>
+                //         <User />
+                //         <OtherUser />
+                //     </div>
+                // </div>
             );
         }
 		
