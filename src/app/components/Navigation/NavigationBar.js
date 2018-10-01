@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { NavLink } from 'react-router-dom';
 import "../../../../public/css/NavigationBar.css";
-import header from "../../assert/image/header.png";
+import header from "../../assert/image/header副本.jpg";
 
 
 
@@ -10,10 +10,10 @@ export default class NavigationBar extends Component {
         return (
 
             <div>
+
             <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
-                <a className="navbar-brand" href="/Home">
-                    {/*<img src={require[header]} alt="header" style="width:40px;"/>*/}
-                </a>
+
+                    {/*<img src={header} alt="header" style="width:400px;"/>*/}
 
                 <ul className="navbar-nav">
 
@@ -26,9 +26,9 @@ export default class NavigationBar extends Component {
                     <li className="nav-item">
                         <a className="nav-link" href="/snake">Game2</a>
                     </li>
-                    <li className="nav-item">
-                        <a className="nav-link" href="/score">Score</a>
-                    </li>
+                    {/*<li className="nav-item">*/}
+                        {/*<a className="nav-link" href="/score">Score</a>*/}
+                    {/*</li>*/}
                 </ul>
             </nav>
 
