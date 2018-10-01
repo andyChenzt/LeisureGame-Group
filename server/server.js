@@ -29,7 +29,7 @@ app.use("/api", scoreRoutes);
 // app.use("/", (req, res) => {
 // 	res.sendFile(path.join(__dirname + '/public/index.html'));  // try this
 // });
-// error handling middleware
+
 // send error message and change the status
 app.use(function(err, req, res, next) {
 	res.status(422).send({error: err.message})

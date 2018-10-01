@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
 const User = require("../models/User");
-// const UserSession = require("../../models/UserSession");
+const jwt = require("jsonwebtoken");
 
 // connect to localhost db, will transfor to mlab, which could deploy to heroku
 mongoose.connect('mongodb://localhost/LeisureGame');
@@ -92,9 +92,15 @@ router.post("/account/login", function(req, res, next) {
             if(isMatch) {
                 console.log("correct");
                 var info = user.deleteSensitiveInfo();
-                res.send({ success: 1,
-                    user: {info} 
-                });
+                jwt.sign({user: info}, 'secretKey', (err, token) => {
+                    res.send({ success: 1,
+                        user: info,
+                        token: token
+                    });
+                })
+                // res.send({ success: 1,
+                //     user: {info} 
+                // });
             } else {
                 res.status(403).json({
                     success: 0,
@@ -112,32 +118,72 @@ router.post("/account/login", function(req, res, next) {
 });
 
 // change name or information
-router.put("/account/:id", function(req, res, next) {
-    // doing logic
-    var newInfo = {
-        firstName: req.body.firstName,
-        lastName: req.body.lastName,
-        nickName: req.body.nickName,
-        email: req.body.email,
-        password: req.body.password
-    };
+router.put("/account/:id", verifyToken, function(req, res, next) {
+    jwt.verify(req.token, 'secretKey', (err, authData) => {
+        
+        if(err) {
+            console.log(err);
+            res.status(403).json({
+                success: 0,
+                error: err
+            });
+        } else {
+            // doing logic
+            var newInfo = {
+                firstName: req.body.firstName,
+                lastName: req.body.lastName,
+                nickName: req.body.nickName,
+                email: req.body.email,
+                password: req.body.password
+            };
 
-    User.findOneAndUpdate({_id: req.params.id}, newInfo).then(function() {
-        res.send({ success: 1,
-                    user: newInfo });
-    }).catch(() => {
-        res.status(403).json({
-            success: 0,
-            error: 'server error!'
-        });
+            User.findOneAndUpdate({_id: req.params.id}, newInfo).then(function() {
+                res.send({ success: 1,
+                            user: newInfo });
+            }).catch(() => {
+                res.status(403).json({
+                    success: 0,
+                    error: 'server error!'
+                });
+            });
+        }
+    
     });
+
+    // doing logic
+    // var newInfo = {
+    //     firstName: req.body.firstName,
+    //     lastName: req.body.lastName,
+    //     nickName: req.body.nickName,
+    //     email: req.body.email,
+    //     password: req.body.password
+    // };
+
+    // User.findOneAndUpdate({_id: req.params.id}, newInfo).then(function() {
+    //     res.send({ success: 1,
+    //                 user: newInfo });
+    // }).catch(() => {
+    //     res.status(403).json({
+    //         success: 0,
+    //         error: 'server error!'
+    //     });
+    // });
     
 });
 
-// delete the account
-// do we need delete one account 
-// router.delete("/:id", function(req, res, next) {
-//     res.send({ type: "DELETE" });
-// });
+function verifyToken(req, res, next) {
+    const bearerHeader = req.headers['authorization'];
+    if(typeof bearerHeader !== 'undefined') {
+        const bearer = bearerHeader.split(' ');
+        const bearerToken = bearer[1];
+        req.token = bearerToken;
+        next();
+    } else {
+        res.status(403).json({
+            success: 0,
+            error: 'Token error!'
+        });
+    }
+}
 
 module.exports = router;

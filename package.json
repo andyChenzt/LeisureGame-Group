@@ -33,6 +33,7 @@
     "chai-http": "^4.2.0",
     "cors": "^2.8.4",
     "ejs": "^2.6.1",
+    "jsonwebtoken": "^8.3.0",
     "mocha": "^5.2.0",
     "mongoose": "^5.2.9",
     "react": "^16.4.2",
