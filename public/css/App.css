@@ -1,7 +1,16 @@
-.App {
+html,
+body{
+    height:100%;
     overflow: hidden;
+}
+
+.App {
+    /*overflow: hidden;*/
     background-color: #151a21;
     /*height:100%;*/
+    padding-bottom: 100%;
+    /*overflow: hidden;*/
+    /*margin-bottom: -300px;*/
 }
 
 .App-ul{
@@ -221,8 +230,3 @@
     margin-left: -140px;
     margin-top: -165px;
 }
-html,
-body { height: 100%; padding: 0; margin: 0; }
-.outer { height: 100%; padding: 100px 0 0; box-sizing: border-box ; }
-.A { height: 100px; margin: -100px 0 0; background: #151a21; }
-.B { height: 100%; background: #151a21; }

@@ -53,13 +53,13 @@ class Login extends Component {
             <div className="container-fluid h-100">
                 <div className="row justify-content-center h-100">
 
-                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 
                     </div>
 
-                    <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                         <div className="container">
-                            <h2 class="title">Start your free time</h2>
+                            <h2 class="title">START YOUR JOY TIME</h2>
                             <br/>
                             <br/>
 
@@ -116,7 +116,7 @@ class Login extends Component {
                         {/*</div>*/}
                     </div>
 
-                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 
                     </div>
                 </div>

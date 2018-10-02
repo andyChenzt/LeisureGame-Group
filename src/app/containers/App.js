@@ -72,6 +72,7 @@ class App extends Component {
                             <Route path='/userInformation' component={Score} />
                         </div>
                 </BrowserRouter>
+
                     <Foot />
 
                 {/* < Game Score register in Score list  << 
