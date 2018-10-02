@@ -11,7 +11,7 @@ function sketch(p) {
     var socket;
 
 	p.setup = function () {
-		p.createCanvas(840, 480);
+		p.createCanvas(1100, 600);
 		snake = new Snake(p);
 		p.frameRate(10);
 		

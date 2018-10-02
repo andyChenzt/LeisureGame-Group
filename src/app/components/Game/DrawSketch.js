@@ -11,7 +11,7 @@ function sketch(p) {
 	console.log("room: ", sok);
 
 	p.setup = function() {
-		p.createCanvas(840, 480);
+		p.createCanvas(1100, 600);
 		p.background(51);
 
 		// var input = p.createInput();

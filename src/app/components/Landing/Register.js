@@ -71,7 +71,7 @@ class Register extends Component {
                                         <span className="input-group-text">First Name</span>
                                     </div>
                                     <input type="text" className="form-control" placeholder="First Name" ref="firstName"
-                                           onChange={this.handleChangeID}/>
+                                           onChange={this.handleChangeID} required title="First Name is needed"/>
                                 </div>
                             </form>
 
@@ -81,7 +81,7 @@ class Register extends Component {
                                         <span className="input-group-text">Last Name</span>
                                     </div>
                                     <input type="text" className="form-control" placeholder="Last Name" ref="lastName"
-                                           onChange={this.handleChangeID}/>
+                                           onChange={this.handleChangeID} required title="Last Name is needed"/>
                                 </div>
                             </form>
 
@@ -91,7 +91,7 @@ class Register extends Component {
                                         <span className="input-group-text">Nick Name</span>
                                     </div>
                                     <input type="text" className="form-control" placeholder="Nick Name" ref="nickName"
-                                           onChange={this.handleChangeID}/>
+                                           onChange={this.handleChangeID} required title="Nick Name is needed"/>
                                 </div>
                             </form>
 
@@ -100,8 +100,9 @@ class Register extends Component {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">eMail</span>
                                     </div>
-                                    <input type="text" className="form-control" placeholder="eMail" ref="email"
-                                           onChange={this.handleChangeID}/>
+                                    <input type="email" className="form-control" placeholder="@google.com" ref="email"
+                                           onChange={this.handleChangeID} pattern=".+@google.com" size="30" required
+                                           title="Must be a google.com email address"/>
                                 </div>
                             </form>
 
@@ -111,7 +112,7 @@ class Register extends Component {
                                         <span className="input-group-text">Password</span>
                                     </div>
                                     <input type="password" className="form-control" placeholder="Password" ref="password"
-                                           onChange={this.handleChangePassword}/>
+                                           onChange={this.handleChangePassword} required title="Password is needed"/>
                                 </div>
                             </form>
                             <div >

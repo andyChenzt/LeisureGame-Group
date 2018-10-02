@@ -59,6 +59,7 @@ class Login extends Component {
 
                     <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                         <div className="container">
+                            <br/>
                             <h2 class="title">START YOUR JOY TIME</h2>
                             <br/>
                             <br/>
@@ -67,25 +68,25 @@ class Login extends Component {
                                 {/*password:</p>*/}
                             <form>
                                 <div className="form-group">
-                                    <label class="text" htmlFor="usr">Name:</label>
-                                    <input type="text" class="form-control" id="usr" placeholder="EMAIL"
+                                    <label className="text" htmlFor="usr">Name:</label>
+                                    <input type="text" className="form-control" id="usr" placeholder="EMAIL: XXX@google.com"
                                            ref="email"
-                                           onChange={this.handleChangeID} />
+                                           onChange={this.handleChangeID} required title="Email address is needed"/>
                                 </div>
                                 <div className="form-group">
-                                    <label class="text" htmlFor="pwd">Password:</label>
-                                    <input class="form-control" id="pwd" placeholder="PASSWORD"
+                                    <label className="text" htmlFor="pwd">Password:</label>
+                                    <input className="form-control" id="pwd" placeholder="PASSWORD"
                                            ref="password"
                                            onChange={this.handleChangePassword}
-                                           type="password" />
+                                           type="password" required title="Password is needed"/>
                                 </div>
                                 <div>
-                                    <button class="btn btn-primary" type="submit" onClick={this.handleSubmit}>
+                                    <button className="btn btn-primary" type="submit" onClick={this.handleSubmit}>
                                         Login
                                     </button>
                                 </div>
                                 <div>
-                                    <p> </p>
+                                    <br/>
                                     <button  type="submit" onClick={this.handleGoToRegister}>
                                         Do no have account? Register now
                                     </button>
