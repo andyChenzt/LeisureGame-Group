@@ -26,7 +26,15 @@ app.use(cors({
 app.use("/api", accountRoutes);
 app.use("/api", scoreRoutes);
 
-// app.use("/", (req, res) => {
+app.get('/*', function(req, res) {
+  res.sendFile(path.join(__dirname + '/../public/index.html'), function(err) {
+    if (err) {
+      res.status(500).send(err)
+    }
+  })
+})
+
+// app.use("*", (req, res) => {
 // 	res.sendFile(path.join(__dirname + '/public/index.html'));  // try this
 // });
 

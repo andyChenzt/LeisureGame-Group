@@ -49,12 +49,22 @@ class DrawCon extends Component {
         });
 
         this.socket.on('getRoom', (roomName) => {
-            console.log(roomName);
+            console.log("get room ",roomName);
             // join the room
-            // this.socket.join();
+            this.socket.emit('joinRoom',roomName);
             // change state in reducer -> pending
             // loading,
         });
+
+        this.socket.on('pending', (data) => {
+            console.log(data);
+            console.log(this.socket);
+            this.socket.emit('testRoom', "testRoom");
+        });
+
+        this.socket.on('testBroadcast', (msg) => {
+            console.log(msg);
+        })
 
         this.socket.on('findPlayer', () => {
 

@@ -26,12 +26,15 @@ class Login extends Component {
 
         axios.post('/api/account/login', user).then(res => {
             console.log("login success");
-            console.log(this.props);
+            console.log(res.data);
             const userInfo = res.data.user;
-            console.log(userInfo);
+            const token = res.data.token;
+            console.log("userinfo",userInfo);
+            localStorage.setItem('token', token);
+
             this.props.doLogin();
             this.props.saveUserInfo(userInfo);
-            const nickName = userInfo.info.nickName;
+            const nickName = userInfo.nickName;
             console.log("nickName", nickName);
             this.props.history.push('/Home/' + nickName);
         }).catch((error) => {

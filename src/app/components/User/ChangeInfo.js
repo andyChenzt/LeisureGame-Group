@@ -8,8 +8,11 @@ class ChangeInfo extends Component {
 		return (
 	        <div>
 	        	<h2>change info</h2>
-	            <h3>{this.props.user.info.nickName}</h3>
-	            <input ref="nickName" value={this.props.user.info.nickName} />
+	            <h3>{this.props.user.nickName}</h3>
+	            <input ref="email" value={this.props.user.email} />
+	            <input ref="nickName" value={this.props.user.nickName} />
+	            <input ref="firstName" value={this.props.user.firstName} />
+	            <input ref="lastName" value={this.props.user.lastName} />
 	        </div>
 	    );
 	}
