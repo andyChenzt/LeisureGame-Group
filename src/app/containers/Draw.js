@@ -93,17 +93,32 @@ class DrawCon extends Component {
                 <div className="container-fluid h-100">
                     <div className="row justify-content-center h-100">
 
-                        <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                        <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 
                         </div>
 
-                        <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                            <button>waiting</button>
-                            <button onClick={this.handleStart}>start</button>
-                            <button>exit</button>
+                        <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+                            <br/>
+
+                            <button type="button" className="btn btn-warning btn-block">waiting</button>
+                            <br/>
+                            <br/>
+
+                            <button type="button" className="btn btn-success btn-block" onClick={this.handleStart}>start</button>
+                            <br/>
+                            <br/>
+
+                            <button type="button" className="btn btn-danger btn-block">exit</button>
+                            <br/>
+                            <br/>
                         </div>
 
-                        <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                        <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 
                         </div>
                     </div>
@@ -115,8 +130,10 @@ class DrawCon extends Component {
                     <div className="row justify-content-center h-100">
 
                         <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
-                            <User />
-                            <OtherUser />
+                            <div className="user">
+                                <User />
+                                <OtherUser />
+                            </div>
                         </div>
 
                         <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">

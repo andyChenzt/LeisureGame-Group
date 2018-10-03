@@ -88,3 +88,19 @@
     margin-left: -140px;
     margin-top: -165px;
 }
+
+.container{
+    padding: 20px;
+    /*padding-bottom:100%;*/
+    overflow: auto;
+    margin-left: auto;
+    margin-right: auto;
+    height: 100%;
+}
+.text{
+    color: #9ba8b0;
+}
+.title{
+    text-align: center ;
+    color: #80bdff;
+}

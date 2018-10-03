@@ -23,18 +23,19 @@ class Snake extends Component {
             <div className="container-fluid h-100">
                 <div className="row justify-content-center h-100">
 
-                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div className="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
                         {/*<User />*/}
                         {/*<OtherUser />*/}
 
                     </div>
 
-                    <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                        score = {score}
+                    <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
+                        <br/>
+                        {/*score = {score}*/}
                         <P5Wrapper sketch={sketch} />
                     </div>
 
-                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div className="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
 
                     </div>
                 </div>

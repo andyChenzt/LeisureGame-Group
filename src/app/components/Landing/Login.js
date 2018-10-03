@@ -57,36 +57,71 @@ class Login extends Component {
             <div className="container-fluid h-100">
                 <div className="row justify-content-center h-100">
 
-                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 
                     </div>
 
-                    <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                        <div className="App-Draw">
-                            <div className="App-Form" >
-                                <form>
-                                    <input className="App-ID" placeholder="EMAIL"
-                                           ref="email"
-                                           onChange={this.handleChangeID} />
+                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                        <div className="container">
+                            <br/>
+                            <h2 class="title">START YOUR JOY TIME</h2>
+                            <br/>
+                            <br/>
 
-                                    <input className="App-Password" placeholder="PASSWORD"
+                            {/*<p class="text">The form below contains two input elements; one of type text and one of type*/}
+                                {/*password:</p>*/}
+                            <form>
+                                <div className="form-group">
+                                    <label className="text" htmlFor="usr">Name:</label>
+                                    <input type="text" className="form-control" id="usr" placeholder="EMAIL: XXX@google.com"
+                                           ref="email"
+                                           onChange={this.handleChangeID} required title="Email address is needed"/>
+                                </div>
+                                <div className="form-group">
+                                    <label className="text" htmlFor="pwd">Password:</label>
+                                    <input className="form-control" id="pwd" placeholder="PASSWORD"
                                            ref="password"
                                            onChange={this.handleChangePassword}
-                                           type="password" />
-                                    <button className="App-Button" type="submit" onClick={this.handleSubmit}>
+                                           type="password" required title="Password is needed"/>
+                                </div>
+                                <div>
+                                    <button className="btn btn-primary" type="submit" onClick={this.handleSubmit}>
                                         Login
                                     </button>
-
-                                    <button type="submit" onClick={this.handleGoToRegister}>
+                                </div>
+                                <div>
+                                    <br/>
+                                    <button  type="submit" onClick={this.handleGoToRegister}>
                                         Do no have account? Register now
                                     </button>
-
-                                </form>
-                            </div>
+                                </div>
+                            </form>
                         </div>
+                        {/*<div className="App-Draw">*/}
+                            {/*<div className="App-Form" >*/}
+                                {/*<form>*/}
+                                    {/*<input type="text" className="App-ID" placeholder="EMAIL"*/}
+                                           {/*ref="email"*/}
+                                           {/*onChange={this.handleChangeID} />*/}
+
+                                    {/*<input className="App-Password" placeholder="PASSWORD"*/}
+                                           {/*ref="password"*/}
+                                           {/*onChange={this.handleChangePassword}*/}
+                                           {/*type="password" />*/}
+                                    {/*<button className="App-Button" type="submit" onClick={this.handleSubmit}>*/}
+                                        {/*Login*/}
+                                    {/*</button>*/}
+
+                                    {/*<button type="submit" onClick={this.handleGoToRegister}>*/}
+                                        {/*Do no have account? Register now*/}
+                                    {/*</button>*/}
+
+                                {/*</form>*/}
+                            {/*</div>*/}
+                        {/*</div>*/}
                     </div>
 
-                    <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
+                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
 
                     </div>
                 </div>

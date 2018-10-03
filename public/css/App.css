@@ -1,7 +1,16 @@
-.App {
+html,
+body{
+    height:100%;
     overflow: hidden;
+}
+
+.App {
+    /*overflow: hidden;*/
     background-color: #151a21;
     /*height:100%;*/
+    padding-bottom: 100%;
+    /*overflow: hidden;*/
+    /*margin-bottom: -300px;*/
 }
 
 .App-ul{
@@ -115,12 +124,12 @@
 .App-main{
     background-color: #151a21;
     /*height: 100%;*/
-    padding: 50px;
+    padding: 40px;
     /*width: 100%;*/
     overflow: auto;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 60px;
+    /*margin-top: 60px;*/
 }
 
 .App-title {
