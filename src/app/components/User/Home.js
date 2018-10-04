@@ -12,7 +12,7 @@ class Home extends Component {
     componentWillMount = () => {
         console.log("will mount");
         if(!this.props.isLogin) {
-            this.props.history.push('/');
+            // this.props.history.push('/');
         }
     }
 
@@ -43,33 +43,21 @@ class Home extends Component {
         return (
             <div className="container-fluid h-100">
                 <div className="row justify-content-center h-100">
-                    <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                        <h1>  User Information: </h1>
+                    <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                         <br/>
-                        <ul className="list-group list-group-flush">
-                            <li className="list-group-item">First Name:</li>
-                            <li className="list-group-item">Last Name:</li>
-                            <li className="list-group-item">Nick Name:</li>
-                            <li className="list-group-item">Email:</li>
-                            <li className="list-group-item">Password:</li>
-                        </ul>
-                        <button onClick={this.handleLogout}>Logout</button>
+                        <br/>
+
+                        {component}
+                        <br/>
+                        <button className="btn btn-info" onClick={this.handleChangeButton}>{buttonTitle}</button>
+
+                        <button className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
                     </div>
                 </div>
-                <div>
-                    {/*<UserInfo user={this.props.user}/>*/}
-                    {component}
-                    <button onClick={this.handleChangeButton}>{buttonTitle}</button>
-                </div>
             </div>
+
             
-            // <div>
-            //     <div className="App-Draw">
-            //         <h1>  User Information in this page</h1>
-            //         <h1>  Logout in this page</h1>
-            //         <button onClick={this.handleLogout}>Logout</button>
-            //     </div>
-            // </div>
+
         );
     }
 }
