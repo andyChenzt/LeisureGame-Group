@@ -2,8 +2,11 @@ import * as types from '../types/gameTypes';
 
 const initState = {
 	isWaiting: true,
-	roomNmae: "",
+	roomName: "",
 	isGameStart: false,
+	isPlayer1: true,
+	hasQuestion: false,
+	question: "",
 };
 
 const gameReducer = (state = initState, action) => {
@@ -14,7 +17,26 @@ const gameReducer = (state = initState, action) => {
 			return {
 				...state,
 				isWaiting: action.payload,
-				isGameStart: action.payload
+				isGameStart: action.payload,
+			}
+		case types.GAME_SETPLAYER1:
+			console.log("reducer GAME_SETPLAYER1");
+			return {
+				...state,
+				isPlayer1: action.payload,
+			}
+		case types.GAME_SETPLAYER2:
+			console.log("reducer GAME_SETPLAYER2");
+			return {
+				...state,
+				isPlayer1: action.payload,
+			}
+		case types.GAME_GETQUESTION:
+			console.log("reducer GAME_GETQUESTION");
+			return {
+				...state,
+				hasQuestion: true,
+				question: action.payload,
 			}
 		
 		default:
