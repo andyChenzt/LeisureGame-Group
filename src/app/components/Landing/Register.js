@@ -62,7 +62,7 @@ class Register extends Component {
 
                     <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div className="container mt-3">
-                            <h2 class="title">Join us NOW!</h2>
+                            <h2 className="title">Join us NOW!</h2>
                             <br/>
 
                             <form>
@@ -100,9 +100,9 @@ class Register extends Component {
                                     <div className="input-group-prepend">
                                         <span className="input-group-text">eMail</span>
                                     </div>
-                                    <input type="email" className="form-control" placeholder="@google.com" ref="email"
-                                           onChange={this.handleChangeID} pattern=".+@google.com" size="30" required
-                                           title="Must be a google.com email address"/>
+                                    <input type="email" className="form-control" placeholder="email" ref="email"
+                                           onChange={this.handleChangeID} pattern=".+@.+" size="30" required
+                                           title="Must be a email address"/>
                                 </div>
                             </form>
 

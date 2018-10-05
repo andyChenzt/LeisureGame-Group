@@ -73,7 +73,7 @@ class Login extends Component {
                             <form>
                                 <div className="form-group">
                                     <label className="text" htmlFor="usr">Name:</label>
-                                    <input type="text" className="form-control" id="usr" placeholder="EMAIL: XXX@google.com"
+                                    <input type="text" className="form-control" id="usr" placeholder="EMAIL"
                                            ref="email"
                                            onChange={this.handleChangeID} required title="Email address is needed"/>
                                 </div>
