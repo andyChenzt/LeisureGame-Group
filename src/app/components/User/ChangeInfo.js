@@ -15,32 +15,28 @@ class ChangeInfo extends Component {
                     <div className="input-group-prepend">
                         <span className="input-group-text">First Name: {this.props.user.firstName}</span>
                     </div>
-					<input type="text" className="form-control" placeholder="firstName" aria-label="firstName"
-						   aria-describedby="basic-addon1" value={this.props.user.firstName}/>
+					<input type="text" className="form-control" placeholder="firstName" value={this.props.user.firstName}/>
 				</div>
 
 				<div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Last Name: {this.props.user.lastName}</span>
                     </div>
-					<input type="text" className="form-control" placeholder="lastName" aria-label="lastName"
-						   aria-describedby="basic-addon1" value={this.props.user.lastName}/>
+					<input type="text" className="form-control" placeholder="lastName" value={this.props.user.lastName}/>
 				</div>
 
 				<div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Nick Name: {this.props.user.nickName}</span>
                     </div>
-					<input type="text" className="form-control" placeholder="nickName" aria-label="nickName"
-						   aria-describedby="basic-addon1" value={this.props.user.nickName}/>
+					<input type="text" className="form-control" placeholder="nickName"  value={this.props.user.nickName}/>
 				</div>
 
 				<div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Email: {this.props.user.email}</span>
                     </div>
-					<input type="text" className="form-control" placeholder="email" aria-label="email"
-						   aria-describedby="basic-addon1" value={this.props.user.email}/>
+					<input type="text" className="form-control" placeholder="email"  value={this.props.user.email}/>
 				</div>
             </div>
 	    );
