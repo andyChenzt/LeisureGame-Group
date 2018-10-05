@@ -64,7 +64,7 @@ class Login extends Component {
                     <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
                         <div className="container">
                             <br/>
-                            <h2 class="title">START YOUR JOY TIME</h2>
+                            <h2 className="title">START YOUR JOY TIME</h2>
                             <br/>
                             <br/>
 

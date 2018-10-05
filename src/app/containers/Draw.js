@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import P5Wrapper from 'react-p5-wrapper';
-import sketch from '../components/Game/DrawSketch';
+import drawSketch from '../components/Game/DrawSketch';
+import guessSketch from '../components/Game/GuessSketch';
 import User from "../components/User/UserInfo";
 import OtherUser from "../components/User/OtherUser";
 import GameScoreInfoList from "../components/GameScore/GameScoreInfoList";
@@ -8,12 +9,13 @@ import "../../../public/css/Draw.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import io from 'socket.io-client';
-import { startGame } from '../actions/gameActions';
+import { startGame, setPlayer1, setPlayer2, getQuestion } from '../actions/gameActions';
 
 
 // var allowedOrigins = "http://localhost:3001 ";       //domain_1:* domain_2:*
-// export const sok = io('http://localhost:3001', {"transports": ["websocket"]}); //{origins: allowedOrigins}
-let socket;
+export const socket = io('http://localhost:3001/drawingGameSocket'); 
+export const roomname = "room name";
+// let socket;
 
 class DrawCon extends Component {
     constructor() {
@@ -32,48 +34,77 @@ class DrawCon extends Component {
         this.socketConnect();
         // call server for a room
         console.log("find room");
-        this.socket.emit('findRoom');
+        socket.emit('findRoom');
     }
 
     componentWillUnmount = () => {
-        this.socket.disconnect();
+        socket.disconnect();
         console.log("unmount ", this.socket);
     }
 
     socketConnect = () => {
         console.log("try to connect");
-        this.socket = io.connect('http://localhost:3001/drawingGameSocket'); //, {origins: allowedOrigins}
-        console.log(this.socket);
-        this.socket.on('connect', () => {
-            console.log(this.socket, "connect to drawingGameSocket");
+        // this.socket = io.connect('http://localhost:3001/drawingGameSocket'); //, {origins: allowedOrigins}
+        console.log(socket);
+        socket.on('connect', () => {
+            console.log(socket, "connect to drawingGameSocket");
+            // this.sok = this.socket;
+            // console.log("ttt sok" + sok);
         });
 
-        this.socket.on('getRoom', (roomName) => {
+        socket.on('getRoom', (roomName) => {
             console.log("get room ",roomName);
+            this.roomname = roomname;
             // join the room
-            this.socket.emit('joinRoom',roomName);
+            socket.emit('joinRoom',roomName);
             // change state in reducer -> pending
-            // loading,
+            // loading, and set isPlayer1 = true
+            this.props.setPlayer1();
+
         });
 
-        this.socket.on('pending', (data) => {
+        socket.on('findRoom', (roomName) => {
+            console.log("find room ",roomName);
+            this.roomname = roomname;
+            // join the room
+            socket.emit('joinRoom',roomName);
+            // change the state to isPlayer1 = false
+            this.props.setPlayer2();
+        });
+
+        socket.on('pending', (data) => {
             console.log(data);
-            console.log(this.socket);
-            this.socket.emit('testRoom', "testRoom");
+            console.log(socket);
+            socket.emit('testRoom', "testRoom");
         });
 
-        this.socket.on('testBroadcast', (msg) => {
+        socket.on('getPlayer', (msg) => {
             console.log(msg);
+        });
+
+        socket.on('waitDrawing', (msg) => {
+            console.log(msg);
+        });
+
+        socket.on('readyToWatch', (msg) => {
+            console.log(msg);
+            this.props.startGame();
+        });
+
+        socket.on('s', (msg) => {
+            console.log(msg);
+        });
+
+        socket.on('findPlayer', () => {
+
         })
 
-        this.socket.on('findPlayer', () => {
-
-        })
-
-        this.socket.on('getQuestion', () => {
+        socket.on('getQuestion', (msg) => {
             // count down
-
-            this.socket.emit('start')
+            
+            // change the title to the question
+            this.props.getQuestion(msg);
+            console.log(msg);
         })
 
 
@@ -83,11 +114,14 @@ class DrawCon extends Component {
         console.log("clicked start");
         console.log(this.props);
         e.preventDefault();
-
+        socket.emit('startGame',"player1 startDrawing");
         this.props.startGame();
     }
 
 	render() {
+        const board = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
+        const question = this.props.hasQuestion ? this.props.question : "Waiting"; 
+
         if(this.props.isWaiting) {
             return (
                 <div className="container-fluid h-100">
@@ -105,7 +139,7 @@ class DrawCon extends Component {
                             <br/>
                             <br/>
 
-                            <button type="button" className="btn btn-warning btn-block">waiting</button>
+                            <button type="button" className="btn btn-warning btn-block">{question}</button>
                             <br/>
                             <br/>
 
@@ -131,13 +165,15 @@ class DrawCon extends Component {
 
                         <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             <div className="user">
-                                <User />
+                                {/*<User />*/}
                                 <OtherUser />
+                                <button type="button" className="btn btn-danger btn-block">exit</button>
                             </div>
                         </div>
 
                         <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                            <P5Wrapper sketch={sketch} />
+                            {/*<P5Wrapper sketch={sketch} />*/}
+                            {board}
                         </div>
 
                         <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -169,16 +205,21 @@ const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.userReducer.isLogin,
         isWaiting: state.gameReducer.isWaiting,
+        isPlayer1: state.gameReducer.isPlayer1,
+        hasQuestion: state.gameReducer.hasQuestion,
+        question: state.gameReducer.question
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        startGame: () => { dispatch(startGame()) },    
+        startGame: () => { dispatch(startGame()) }, 
+        setPlayer1: () => { dispatch(setPlayer1()) },  
+        setPlayer2: () => { dispatch(setPlayer2()) },  
+        getQuestion: (question) => { dispatch(getQuestion(question)) },
     }
 };
 
-// export default connect(mapStateToProps, mapDispatchToProps)(Draw);
 export const Draw = connect(mapStateToProps, mapDispatchToProps)(DrawCon);
 
 

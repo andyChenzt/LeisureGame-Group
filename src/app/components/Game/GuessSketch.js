@@ -28,23 +28,23 @@ function sketch(p) {
     	})
 	}
 
-	p.draw = function() {
-		p.noStroke();
-		p.fill(255);
-	 	if (p.mouseIsPressed) {
-	    	p.ellipse(p.mouseX, p.mouseY, 20, 20);
-	  	}
-	}
+	// p.draw = function() {
+	// 	p.noStroke();
+	// 	p.fill(255);
+	//  	if (p.mouseIsPressed) {
+	//     	p.ellipse(p.mouseX, p.mouseY, 20, 20);
+	//   	}
+	// }
 
-	p.mouseDragged = function() {
+	// p.mouseDragged = function() {
 		
-		var mousePosition = {
-			x: p.mouseX,
-			y: p.mouseY
-		}
-		console.log(mousePosition)
-		socket.emit('mouseMove', mousePosition);
-	}
+	// 	var mousePosition = {
+	// 		x: p.mouseX,
+	// 		y: p.mouseY
+	// 	}
+	// 	console.log(mousePosition)
+	// 	socket.emit('mouseMove', mousePosition);
+	// }
 
 	p.newDraw = function (data) {
 		p.noStroke();
