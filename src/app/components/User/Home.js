@@ -39,6 +39,7 @@ class Home extends Component {
         const component = this.props.isChangeInfo ? <ChangeInfo user={this.props.user}/> 
                                                 : <UserInfo user={this.props.user}/>;
         const buttonTitle = this.props.isChangeInfo ? "Back" : "Change"
+        const buttonTitle1 = this.props.isChangeInfo ? "save" : "logout"
 
         return (
             <div className="container-fluid h-100">
@@ -50,8 +51,8 @@ class Home extends Component {
                         {component}
                         <br/>
                         <button className="btn btn-info" onClick={this.handleChangeButton}>{buttonTitle}</button>
+                        <button className="btn btn-danger" onClick={this.handleLogout}>{buttonTitle1}</button>
 
-                        <button className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
                     </div>
                 </div>
             </div>
