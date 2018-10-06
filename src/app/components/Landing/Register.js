@@ -50,6 +50,10 @@ class Register extends Component {
         });
     }
 
+    handleLogin = (e) => {
+        this.props.history.push('/');
+    }
+
     render() {
 
         return (
@@ -118,6 +122,9 @@ class Register extends Component {
                             <div >
                                 <button className="btn btn-primary" type="submit" onClick={this.handleRegister}>
                                     Register
+                                </button>
+                                <button className="btn btn-primary" type="submit" onClick={this.handleLogin}>
+                                    Have accout? Login
                                 </button>
                             </div>
                         </div>

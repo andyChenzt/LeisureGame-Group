@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import P5Wrapper from 'react-p5-wrapper';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -16,12 +17,21 @@ class Home extends Component {
         }
     }
 
-    handleLogout = (e) => {
+    handleLogoutSave = (e) => {
         console.log("clicked");
         e.preventDefault();
-        this.props.removeUserInfo();
-        this.props.doLogout();
-        this.props.history.push('/');
+
+        if(this.props.isChangeInfo) {
+            console.log("save clicked");
+            console.log(this.refs);
+            const changeFirstName = ReactDOM.findDOMNode(this.refs.changeFirstName).value;
+            console.log(changeFirstName);
+        } else {
+            this.props.removeUserInfo();
+            this.props.doLogout();
+            this.props.history.push('/');
+        }
+        
     }
 
     handleChangeButton = (e) => {
@@ -38,8 +48,8 @@ class Home extends Component {
         console.log(this.props);
         const component = this.props.isChangeInfo ? <ChangeInfo user={this.props.user}/> 
                                                 : <UserInfo user={this.props.user}/>;
-        const buttonTitle = this.props.isChangeInfo ? "Back" : "Change"
-        const buttonTitle1 = this.props.isChangeInfo ? "save" : "logout"
+        const backChangeBtn = this.props.isChangeInfo ? "Back" : "Change";
+        const logoutSaveBtn = this.props.isChangeInfo ? "Save" : "Logout";
 
         return (
             <div className="container-fluid h-100">
@@ -50,8 +60,8 @@ class Home extends Component {
 
                         {component}
                         <br/>
-                        <button className="btn btn-info" onClick={this.handleChangeButton}>{buttonTitle}</button>
-                        <button className="btn btn-danger" onClick={this.handleLogout}>{buttonTitle1}</button>
+                        <button className="btn btn-info" onClick={this.handleChangeButton}>{backChangeBtn}</button>
+                        <button className="btn btn-danger" onClick={this.handleLogoutSave}>{logoutSaveBtn}</button>
 
                     </div>
                 </div>

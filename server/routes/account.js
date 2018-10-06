@@ -95,7 +95,7 @@ router.post("/account/login", function(req, res, next) {
                 // generate token
                 jwt.sign({user: info}, 'secretKey', (err, token) => {
                     res.send({ success: 1,
-                        user: info,
+                        user: info,//user.deleteSensitiveInfo(),
                         token: token
                     });
                 })
