@@ -8,11 +8,16 @@ export const login = () => {
 	}
 }
 
-export const saveUserInfo = (userInfo) => {
+export const saveUserInfo = (userInfo, id, token) => {
 	console.log("update user info");
+	const info = {
+		userInfo: userInfo,
+		id: id,
+		token: token
+	}
 	return {
 		type: types.USER_SAVEUSERINFO,
-		payload: userInfo
+		payload: info
 	}
 }
 

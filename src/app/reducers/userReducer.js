@@ -6,6 +6,8 @@ const initState = {
 	isLogin: false,
 	isRegister: false,
 	user: {},
+	id: "",
+	token: "",
 	isChangeInfo: false
 };
 
@@ -29,7 +31,8 @@ const userReducer = (state = initState, action) => {
 			console.log(action.payload);
 			return {
 				...state,
-				user: action.payload
+				user: action.payload.userInfo,
+				id: action.payload.id
 			}
 		case types.USER_REMOVEUSERINFO:
 			console.log("reducer removeUserInfo");

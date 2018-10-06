@@ -29,11 +29,12 @@ class Login extends Component {
             console.log(res.data);
             const userInfo = res.data.user;
             const token = res.data.token;
-            console.log("userinfo",userInfo);
+            const id = res.data.id;
+            console.log("userinfo",userInfo, "id", id), "token",token;
             localStorage.setItem('token', token);
 
             this.props.doLogin();
-            this.props.saveUserInfo(userInfo);
+            this.props.saveUserInfo(userInfo, id, token);
             const nickName = userInfo.nickName;
             console.log("nickName", nickName);
             this.props.history.push('/Home/' + nickName);
@@ -162,7 +163,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         doLogin: () => { dispatch(login()) },
-        saveUserInfo: (userInfo) => { dispatch(saveUserInfo(userInfo)) }
+        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) }
     }
 }
 

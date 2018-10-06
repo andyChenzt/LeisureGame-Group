@@ -92,10 +92,13 @@ router.post("/account/login", function(req, res, next) {
             if(isMatch) {
                 console.log("correct");
                 var info = user.deleteSensitiveInfo();
+                const id = user._id;
+                console.log("id", id);
                 // generate token
                 jwt.sign({user: info}, 'secretKey', (err, token) => {
                     res.send({ success: 1,
                         user: info,//user.deleteSensitiveInfo(),
+                        id: id,
                         token: token
                     });
                 })
@@ -135,7 +138,7 @@ router.put("/account/:id", verifyToken, function(req, res, next) {
                 lastName: req.body.lastName,
                 nickName: req.body.nickName,
                 email: req.body.email,
-                password: req.body.password
+                // password: req.body.password
             };
 
             User.findOneAndUpdate({_id: req.params.id}, newInfo).then(function() {
