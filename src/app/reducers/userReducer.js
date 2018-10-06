@@ -55,6 +55,20 @@ const userReducer = (state = initState, action) => {
 				...state,
 				isChangeInfo: action.payload
 			}
+		case types.USER_UPDATEINFO:
+			console.log("reducer update info");
+			console.log(action.payload);
+			return {
+				...state,
+				user: {
+					...state.user,
+					email: action.payload.email,
+					nickName: action.payload.nickName,
+					firstName: action.payload.firstName,
+					lastName: action.payload.lastName
+				}
+				
+			}
 		default:
 			return state;
 	}

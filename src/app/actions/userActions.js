@@ -45,12 +45,22 @@ export const goChangeInfo = () => {
 	}
 }
 
+// nothing
 export const backChangeInfo = () => {
 	console.log("change info");
 	return {
 		type: types.USER_BACKCHANGEINFO,
 		payload: false
 	}
+}
+
+export const updateInfo = (newInfo) => {
+	console.log("updateInfo");
+	return {
+		type: types.USER_UPDATEINFO,
+		payload: newInfo
+	}
+	
 }
 
 // need to do
@@ -63,10 +73,7 @@ export const fetchInfo = () => {
 
 }
 
-export const updateInfo = () => {
-	console.log("updateInfo");
 
-}
 
 export const fetchScores = () => {
 	console.log("fetchScores");

@@ -4,6 +4,7 @@ import "../../../../public/css/App.css";
 import usericon from "../../assert/image/usericon1.png";
 import { connect } from 'react-redux';
 import axios from 'axios';
+import { updateInfo, backChangeInfo } from '../../actions/userActions'
 
 class ChangeInfo extends Component {	
 
@@ -45,12 +46,13 @@ class ChangeInfo extends Component {
             console.log(res.data);
             const userInfo = res.data.user;
             console.log(userInfo);
-            // this.props.doLogin();
-            // this.props.saveUserInfo({info: userInfo});
-            // this.props.history.push('/Home');
+            console.log(this.props.user.nickName);
+            this.props.updateInfo(userInfo);
+            // this.props.history.push('/Home/' + this.props.user.nickName);
+            this.props.backChangeInfo();
         }).catch((error) => {
             console.log("err");
-            console.log(error.response);
+            console.log(error);
         });
 	}
 
@@ -98,12 +100,15 @@ class ChangeInfo extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.userReducer.isLogin,
+        user: state.userReducer.user,
         userID: state.userReducer.id,
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
+    	updateInfo: (newInfo) => { dispatch(updateInfo(newInfo)) },
+    	backChangeInfo: () => { dispatch(backChangeInfo()) },
     }
 }
 
