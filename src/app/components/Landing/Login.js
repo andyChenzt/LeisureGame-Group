@@ -32,11 +32,11 @@ class Login extends Component {
             const token = res.data.token;
             const id = res.data.id;
             console.log("userinfo",userInfo, "id", id), "token",token;
+            
             localStorage.setItem('token', token);
-
             this.props.doLogin();
-            this.props.saveUserInfo(userInfo, id, token);
-            const nickName = userInfo.nickName;
+            this.props.saveUserInfo(userInfo.info, id, token);
+            const nickName = userInfo.info.nickName;
             console.log("nickName", nickName);
             this.props.history.push('/Home/' + nickName);
         }).catch((error) => {

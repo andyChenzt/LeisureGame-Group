@@ -22,16 +22,8 @@ class Home extends Component {
         e.preventDefault();
         this.props.removeUserInfo();
         this.props.doLogout();
+        localStorage.removeItem('token');
         this.props.history.push('/');
-        // if(this.props.isChangeInfo) {
-        //     console.log("save clicked");
-        //     console.log(this.refs);
-        //     const changeFirstName = ReactDOM.findDOMNode(this.refs.changeFirstName).value;
-        //     console.log(changeFirstName);
-        // } else {
-            
-        // }
-        
     }
 
     handleChangeButton = (e) => {

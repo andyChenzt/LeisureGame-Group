@@ -57,8 +57,19 @@ router.post("/account/signup", function(req, res, next) {
     });
 
     user.save().then(function() {
-        res.send({success: 1,
-                  user: user.deleteSensitiveInfo()});
+        const info = user.deleteSensitiveInfo();
+        const id = user._id;
+        console.log("id", id);  
+        jwt.sign({user: info}, 'secretKey', (err, token) => {
+            console.log("token", token);
+            res.send({ success: 1,
+                user: info,//user.deleteSensitiveInfo(),
+                id: id,
+                token: token
+            });
+        })
+        // res.send({success: 1,
+        //           user: user.deleteSensitiveInfo()});
     }).catch((next) => {
         res.status(500).json({
             success: 0,
@@ -91,13 +102,15 @@ router.post("/account/login", function(req, res, next) {
             }
             if(isMatch) {
                 console.log("correct");
-                var info = user.deleteSensitiveInfo();
+                const info = user.deleteSensitiveInfo();
                 const id = user._id;
                 console.log("id", id);
                 // generate token
+                console.log("generate token");
                 jwt.sign({user: info}, 'secretKey', (err, token) => {
+                    console.log(token);
                     res.send({ success: 1,
-                        user: info,//user.deleteSensitiveInfo(),
+                        user: {info:info},//user.deleteSensitiveInfo(),
                         id: id,
                         token: token
                     });

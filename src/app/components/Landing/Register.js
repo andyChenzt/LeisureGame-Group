@@ -40,13 +40,16 @@ class Register extends Component {
             console.log("registered");
             console.log(res.data);
             const userInfo = res.data.user;
+            const id = res.data.id;
+            const token = res.data.token;
             console.log(userInfo);
+            localStorage.setItem('token', token);
             this.props.doLogin();
-            this.props.saveUserInfo({info: userInfo});
+            this.props.saveUserInfo(userInfo, id);
             this.props.history.push('/Home');
         }).catch((error) => {
             console.log("err");
-            console.log(error.response);
+            console.log(error);
         });
     }
 
@@ -185,7 +188,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         doLogin: () => { dispatch(login()) },
-        saveUserInfo: (userInfo) => { dispatch(saveUserInfo(userInfo)) }
+        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) }
     }
 }
 
