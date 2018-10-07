@@ -144,6 +144,7 @@ class DrawCon extends Component {
     }
 
     handleExit = () => {
+        const nickName = this.props.user.nickName
         this.props.history.push('/Home/' + nickName);
     }
 

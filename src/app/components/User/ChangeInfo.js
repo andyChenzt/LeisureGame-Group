@@ -14,16 +14,20 @@ class ChangeInfo extends Component {
 		var changeLastName = ReactDOM.findDOMNode(this.refs.changeLastName).value;
 		var changeNickName = ReactDOM.findDOMNode(this.refs.changeNickName).value;
 		var changeEmailName = ReactDOM.findDOMNode(this.refs.changeEmail).value;
-		if(changeFirstName == "") {
+		if(changeFirstName === "undefined") {
+            console.log("undefined");
 			changeFirstName = this.props.user.firstName;
 		}
-		if(changeLastName === "") {
+		if(changeLastName === "undefined") {
+            console.log("undefined");
 			changeLastName = this.props.user.changeLastName;
 		}
-		if(changeNickName === "") {
+		if(changeNickName === "undefined") {
+            console.log("undefined");
 			changeNickName = this.props.user.changeNickName;
 		}
-		if(changeEmailName === "") {
+		if(changeEmailName === "undefined") {
+            console.log("undefined");
 			changeEmailName = this.props.user.changeEmailName;
 		}
         console.log(changeFirstName);
@@ -88,7 +92,7 @@ class ChangeInfo extends Component {
                     </div>
 					<input type="text" className="form-control" placeholder="email" ref="changeEmail"/>
 				</div>
-				<button className="btn btn-danger" onClick={this.handleSave}>save</button>
+				<button className="btn btn-danger" onClick={this.handleSave}>Save</button>
 
             </div>
 	    );

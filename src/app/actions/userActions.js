@@ -61,11 +61,11 @@ export const updateInfo = (newInfo) => {
 	}
 }
 
-export const showAlert = () => {
-	console.log("updateInfo");
+export const showAlert = (errMsg) => {
+	console.log("showAlert");
 	return {
 		type: types.USER_SHOWALERT,
-		payload: true
+		payload: errMsg
 	}
 }
 

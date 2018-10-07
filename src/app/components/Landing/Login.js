@@ -43,7 +43,7 @@ class Login extends Component {
             console.log("err", error.response);
             if(error.response.status === 403) {
                 console.log("invaild username or password");
-                this.props.showAlert();
+                this.props.showAlert("Invaild username or password");
                 setTimeout(() => {
                     this.props.dismissAlert();
                 }, 2000);
@@ -61,7 +61,7 @@ class Login extends Component {
     render() {
         console.log(this.props);
         const { onSubmitClick } = this.props;
-        const alert = this.props.isLoginFailed ? <Alert /> : <div></div> ;
+        const alert = this.props.isError ? <Alert msg={this.props.errorMsg}/> : <div></div> ;
         return (
             <div className="container-fluid h-100">
                 <div className="row justify-content-center h-100">
@@ -164,7 +164,9 @@ class Login extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.userReducer.isLogin,
-        isLoginFailed: state.userReducer.isLoginFailed
+        isError: state.userReducer.isError,
+        loginFailedMsg: state.userReducer.loginFailedMsg,
+        errorMsg: state.userReducer.errorMsg
     }
 };
 
@@ -172,7 +174,7 @@ const mapDispatchToProps = (dispatch) => {
     return {
         doLogin: () => { dispatch(login()) },
         saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) },
-        showAlert: () => { dispatch(showAlert()) },
+        showAlert: (errMsg) => { dispatch(showAlert(errMsg)) },
         dismissAlert: () => { dispatch(dismissAlert()) }
     }
 }

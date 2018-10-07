@@ -2,15 +2,15 @@ import React, { Component } from 'react';
 import {StyleShee,View,TextInput} from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
+import Alert from "../Alert/Alert";
 import axios from 'axios';
 import "../../../../public/css/Login.css";
 import { connect } from 'react-redux';
-import { login, saveUserInfo } from '../../actions/userActions'
+import { login, saveUserInfo, showAlert, dismissAlert } from '../../actions/userActions'
 
 class Register extends Component {
     constructor() {
         super();
-
     }
 
     componentWillMount = () => {
@@ -28,29 +28,38 @@ class Register extends Component {
         console.log("clicked login");
         console.log(this.props);
         e.preventDefault();
-        let newUser = {
-            firstName: ReactDOM.findDOMNode(this.refs.firstName).value,
-            lastName: ReactDOM.findDOMNode(this.refs.lastName).value,
-            nickName: ReactDOM.findDOMNode(this.refs.nickName).value,
-            email: ReactDOM.findDOMNode(this.refs.email).value,
-            password: ReactDOM.findDOMNode(this.refs.password).value,
+        if(ReactDOM.findDOMNode(this.refs.password).value === ReactDOM.findDOMNode(this.refs.reEnteredPassword).value) {
+
+            let newUser = {
+                firstName: ReactDOM.findDOMNode(this.refs.firstName).value,
+                lastName: ReactDOM.findDOMNode(this.refs.lastName).value,
+                nickName: ReactDOM.findDOMNode(this.refs.nickName).value,
+                email: ReactDOM.findDOMNode(this.refs.email).value,
+                password: ReactDOM.findDOMNode(this.refs.password).value,
+            }
+            console.log(newUser);
+            axios.post('/api/account/signup', newUser).then(res => {
+                console.log("registered");
+                console.log(res.data);
+                const userInfo = res.data.user;
+                const id = res.data.id;
+                const token = res.data.token;
+                console.log(userInfo);
+                localStorage.setItem('token', token);
+                this.props.doLogin();
+                this.props.saveUserInfo(userInfo, id);
+                this.props.history.push('/Home');
+            }).catch((error) => {
+                console.log("err");
+                console.log(error);
+            });
+        } else {
+            console.log("different");
+            this.props.showAlert("Password and Re-Enter Password is different.");
+            setTimeout(() => {
+                this.props.dismissAlert();
+            }, 2000);
         }
-        console.log(newUser);
-        axios.post('/api/account/signup', newUser).then(res => {
-            console.log("registered");
-            console.log(res.data);
-            const userInfo = res.data.user;
-            const id = res.data.id;
-            const token = res.data.token;
-            console.log(userInfo);
-            localStorage.setItem('token', token);
-            this.props.doLogin();
-            this.props.saveUserInfo(userInfo, id);
-            this.props.history.push('/Home');
-        }).catch((error) => {
-            console.log("err");
-            console.log(error);
-        });
     }
 
     handleLogin = (e) => {
@@ -58,6 +67,7 @@ class Register extends Component {
     }
 
     render() {
+        const alert = this.props.isError ? <Alert msg={this.props.errorMsg}/> : <div></div> ;
 
         return (
             <div className="container-fluid h-100">
@@ -69,9 +79,10 @@ class Register extends Component {
 
                     <div className="col-6 col-sm-6 col-md-6 col-lg-6 col-xl-6">
                         <div className="container mt-3">
-                            <h2 className="title">Join us NOW!</h2>
+                            
+                            <h2 className="title">Join Us NOW!</h2>
                             <br/>
-
+                            {alert}
                             <form>
                                 <div className="input-group mb-3">
                                     <div className="input-group-prepend">
@@ -119,6 +130,16 @@ class Register extends Component {
                                         <span className="input-group-text">Password</span>
                                     </div>
                                     <input type="password" className="form-control" placeholder="Password" ref="password"
+                                           onChange={this.handleChangePassword} required title="Password is needed"/>
+                                </div>
+                            </form>
+
+                            <form>
+                                <div className="input-group mb-3">
+                                    <div className="input-group-prepend">
+                                        <span className="input-group-text">Re-Enter Password</span>
+                                    </div>
+                                    <input type="password" className="form-control" placeholder="Password" ref="reEnteredPassword"
                                            onChange={this.handleChangePassword} required title="Password is needed"/>
                                 </div>
                             </form>
@@ -181,14 +202,17 @@ class Register extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.userReducer.isLogin,
-
-    }
+        isError: state.userReducer.isError,
+        errorMsg: state.userReducer.errorMsg,
+    }   
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         doLogin: () => { dispatch(login()) },
-        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) }
+        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) },
+        showAlert: (errMsg) => { dispatch(showAlert(errMsg)) },
+        dismissAlert: () => { dispatch(dismissAlert()) }
     }
 }
 

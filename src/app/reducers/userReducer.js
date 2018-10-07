@@ -9,7 +9,9 @@ const initState = {
 	id: "",
 	token: "",
 	isChangeInfo: false,
-	isLoginFailed: false
+	isError: false,
+	// loginFailedMsg: "Wrong email or password.",
+	errorMsg: ""
 };
 
 const userReducer = (state = initState, action) => {
@@ -70,21 +72,21 @@ const userReducer = (state = initState, action) => {
 					firstName: action.payload.firstName,
 					lastName: action.payload.lastName
 				}
-				
 			}
 		case types.USER_SHOWALERT:
 			console.log("reducer show alert");
 			console.log(action.payload);
 			return {
 				...state,
-				isLoginFailed: action.payload
+				isError: true,
+				errorMsg: action.payload
 			}
 		case types.USER_DISMISSALERT:
 			console.log("reducer dismiss alert");
 			console.log(action.payload);
 			return {
 				...state,
-				isLoginFailed: action.payload
+				isError: action.payload
 			}
 		default:
 			return state;
