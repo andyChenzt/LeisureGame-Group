@@ -1,5 +1,4 @@
 const server = require("../server");
-// const io = require("./index");
 const io = require("socket.io");
 
 const emptyRoom = ["Room1", "Room2"];

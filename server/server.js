@@ -45,8 +45,8 @@ app.use(function(err, req, res, next) {
 
 // init socket
 
-const myServer = server.listen(process.env.port || 3001, () => {
-  console.log("listening 3001");
+const myServer = server.listen(process.env.port || 80, () => {
+  console.log("listening 80");
 });
 
 // socketServer(myServer);

@@ -20,13 +20,14 @@ export const roomname = "room name";
 class DrawCon extends Component {
     constructor() {
         super();
+        this.state = {board: null};
     }
 
 
 	componentWillMount = () => {
-        // if(!this.props.isLogin) {
-        //     this.props.history.push('/');
-        // }
+        if(!this.props.isLogin) {
+            this.props.history.push('/');
+        }
     }
 
     componentDidMount = () => {
@@ -123,8 +124,18 @@ class DrawCon extends Component {
             this.props.setPlaying();
             this.props.startGame();
             this.props.deleteQuestion();
+            this.state.board = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
         }
         
+    }
+
+    handleClean = () => {
+        console.log("clicked clean");
+        const newBoard = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
+        this.setState(
+            { board: newBoard }
+        );
+        console.log(this.state.board);
     }
 
     handleBack = () => {
@@ -136,8 +147,14 @@ class DrawCon extends Component {
         this.props.history.push('/Home/' + nickName);
     }
 
+    re = () => {
+        return (
+            <P5Wrapper sketch={drawSketch} />
+        )
+    }
+
 	render() {
-        const board = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
+        this.state.board = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
         const question = this.props.hasQuestion ? "Question: " + this.props.question : "Waiting..."; 
 
         if(this.props.isWaiting) {
@@ -183,15 +200,15 @@ class DrawCon extends Component {
 
                         <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             <div className="user">
-                                {/*<User />*/}
                                 <OtherUser user={this.props.user}/>
-                                <button type="button" className="btn btn-danger btn-block" onClick={this.handleBack}>exit</button>
+                                {/*<button type="button" className="btn btn-danger btn-block" onClick={this.handleClean}>Clean</button>*/}
+                                <button type="button" className="btn btn-danger btn-block" onClick={this.handleBack}>Exit</button>
                             </div>
                         </div>
 
                         <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
                             {/*<P5Wrapper sketch={sketch} />*/}
-                            {board}
+                            {this.state.board}
                         </div>
 
                         <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
@@ -199,20 +216,6 @@ class DrawCon extends Component {
                         </div>
                     </div>
                 </div>
-                // <div>
-                //     <div className="App-Draw">
-                //         <P5Wrapper sketch={sketch} />
-                //     </div>
-                //     <div>
-                //         <input></input>
-                //         <button>send</button>
-                //     </div>
-                //
-                //     <div>
-                //         <User />
-                //         <OtherUser />
-                //     </div>
-                // </div>
             );
         }
 		
