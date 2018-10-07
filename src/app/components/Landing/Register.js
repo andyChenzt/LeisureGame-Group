@@ -6,7 +6,7 @@ import Alert from "../Alert/Alert";
 import axios from 'axios';
 import "../../../../public/css/Login.css";
 import { connect } from 'react-redux';
-import { login, saveUserInfo, showAlert, dismissAlert, saveUserInfo } from '../../actions/userActions'
+import { login, saveUserInfo, showAlert, dismissAlert } from '../../actions/userActions'
 
 class Register extends Component {
     constructor() {
