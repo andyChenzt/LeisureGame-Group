@@ -56,28 +56,21 @@ class App extends Component {
     render() {
         return (
             <div className="App">
-                {/*<Head />*/}
-                {/*<div className="App A">*/}
-                    <NavigationBar />
-                {/*</div>*/}
                 <BrowserRouter>
+                    <div>
+                        <NavigationBar />
                         <div className="App-main">
                             <Route exact path='/' component={Login} />   
                             <Route exact path='/register' component={Register} />
                             <Route path='/snake' component={Snake} />
                             <Route path='/drawing' component={Draw} />
-                            {/*<Route path='/gameScoreInfo' component={GameScoreInfo} />*/}
                             <Route path='/home' component={Home} />
-                            {/*<Route path='/score/:nickName' component={Score} />*/}
-                            {/*<Route path='/userInformation' component={Score} />*/}
                         </div>
+                    </div>
+                        
                 </BrowserRouter>
 
-                    <Foot />
-
-                {/* < Game Score register in Score list  << 
-          onCreate={this.handleCreateScoreList}
-        /> */}
+                <Foot />
 
             </div>
      

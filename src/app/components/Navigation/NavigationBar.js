@@ -9,22 +9,17 @@ export default class NavigationBar extends Component {
             <div>
                 <nav className="navbar navbar-expand-sm bg-dark navbar-dark">
                     <h2 className="logo" >LeisureGame     </h2>
-                    {/*<img src={header} alt="header" style="width:400px;"/>*/}
-
                     <ul className="navbar-nav">
 
                         <li className="nav-item">
-                            <a className="nav-link" href="/Home">HomePage</a>
+                            <NavLink className="nav-link nav-item" to="/Home">Home</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/drawing">Drawing [online]</a>
+                            <NavLink className="nav-link nav-item" to="/drawing">Drawing [online]</NavLink>
                         </li>
                         <li className="nav-item">
-                            <a className="nav-link" href="/snake">Lycorexia [standalone]</a>
+                            <NavLink className="nav-link nav-item" to="/snake">Lycorexia [standalone]</NavLink>
                         </li>
-                        {/*<li className="nav-item">*/}
-                        {/*<a className="nav-link" href="/score">Score</a>*/}
-                        {/*</li>*/}
                     </ul>
                 </nav>
             </div>
