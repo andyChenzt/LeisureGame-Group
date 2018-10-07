@@ -39,8 +39,10 @@ class Login extends Component {
             console.log("nickName", nickName);
             this.props.history.push('/Home/' + nickName);
         }).catch((error) => {
-            console.log("err");
-            console.log(error.response);
+            console.log("err", error.response);
+            if(error.response.status === 403) {
+                console.log("invaild username or password");
+            }
         });
         // this.props.history.push('/Home');
     }

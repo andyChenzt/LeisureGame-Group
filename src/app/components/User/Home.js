@@ -17,20 +17,20 @@ class Home extends Component {
         }
     }
 
-    handleLogoutSave = (e) => {
+    handleLogout = (e) => {
         console.log("clicked");
         e.preventDefault();
-
-        if(this.props.isChangeInfo) {
-            console.log("save clicked");
-            console.log(this.refs);
-            const changeFirstName = ReactDOM.findDOMNode(this.refs.changeFirstName).value;
-            console.log(changeFirstName);
-        } else {
-            this.props.removeUserInfo();
-            this.props.doLogout();
-            this.props.history.push('/');
-        }
+        this.props.removeUserInfo();
+        this.props.doLogout();
+        this.props.history.push('/');
+        // if(this.props.isChangeInfo) {
+        //     console.log("save clicked");
+        //     console.log(this.refs);
+        //     const changeFirstName = ReactDOM.findDOMNode(this.refs.changeFirstName).value;
+        //     console.log(changeFirstName);
+        // } else {
+            
+        // }
         
     }
 
@@ -61,7 +61,7 @@ class Home extends Component {
                         {component}
                         <br/>
                         <button className="btn btn-info" onClick={this.handleChangeButton}>{backChangeBtn}</button>
-                        <button className="btn btn-danger" onClick={this.handleLogoutSave}>{logoutSaveBtn}</button>
+                        <button className="btn btn-danger" onClick={this.handleLogout}>Logout</button>
 
                     </div>
                 </div>

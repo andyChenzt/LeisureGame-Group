@@ -48,7 +48,6 @@ class ChangeInfo extends Component {
             console.log(userInfo);
             console.log(this.props.user.nickName);
             this.props.updateInfo(userInfo);
-            // this.props.history.push('/Home/' + this.props.user.nickName);
             this.props.backChangeInfo();
         }).catch((error) => {
             console.log("err");

@@ -13,9 +13,9 @@ import { Redirect } from 'react-router-dom';
 
 class Snake extends Component {
     componentWillMount = () => {
-        // if(!this.props.isLogin) {
-        //     this.props.history.push('/');
-        // }
+        if(!this.props.isLogin) {
+            this.props.history.push('/');
+        }
     }
 
     render() {
