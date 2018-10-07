@@ -9,7 +9,7 @@ import "../../../public/css/Draw.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import io from 'socket.io-client';
-import { startGame, setPlayer1, setPlayer2, getQuestion } from '../actions/gameActions';
+import { startGame, setPlayer1, setPlayer2, getQuestion, deleteQuestion ,setWaiting, setPlaying } from '../actions/gameActions';
 
 
 // var allowedOrigins = "http://localhost:3001 ";       //domain_1:* domain_2:*
@@ -107,6 +107,10 @@ class DrawCon extends Component {
             console.log(msg);
         })
 
+        socket.on('exit', (msg) => {
+            this.props.setWaiting();
+        })
+
 
     }
 
@@ -116,9 +120,16 @@ class DrawCon extends Component {
             console.log(this.props);
             e.preventDefault();
             socket.emit('startGame',"player1 startDrawing");
+            this.props.setPlaying();
             this.props.startGame();
+            this.props.deleteQuestion();
         }
         
+    }
+
+    handleBack = () => {
+        this.props.setWaiting();
+        socket.emit('exit', "player exit");
     }
 
     handleExit = () => {
@@ -173,8 +184,8 @@ class DrawCon extends Component {
                         <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             <div className="user">
                                 {/*<User />*/}
-                                <OtherUser />
-                                <button type="button" className="btn btn-danger btn-block">exit</button>
+                                <OtherUser user={this.props.user}/>
+                                <button type="button" className="btn btn-danger btn-block" onClick={this.handleBack}>exit</button>
                             </div>
                         </div>
 
@@ -225,6 +236,9 @@ const mapDispatchToProps = (dispatch) => {
         setPlayer1: () => { dispatch(setPlayer1()) },  
         setPlayer2: () => { dispatch(setPlayer2()) },  
         getQuestion: (question) => { dispatch(getQuestion(question)) },
+        setWaiting: () => { dispatch(setWaiting()) }, 
+        setPlaying: () => { dispatch(setPlaying()) }, 
+        deleteQuestion: () => { dispatch(deleteQuestion()) }, 
     }
 };
 

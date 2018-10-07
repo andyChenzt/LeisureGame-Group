@@ -38,6 +38,24 @@ const gameReducer = (state = initState, action) => {
 				hasQuestion: true,
 				question: action.payload,
 			}
+		case types.GAME_DELETEQUESTION:
+			console.log("reducer GAME_DELETEQUESTION");
+			return {
+				...state,
+				hasQuestion: action.payload,
+			}
+		case types.GAME_SETWAITING:
+			console.log("reducer GAME_SETWAITING");
+			return {
+				...state,
+				isWaiting: action.payload,
+			}
+		case types.GAME_SETPLAYING:
+			console.log("reducer GAME_SETPLAYING");
+			return {
+				...state,
+				isWaiting: action.payload,
+			}
 		
 		default:
 			return state;

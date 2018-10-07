@@ -78,6 +78,12 @@ module.exports.drawingSocketServer = function(server) {
 	    	console.log(rooms);
 	    });
 
+	    socket.on('exit', (msg) => {
+	    	console.log(msg);
+	    	let rooms = Object.keys(socket.rooms);
+	    	socket.broadcast.to(rooms[1]).emit('exit', "player exit");
+	    })
+
 
 	    socket.on('data', function (data) {
 	        console.log(socket.id +': ' + data.msg);

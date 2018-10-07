@@ -31,3 +31,27 @@ export const getQuestion = (question) => {
 		payload: question
 	}
 }
+
+export const deleteQuestion = (question) => {
+	console.log("delQuestion action");
+	return {
+		type: types.GAME_DELETEQUESTION,
+		payload: false	
+	}
+}
+
+export const setWaiting = () => {
+	console.log("setWaiting action");
+	return {
+		type: types.GAME_SETWAITING,
+		payload: true
+	}
+}
+
+export const setPlaying = () => {
+	console.log("setPlaying action");
+	return {
+		type: types.GAME_SETPLAYING,
+		payload: false
+	}
+}
