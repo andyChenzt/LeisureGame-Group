@@ -2,10 +2,11 @@ import React, { Component } from 'react';
 import {StyleShee,View,TextInput} from 'react';
 import ReactDOM from 'react-dom';
 import { Redirect } from 'react-router-dom';
+import Alert from "../Alert/Alert";
 import axios from 'axios';
 import "../../../../public/css/Login.css";
 import { connect } from 'react-redux';
-import { login, saveUserInfo } from '../../actions/userActions'
+import { login, saveUserInfo, showAlert, dismissAlert } from '../../actions/userActions'
 
 class Login extends Component {
    
@@ -42,6 +43,10 @@ class Login extends Component {
             console.log("err", error.response);
             if(error.response.status === 403) {
                 console.log("invaild username or password");
+                this.props.showAlert();
+                setTimeout(() => {
+                    this.props.dismissAlert();
+                }, 2000);
             }
         });
         // this.props.history.push('/Home');
@@ -56,6 +61,7 @@ class Login extends Component {
     render() {
         console.log(this.props);
         const { onSubmitClick } = this.props;
+        const alert = this.props.isLoginFailed ? <Alert /> : <div></div> ;
         return (
             <div className="container-fluid h-100">
                 <div className="row justify-content-center h-100">
@@ -70,7 +76,7 @@ class Login extends Component {
                             <h2 className="title">START YOUR JOY TIME</h2>
                             <br/>
                             <br/>
-
+                            {alert}
                             {/*<p class="text">The form below contains two input elements; one of type text and one of type*/}
                                 {/*password:</p>*/}
                             <form>
@@ -158,14 +164,16 @@ class Login extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.userReducer.isLogin,
-
+        isLoginFailed: state.userReducer.isLoginFailed
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
         doLogin: () => { dispatch(login()) },
-        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) }
+        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) },
+        showAlert: () => { dispatch(showAlert()) },
+        dismissAlert: () => { dispatch(dismissAlert()) }
     }
 }
 

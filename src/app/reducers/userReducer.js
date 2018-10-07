@@ -8,7 +8,8 @@ const initState = {
 	user: {},
 	id: "",
 	token: "",
-	isChangeInfo: false
+	isChangeInfo: false,
+	isLoginFailed: false
 };
 
 const userReducer = (state = initState, action) => {
@@ -68,6 +69,20 @@ const userReducer = (state = initState, action) => {
 					lastName: action.payload.lastName
 				}
 				
+			}
+		case types.USER_SHOWALERT:
+			console.log("reducer show alert");
+			console.log(action.payload);
+			return {
+				...state,
+				isLoginFailed: action.payload
+			}
+		case types.USER_DISMISSALERT:
+			console.log("reducer dismiss alert");
+			console.log(action.payload);
+			return {
+				...state,
+				isLoginFailed: action.payload
 			}
 		default:
 			return state;

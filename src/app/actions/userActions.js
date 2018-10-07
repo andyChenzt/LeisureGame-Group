@@ -45,7 +45,6 @@ export const goChangeInfo = () => {
 	}
 }
 
-// nothing
 export const backChangeInfo = () => {
 	console.log("change info");
 	return {
@@ -60,7 +59,22 @@ export const updateInfo = (newInfo) => {
 		type: types.USER_UPDATEINFO,
 		payload: newInfo
 	}
-	
+}
+
+export const showAlert = () => {
+	console.log("updateInfo");
+	return {
+		type: types.USER_SHOWALERT,
+		payload: true
+	}
+}
+
+export const dismissAlert = () => {
+	console.log("updateInfo");
+	return {
+		type: types.USER_DISMISSALERT,
+		payload: false
+	}
 }
 
 // need to do
