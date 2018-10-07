@@ -2,9 +2,6 @@ import React, { Component } from 'react';
 import GameScoreInfo from './GameScoreInfo';
 
 const GameScoreInfoList = () => {
-//   static defaultProps = {
-//     data: []
-//   }
    
     const { data } = this.props;
     const ScoreList = data.map(

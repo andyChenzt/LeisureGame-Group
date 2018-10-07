@@ -10,12 +10,11 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import io from 'socket.io-client';
 import { startGame, setPlayer1, setPlayer2, getQuestion, deleteQuestion ,setWaiting, setPlaying } from '../actions/gameActions';
+import { saveUserInfo} from '../actions/userActions';
 
 
-// var allowedOrigins = "http://localhost:3001 ";       //domain_1:* domain_2:*
 export const socket = io('/drawingGameSocket'); 
 export const roomname = "room name";
-// let socket;
 
 class DrawCon extends Component {
     constructor() {
@@ -25,9 +24,14 @@ class DrawCon extends Component {
 
 
 	componentWillMount = () => {
-        if(!this.props.isLogin) {
+        const token = localStorage.getItem('token');
+        if(!token) {
             this.props.history.push('/');
         }
+        const user = localStorage.getItem('user');
+        const id = localStorage.getItem('id');
+        console.log(JSON.parse(user));
+        this.props.saveUserInfo(JSON.parse(user), id, token);
     }
 
     componentDidMount = () => {
@@ -45,12 +49,9 @@ class DrawCon extends Component {
 
     socketConnect = () => {
         console.log("try to connect");
-        // this.socket = io.connect('http://localhost:3001/drawingGameSocket'); //, {origins: allowedOrigins}
         console.log(socket);
         socket.on('connect', () => {
             console.log(socket, "connect to drawingGameSocket");
-            // this.sok = this.socket;
-            // console.log("ttt sok" + sok);
         });
 
         socket.on('getRoom', (roomName) => {
@@ -115,6 +116,14 @@ class DrawCon extends Component {
 
     }
 
+    handleRefresh = (e) => {
+        console.log("refresh");
+        e.preventDefault();
+        socket.emit('disconnect');
+        this.socketConnect();
+        // this.props.history.push('/drawing');
+    }
+
     handleStart = (e) => {
         if(this.props.hasQuestion) {
             console.log("clicked start");
@@ -129,8 +138,9 @@ class DrawCon extends Component {
         
     }
 
-    handleClean = () => {
+    handleClean = (e) => {
         console.log("clicked clean");
+        e.preventDefault();
         const newBoard = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
         this.setState(
             { board: newBoard }
@@ -138,12 +148,14 @@ class DrawCon extends Component {
         console.log(this.state.board);
     }
 
-    handleBack = () => {
+    handleBack = (e) => {
+        e.preventDefault();
         this.props.setWaiting();
         socket.emit('exit', "player exit");
     }
 
-    handleExit = () => {
+    handleExit = (e) => {
+        e.preventDefault();
         const nickName = this.props.user.nickName
         this.props.history.push('/Home/' + nickName);
     }
@@ -179,11 +191,15 @@ class DrawCon extends Component {
                             <br/>
                             <br/>
 
-                            <button type="button" className="btn btn-success btn-block" onClick={this.handleStart}>start</button>
+                            <button type="button" className="btn btn-success btn-block" onClick={this.handleRefresh}>Refresh</button>
                             <br/>
                             <br/>
 
-                            <button type="button" className="btn btn-danger btn-block" onClick={this.handleExit}>exit</button>
+                            <button type="button" className="btn btn-success btn-block" onClick={this.handleStart}>Start</button>
+                            <br/>
+                            <br/>
+
+                            <button type="button" className="btn btn-danger btn-block" onClick={this.handleExit}>Exit</button>
                             <br/>
                             <br/>
                         </div>
@@ -202,7 +218,6 @@ class DrawCon extends Component {
                         <div className="col-2 col-sm-2 col-md-2 col-lg-2 col-xl-2">
                             <div className="user">
                                 <OtherUser user={this.props.user}/>
-                                {/*<button type="button" className="btn btn-danger btn-block" onClick={this.handleClean}>Clean</button>*/}
                                 <button type="button" className="btn btn-danger btn-block" onClick={this.handleBack}>Exit</button>
                             </div>
                         </div>
@@ -243,6 +258,7 @@ const mapDispatchToProps = (dispatch) => {
         setWaiting: () => { dispatch(setWaiting()) }, 
         setPlaying: () => { dispatch(setPlaying()) }, 
         deleteQuestion: () => { dispatch(deleteQuestion()) }, 
+        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) },
     }
 };
 

@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "../../../../public/css/OtherUser.css";
 import usericon from "../../assert/image/usericon2.png";
 
-// same conponent just use same component is ok, just different data
 const OtherUser = (props) => {
     
     return (

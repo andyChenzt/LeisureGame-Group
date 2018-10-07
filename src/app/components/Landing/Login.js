@@ -34,6 +34,8 @@ class Login extends Component {
             console.log("userinfo",userInfo, "id", id), "token",token;
             
             localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(userInfo.info));
+            localStorage.setItem('id', id);
             this.props.doLogin();
             this.props.saveUserInfo(userInfo.info, id, token);
             const nickName = userInfo.info.nickName;
@@ -49,7 +51,6 @@ class Login extends Component {
                 }, 2000);
             }
         });
-        // this.props.history.push('/Home');
     }
 
     handleGoToRegister = (e) => {
@@ -77,8 +78,6 @@ class Login extends Component {
                             <br/>
                             <br/>
                             {alert}
-                            {/*<p class="text">The form below contains two input elements; one of type text and one of type*/}
-                                {/*password:</p>*/}
                             <form>
                                 <div className="form-group">
                                     <label className="text" htmlFor="usr">Name:</label>
@@ -106,28 +105,7 @@ class Login extends Component {
                                 </div>
                             </form>
                         </div>
-                        {/*<div className="App-Draw">*/}
-                            {/*<div className="App-Form" >*/}
-                                {/*<form>*/}
-                                    {/*<input type="text" className="App-ID" placeholder="EMAIL"*/}
-                                           {/*ref="email"*/}
-                                           {/*onChange={this.handleChangeID} />*/}
-
-                                    {/*<input className="App-Password" placeholder="PASSWORD"*/}
-                                           {/*ref="password"*/}
-                                           {/*onChange={this.handleChangePassword}*/}
-                                           {/*type="password" />*/}
-                                    {/*<button className="App-Button" type="submit" onClick={this.handleSubmit}>*/}
-                                        {/*Login*/}
-                                    {/*</button>*/}
-
-                                    {/*<button type="submit" onClick={this.handleGoToRegister}>*/}
-                                        {/*Do no have account? Register now*/}
-                                    {/*</button>*/}
-
-                                {/*</form>*/}
-                            {/*</div>*/}
-                        {/*</div>*/}
+                        
                     </div>
 
                     <div className="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
@@ -135,27 +113,7 @@ class Login extends Component {
                     </div>
                 </div>
             </div>
-            // <div className="App-Draw">
-            //     <div className="App-Form" >
-            //         <form>
-            //             <input className="App-ID" placeholder="EMAIL"
-            //                 ref="email"
-            //                 onChange={this.handleChangeID} />
-            //             <input className="App-Password" placeholder="PASSWORD"
-            //                 ref="password"
-            //                 onChange={this.handleChangePassword}
-            //                 type="password" />
-            //             <button className="App-Button" type="submit" onClick={this.handleSubmit}>
-            //                 Login
-            //             </button>
-            //
-            //             <button type="submit" onClick={this.handleGoToRegister}>
-            //                 Do no have account? Register now
-            //             </button>
-            //
-            //         </form>
-            //     </div>
-            // </div>
+            
         );
     }
 

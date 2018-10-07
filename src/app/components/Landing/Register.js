@@ -6,7 +6,7 @@ import Alert from "../Alert/Alert";
 import axios from 'axios';
 import "../../../../public/css/Login.css";
 import { connect } from 'react-redux';
-import { login, saveUserInfo, showAlert, dismissAlert } from '../../actions/userActions'
+import { login, saveUserInfo, showAlert, dismissAlert, saveUserInfo } from '../../actions/userActions'
 
 class Register extends Component {
     constructor() {
@@ -160,37 +160,7 @@ class Register extends Component {
                     </div>
                 </div>
             </div>
-            // <div className="App-Draw">
-            //     <div className="App-Form" >
-            //         <form>
-            //             <input className="" placeholder="First Name"
-            //                 ref="firstName"
-            //                 onChange={this.handleChangeID} />
-            //
-            //             <input className="" placeholder="Last Name"
-            //                 ref="lastName"
-            //                 onChange={this.handleChangeID} />
-            //
-            //             <input className="" placeholder="Nick Name"
-            //                 ref="nickName"
-            //                 onChange={this.handleChangeID} />
-            //
-            //             <input className="" placeholder="eMail"
-            //                 ref="email"
-            //                 onChange={this.handleChangeID} />
-            //
-            //             <input className="" placeholder="Password"
-            //                 ref="password"
-            //                 onChange={this.handleChangePassword}
-            //                 type="password" />
-            //
-            //              <button type="submit" onClick={this.handleRegister}>
-            //                 Register
-            //             </button>
-            //
-            //         </form>
-            //     </div>
-            // </div>
+            
         );
     }
     

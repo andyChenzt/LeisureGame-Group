@@ -93,10 +93,10 @@ module.exports.drawingSocketServer = function(server) {
 
 	    socket.on('mouseMove', function (data) {
 	        // console.log(socket.id + data ); //+ ': x' + data.x + ', y' + data.y
-	        socket.broadcast.emit('newMove', data);
-	        // let rooms = Object.keys(socket.rooms);
-	        // console.log(rooms);
-	        // socket.broadcast.to(rooms[1]).emit('newMove', data);
+	        // socket.broadcast.emit('newMove', data);
+	        let rooms = Object.keys(socket.rooms);
+	        console.log(rooms);
+	        socket.broadcast.to(rooms[1]).emit('newMove', data);
 	    });
 
 	    socket.on('snakeMove', function(keyCode) {

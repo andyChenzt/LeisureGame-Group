@@ -166,25 +166,6 @@ router.put("/account/:id", verifyToken, function(req, res, next) {
         }
     
     });
-
-    // doing logic
-    // var newInfo = {
-    //     firstName: req.body.firstName,
-    //     lastName: req.body.lastName,
-    //     nickName: req.body.nickName,
-    //     email: req.body.email,
-    //     password: req.body.password
-    // };
-
-    // User.findOneAndUpdate({_id: req.params.id}, newInfo).then(function() {
-    //     res.send({ success: 1,
-    //                 user: newInfo });
-    // }).catch(() => {
-    //     res.status(403).json({
-    //         success: 0,
-    //         error: 'server error!'
-    //     });
-    // });
     
 });
 

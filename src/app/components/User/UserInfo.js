@@ -14,12 +14,6 @@ const UserInfo = (props) => {
                 <li className="list-group-item">Nick Name: {props.user.nickName}</li>
                 <li className="list-group-item">Email: {props.user.email}</li>
             </ul>
-            {/*<h3>{props.user.nickName}</h3>*/}
-            {/*<h3>drawingGame</h3>*/}
-            {/*<h3>{props.user.drawing}</h3>*/}
-
-            {/*<h3>snakeGame</h3>*/}
-
 
         </div>
     );

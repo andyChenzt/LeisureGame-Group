@@ -26,11 +26,7 @@ const userReducer = (state = initState, action) => {
 		case types.USER_LOGOUT:
 			console.log("reducer logout");
 			return initState;
-			// {
-
-			// 	// ...state,
-			// 	// isLogin: false // action.payload
-			// }
+			
 		case types.USER_SAVEUSERINFO:
 			console.log("reducer getUserInfo");
 			console.log(action.payload);

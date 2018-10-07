@@ -4,7 +4,7 @@ import P5Wrapper from 'react-p5-wrapper';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import "../../../../public/css/App.css";
-import { logout, removeUserInfo, goChangeInfo, backChangeInfo } from '../../actions/userActions';
+import { logout, removeUserInfo, goChangeInfo, backChangeInfo, saveUserInfo } from '../../actions/userActions';
 import UserInfo from './UserInfo';
 import ChangeInfo from './ChangeInfo';
 
@@ -12,9 +12,14 @@ class Home extends Component {
 
     componentWillMount = () => {
         console.log("will mount");
-        if(!this.props.isLogin) {
+        const token = localStorage.getItem('token');
+        if(!token) {
             this.props.history.push('/');
         }
+        const user = localStorage.getItem('user');
+        const id = localStorage.getItem('id');
+        console.log(JSON.parse(user));
+        this.props.saveUserInfo(JSON.parse(user), id, token);
     }
 
     handleLogout = (e) => {
@@ -23,6 +28,8 @@ class Home extends Component {
         this.props.removeUserInfo();
         this.props.doLogout();
         localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('id');
         this.props.history.push('/');
     }
 
@@ -79,7 +86,7 @@ const mapDispatchToProps = (dispatch) => {
         removeUserInfo: () => { dispatch(removeUserInfo()) },
         goToChangeInfo: () => { dispatch(goChangeInfo()) },
         backChangeInfo: () => { dispatch(backChangeInfo()) },
-
+        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) },
     }
 }
 

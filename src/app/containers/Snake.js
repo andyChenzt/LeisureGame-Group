@@ -40,17 +40,6 @@ class Snake extends Component {
                     </div>
                 </div>
             </div>
-        	// <div>
-    		//   	<div className="App-Draw">
-    		//   		score = {score}
-    		//     	<P5Wrapper sketch={sketch} />
-    		//   	</div>
-            //     <div>
-            //         <User />
-            //         <OtherUser />
-            //         {/*<GameScoreInfoList />*/}
-            //     </div>
-    		// </div>
         );
     }
 }

@@ -12,10 +12,6 @@ import { login, saveUserInfo } from '../actions/userActions';
 class Landing extends Component {
     constructor() {
         super();
-        // this.handleChangeID = this.handleChangeID.bind(this);
-        // this.handleChangePassword = this.handleChangePassword.bind(this);
-        // this.handleSubmit = this.handleSubmit.bind(this);
-        // this.handleRegister = this.handleRegister.bind(this);
     }
 
     componentWillMount = () => {
@@ -24,18 +20,6 @@ class Landing extends Component {
             this.props.history.push('/Home');
         }
     }
-
-    // handleChangeID = (e)=> {
-    //     this.setState({
-    //         Email: e.target.value
-    //     })
-    // }
-
-    // handleChangePassword = (e)=> {
-    //     this.setState({
-    //         Password: e.target.value
-    //     })
-    // }
 
     handleSubmit = (e) => {
         console.log("clicked login");
