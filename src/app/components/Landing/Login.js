@@ -70,10 +70,15 @@ class Login extends Component {
                             <h2 className="title">START YOUR JOY TIME</h2>
                             <br/>
                             <br/>
-
+                            <div className="alert alert-danger">
+                                {/*<button type="button" className="close" data-dismiss="alert" aria-hidden="true">&times;</button>*/}
+                                <a href="#" className="close" data-dismiss="alert">&times;</a>
+                                <strong>Warning! </strong>Wrong email or password.
+                            </div>
                             {/*<p class="text">The form below contains two input elements; one of type text and one of type*/}
                                 {/*password:</p>*/}
                             <form>
+
                                 <div className="form-group">
                                     <label className="text" htmlFor="usr">Name:</label>
                                     <input type="text" className="form-control" id="usr" placeholder="EMAIL"

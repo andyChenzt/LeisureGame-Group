@@ -139,7 +139,8 @@ class DrawCon extends Component {
                             <br/>
                             <br/>
 
-                            <button type="button" className="btn btn-warning btn-block">{question}</button>
+                            {/*<button type="button" className="btn btn-warning btn-block">{question}</button>*/}
+                            <h2 className="wait">Waiting...</h2>
                             <br/>
                             <br/>
 

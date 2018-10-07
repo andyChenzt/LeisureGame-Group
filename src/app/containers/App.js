@@ -59,6 +59,7 @@ class App extends Component {
                 {/*<Head />*/}
                 {/*<div className="App A">*/}
                     <NavigationBar />
+
                 {/*</div>*/}
                 <BrowserRouter>
                         <div className="App-main">

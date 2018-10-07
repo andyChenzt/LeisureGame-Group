@@ -8,10 +8,10 @@ export default class OtherUser extends Component {
         return (
             <div>
                 <img className="App-icon" src={usericon} alt="usericon" />
-                <a name="username" className="App-userinfo">
-                I'm other user
-                </a>
-                <p className="App-userinfo">Score: 0000000</p>
+                <h3 className="App-userinfo">
+                    username
+                </h3>
+                <p className="App-userinfo">Score: 00000000</p>
             </div>
         );
     }
