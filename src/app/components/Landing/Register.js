@@ -46,6 +46,8 @@ class Register extends Component {
                 const token = res.data.token;
                 console.log(userInfo);
                 localStorage.setItem('token', token);
+                localStorage.setItem('user', JSON.stringify(userInfo));
+                localStorage.setItem('id', id);
                 this.props.doLogin();
                 this.props.saveUserInfo(userInfo, id);
                 this.props.history.push('/Home');
