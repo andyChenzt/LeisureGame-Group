@@ -13,7 +13,7 @@ import { startGame, setPlayer1, setPlayer2, getQuestion } from '../actions/gameA
 
 
 // var allowedOrigins = "http://localhost:3001 ";       //domain_1:* domain_2:*
-export const socket = io('http://localhost:3001/drawingGameSocket'); 
+export const socket = io('/drawingGameSocket'); 
 export const roomname = "room name";
 // let socket;
 
@@ -111,16 +111,23 @@ class DrawCon extends Component {
     }
 
     handleStart = (e) => {
-        console.log("clicked start");
-        console.log(this.props);
-        e.preventDefault();
-        socket.emit('startGame',"player1 startDrawing");
-        this.props.startGame();
+        if(this.props.hasQuestion) {
+            console.log("clicked start");
+            console.log(this.props);
+            e.preventDefault();
+            socket.emit('startGame',"player1 startDrawing");
+            this.props.startGame();
+        }
+        
+    }
+
+    handleExit = () => {
+        this.props.history.push('/Home/' + nickName);
     }
 
 	render() {
         const board = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
-        const question = this.props.hasQuestion ? this.props.question : "Waiting"; 
+        const question = this.props.hasQuestion ? "Question: " + this.props.question : "Waiting..."; 
 
         if(this.props.isWaiting) {
             return (
@@ -139,7 +146,7 @@ class DrawCon extends Component {
                             <br/>
                             <br/>
 
-                            <button type="button" className="btn btn-warning btn-block">{question}</button>
+                            <h2 className="wait">{question}</h2>
                             <br/>
                             <br/>
 
@@ -147,7 +154,7 @@ class DrawCon extends Component {
                             <br/>
                             <br/>
 
-                            <button type="button" className="btn btn-danger btn-block">exit</button>
+                            <button type="button" className="btn btn-danger btn-block" onClick={this.handleExit}>exit</button>
                             <br/>
                             <br/>
                         </div>
@@ -204,6 +211,7 @@ class DrawCon extends Component {
 const mapStateToProps = (state, ownProps) => {
     return {
         isLogin: state.userReducer.isLogin,
+        user: state.userReducer.user,
         isWaiting: state.gameReducer.isWaiting,
         isPlayer1: state.gameReducer.isPlayer1,
         hasQuestion: state.gameReducer.hasQuestion,
