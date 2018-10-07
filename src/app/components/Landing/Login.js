@@ -75,6 +75,7 @@ class Login extends Component {
                         <div className="container">
                             <br/>
                             <h2 className="title">START YOUR JOY TIME</h2>
+                            <h5 className="title">PLAY GAMES? LOGIN PLEASE</h5>
                             <br/>
                             <br/>
                             {alert}

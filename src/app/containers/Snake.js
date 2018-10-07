@@ -9,13 +9,23 @@ import GameScoreInfoList from "../components/GameScore/GameScoreInfoList";
 import "../../../public/css/Draw.css";
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-// import {  } from '../../actions/userActions';
+import { login, saveUserInfo } from '../actions/userActions'
+
 
 class Snake extends Component {
+
     componentWillMount = () => {
-        if(!this.props.isLogin) {
+        const token = localStorage.getItem('token');
+        if(!token) {
             this.props.history.push('/');
+        } else {
+            const user = localStorage.getItem('user');
+            const id = localStorage.getItem('id');
+            console.log(JSON.parse(user));
+            this.props.saveUserInfo(JSON.parse(user), id, token);
+            this.props.doLogin();
         }
+        
     }
 
     render() {
@@ -50,5 +60,12 @@ const mapStateToProps = (state, ownProps) => {
     }
 };
 
-export default connect(mapStateToProps)(Snake);
+const mapDispatchToProps = (dispatch) => {
+    return {
+        doLogin: () => { dispatch(login()) }, 
+        saveUserInfo: (userInfo, id) => { dispatch(saveUserInfo(userInfo, id)) },
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Snake);
 

@@ -10,10 +10,10 @@ import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import io from 'socket.io-client';
 import { startGame, setPlayer1, setPlayer2, getQuestion, deleteQuestion ,setWaiting, setPlaying } from '../actions/gameActions';
-import { saveUserInfo} from '../actions/userActions';
+import { login, saveUserInfo } from '../actions/userActions';
 
 
-export const socket = io('/drawingGameSocket'); 
+export var socket = io('/drawingGameSocket'); 
 export const roomname = "room name";
 
 class DrawCon extends Component {
@@ -27,11 +27,14 @@ class DrawCon extends Component {
         const token = localStorage.getItem('token');
         if(!token) {
             this.props.history.push('/');
+        } else {
+            const user = localStorage.getItem('user');
+            const id = localStorage.getItem('id');
+            console.log(JSON.parse(user));
+            this.props.saveUserInfo(JSON.parse(user), id, token);
+            this.props.doLogin();
         }
-        const user = localStorage.getItem('user');
-        const id = localStorage.getItem('id');
-        console.log(JSON.parse(user));
-        this.props.saveUserInfo(JSON.parse(user), id, token);
+        
     }
 
     componentDidMount = () => {
@@ -119,9 +122,7 @@ class DrawCon extends Component {
     handleRefresh = (e) => {
         console.log("refresh");
         e.preventDefault();
-        socket.emit('disconnect');
-        this.socketConnect();
-        // this.props.history.push('/drawing');
+        location.reload();
     }
 
     handleStart = (e) => {
@@ -251,6 +252,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        doLogin: () => { dispatch(login()) },
         startGame: () => { dispatch(startGame()) }, 
         setPlayer1: () => { dispatch(setPlayer1()) },  
         setPlayer2: () => { dispatch(setPlayer2()) },  

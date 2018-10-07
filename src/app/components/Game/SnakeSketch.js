@@ -17,13 +17,13 @@ function sketch(p) {
 		
 		food = p.foodLocation();
 
-		socket = io('http://localhost:3001');
-    	socket.on('connect', function () {
-        	console.log("connect success")
-    	})
-    	socket.on('moveOnOtherSide', function (keyCode) {
-    		snake.moveOnOtherSide(keyCode);
-    	})
+		// socket = io('http://localhost:3001');
+  //   	socket.on('connect', function () {
+  //       	console.log("connect success")
+  //   	})
+  //   	socket.on('moveOnOtherSide', function (keyCode) {
+  //   		snake.moveOnOtherSide(keyCode);
+  //   	})
 	}
 
 	p.draw = function() {

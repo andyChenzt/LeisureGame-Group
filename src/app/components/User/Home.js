@@ -4,7 +4,7 @@ import P5Wrapper from 'react-p5-wrapper';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import "../../../../public/css/App.css";
-import { logout, removeUserInfo, goChangeInfo, backChangeInfo, saveUserInfo } from '../../actions/userActions';
+import { login, logout, removeUserInfo, goChangeInfo, backChangeInfo, saveUserInfo } from '../../actions/userActions';
 import UserInfo from './UserInfo';
 import ChangeInfo from './ChangeInfo';
 
@@ -15,11 +15,14 @@ class Home extends Component {
         const token = localStorage.getItem('token');
         if(!token) {
             this.props.history.push('/');
+        } else {
+            const user = localStorage.getItem('user');
+            const id = localStorage.getItem('id');
+            console.log(JSON.parse(user));
+            this.props.saveUserInfo(JSON.parse(user), id, token);
+            this.props.doLogin();
         }
-        const user = localStorage.getItem('user');
-        const id = localStorage.getItem('id');
-        console.log(JSON.parse(user));
-        this.props.saveUserInfo(JSON.parse(user), id, token);
+        
     }
 
     handleLogout = (e) => {
@@ -82,6 +85,7 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        doLogin: () => { dispatch(login()) },
         doLogout: () => { dispatch(logout()) },
         removeUserInfo: () => { dispatch(removeUserInfo()) },
         goToChangeInfo: () => { dispatch(goChangeInfo()) },

@@ -37,8 +37,8 @@ module.exports.drawingSocketServer = function(server) {
 		    	drawingGame.to(socket.id).emit('getRoom', room);
 	    	} else {
 	    		console.log("find room")
-	    		var waitingRoom = pendingRoom[0];
-	    		pendingRoom.pop();
+	    		var waitingRoom = pendingRoom.pop();
+	    		// pendingRoom.pop();
 	    		drawingGame.to(socket.id).emit('findRoom', waitingRoom);
 	    		// console.log("test broadcast")
 	    		socket.broadcast.in("new-room").emit('getPlayer', "get player2: "+socket.id);
