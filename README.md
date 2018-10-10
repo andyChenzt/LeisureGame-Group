@@ -50,14 +50,14 @@ And then clone our project and start it
 ## 5. File Structure
 The following picture is the general structure of our project
 
-![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-165840.png
+![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-165840.png)
 
 ## 6.Screen Shot
-![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171227.png
+![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171227.png)
 
-![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171246.png
+![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171246.png)
 
-![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171318.png
+![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171318.png)
 
 
 ## 7. Principles of Code Style:
