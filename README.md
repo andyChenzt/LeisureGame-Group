@@ -1,8 +1,9 @@
+
+![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/header.png)
 # Leisure Game - Group 
  + By Zhongtao Chen, Qianran Li, Jinwoong Lee
 
 ---------------------------------------------------
-
 
 ## 1. Theme:
 1. Project name: Leisure Game
@@ -46,8 +47,20 @@ And then clone our project and start it
 >>> npm install
 >>> npm start
 ```
+## 5. File Structure
+The following picture is the general structure of our project
 
-## 5. Principles of Code Style:
+![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-165840.png
+
+## 6.Screen Shot
+![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171227.png
+
+![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171246.png
+
+![]https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171318.png
+
+
+## 7. Principles of Code Style:
 1. Camel case for variable name.
 
 2. Config file parth full upper case.
