@@ -1,19 +1,22 @@
 # Leisure Game - Group 
  + By Zhongtao Chen, Qianran Li, Jinwoong Lee
 
-## Theme:
+---------------------------------------------------
+
+
+## 1. Theme:
 1. Project name: Leisure Game
 2. primary user: people who want to play game in leisure time
 3. Key features: 
 	+ user could play real-time game in the leisure time(specific short time, not the time-counsuming game).
 	+ also could do real-time chat during the game
 
-## About the project features:
+## 2. About the project features:
 1. Multiple users snake game
 2. Multiple users drawing game
 3. Could do the real-time chat at same time
 
-## Techonolies
+## 3. Technologies
 1. Web technology
 	+ front-end: React for user interface
 	+ back-end: Node.js 
@@ -28,13 +31,23 @@
 4. Deploing
 	+ Heroku for deploying the final project
 
-## Running App
+## 4. Running App
  + install node.js and react.js on your OS
  + only first time, open root folder in terminal, run "npm install" to set modules
  + open root folder in terminal, run "npm start" to open the app
- + Webpage is on port 3000 (localhost: 3000) and back-end server is on 3001.
+ >**Webpage is on port 3000 (localhost: 3000) and back-end server is on 3001.**
+ 
+### 4.1 Script
+You should install MongoDB at first
+And then clone our project and start it
+``` javascript
+>>> git clone https://github.com/andyChenzt/LeisureGame-Group.git
+>>> cd LeisureGame-Group
+>>> npm install
+>>> npm start
+```
 
-## Principles of Code Style:
+## 5. Principles of Code Style:
 1. Camel case for variable name.
 
 2. Config file parth full upper case.
