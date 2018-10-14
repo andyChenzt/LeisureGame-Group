@@ -9,29 +9,56 @@ import { connect } from 'react-redux';
 import { login, saveUserInfo, showAlert, dismissAlert } from '../../actions/userActions'
 
 class Login extends Component {
+    constructor() {
+        super();
+        this.state = {
+            emailInput: "",
+            passwordInput: ""
+        };
+
+        this.handleChangeEmail = this.handleChangeEmail.bind(this);
+        this.handleChangePassword = this.handleChangePassword.bind(this);
+    }
    
     componentWillMount = () => {
-        console.log("will mout", this.props);
         if(this.props.isLogin) {
             this.props.history.push('/Home');
         }
     }
 
+    handleChangeEmail = (e) => {
+        this.setState({
+            emailInput: e.target.value
+        });
+    }
+
+    handleChangePassword = (e) => {
+        this.setState({
+            passwordInput: e.target.value
+        });
+    }
+
+
     handleSubmit = (e) => {
-        console.log("clicked login");
         e.preventDefault();
+        const inputEmail = this.state.emailInput;
+        const inputPassword = this.state.passwordInput;
+        if(inputEmail === "" || inputPassword === "") {
+            this.props.showAlert("Invaild username or password");
+            setTimeout(() => {
+                this.props.dismissAlert();
+            }, 2000);
+            return;
+        }
         const user = {
-            email: ReactDOM.findDOMNode(this.refs.email).value,
-            password: ReactDOM.findDOMNode(this.refs.password).value
+            email: inputEmail,
+            password: inputPassword
         }
 
         axios.post('/api/account/login', user).then(res => {
-            console.log("login success");
-            console.log(res.data);
             const userInfo = res.data.user;
             const token = res.data.token;
             const id = res.data.id;
-            console.log("userinfo",userInfo, "id", id), "token",token;
             
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(userInfo.info));
@@ -39,12 +66,9 @@ class Login extends Component {
             this.props.doLogin();
             this.props.saveUserInfo(userInfo.info, id, token);
             const nickName = userInfo.info.nickName;
-            console.log("nickName", nickName);
             this.props.history.push('/Home/' + nickName);
         }).catch((error) => {
-            console.log("err", error.response);
             if(error.response.status === 403) {
-                console.log("invaild username or password");
                 this.props.showAlert("Invaild username or password");
                 setTimeout(() => {
                     this.props.dismissAlert();
@@ -54,13 +78,11 @@ class Login extends Component {
     }
 
     handleGoToRegister = (e) => {
-        console.log("got go to reigister");
         e.preventDefault(); 
         this.props.history.push('/register');
     }
 
     render() {
-        console.log(this.props);
         const { onSubmitClick } = this.props;
         const alert = this.props.isError ? <Alert msg={this.props.errorMsg}/> : <div></div> ;
         return (
@@ -84,7 +106,7 @@ class Login extends Component {
                                     <label className="text" htmlFor="usr">Name:</label>
                                     <input type="text" className="form-control" id="usr" placeholder="EMAIL"
                                            ref="email"
-                                           onChange={this.handleChangeID} required title="Email address is needed"/>
+                                           onChange={this.handleChangeEmail} required title="Email address is needed"/>
                                 </div>
                                 <div className="form-group">
                                     <label className="text" htmlFor="pwd">Password:</label>

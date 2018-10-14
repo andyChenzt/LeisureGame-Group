@@ -7,90 +7,129 @@ import axios from 'axios';
 import { updateInfo, backChangeInfo } from '../../actions/userActions'
 
 class ChangeInfo extends Component {	
+    constructor() {
+        super();
+        this.state = {
+            newFirstName: "",
+            newLastName: "",
+            newNickName: "",
+            newEmail: ""
+        };
+
+        this.handleFirstNameChange = this.handleFirstNameChange.bind(this);
+        this.handleLatNameChange = this.handleLatNameChange.bind(this);
+        this.handleNickNameChange = this.handleNickNameChange.bind(this);
+        this.handleEmailChange = this.handleEmailChange.bind(this);
+    }
 
 	handleSave = (e) => {
 		console.log("save clicked");
-		var changeFirstName = ReactDOM.findDOMNode(this.refs.changeFirstName).value;
-		var changeLastName = ReactDOM.findDOMNode(this.refs.changeLastName).value;
-		var changeNickName = ReactDOM.findDOMNode(this.refs.changeNickName).value;
-		var changeEmailName = ReactDOM.findDOMNode(this.refs.changeEmail).value;
-		if(changeFirstName === "undefined") {
-            console.log("undefined");
+		var changeFirstName = this.state.newFirstName;
+		var changeLastName = this.state.newLastName;
+		var changeNickName = this.state.newNickName;
+		var changeEmailName = this.state.newEmail;
+		if(changeFirstName === "") {
+            console.log("no change");
 			changeFirstName = this.props.user.firstName;
 		}
-		if(changeLastName === "undefined") {
-            console.log("undefined");
-			changeLastName = this.props.user.changeLastName;
+		if(changeLastName === "") {
+            console.log("no change");
+			changeLastName = this.props.user.lastName;
 		}
-		if(changeNickName === "undefined") {
-            console.log("undefined");
-			changeNickName = this.props.user.changeNickName;
+		if(changeNickName === "") {
+            console.log("no change");
+			changeNickName = this.props.user.nickName;
 		}
-		if(changeEmailName === "undefined") {
-            console.log("undefined");
-			changeEmailName = this.props.user.changeEmailName;
+		if(changeEmailName === "") {
+            console.log("no change");
+			changeEmailName = this.props.user.email;
 		}
-        console.log(changeFirstName);
-        console.log(changeLastName);
-        console.log(changeNickName);
-        console.log(changeEmailName);
-        console.log(this.props.userID);
+
         const newInfo = {
         	"firstName": changeFirstName,
 		    "lastName": changeLastName,
 		    "nickName": changeNickName,
 		    "email": changeEmailName
         }
+
         const token = localStorage.getItem('token');
         const config = {
         	 headers: {'Authorization': "bearer " + token},
         }
         console.log(config);
         axios.put('/api/account/' + this.props.userID, newInfo, config).then(res => {
-            console.log(res.data);
             const userInfo = res.data.user;
-            console.log(userInfo);
-            console.log(this.props.user.nickName);
             this.props.updateInfo(userInfo);
             this.props.backChangeInfo();
         }).catch((error) => {
-            console.log("err");
-            console.log(error);
         });
 	}
+
+    handleFirstNameChange = (e) => {
+        this.setState({
+            newFirstName: e.target.value
+        });
+    }
+
+    handleLatNameChange = (e) => {
+        this.setState({
+            newLastName: e.target.value
+        });
+    }
+
+    handleNickNameChange = (e) => {
+        this.setState({
+            newNickName: e.target.value
+        });
+    }
+
+    handleEmailChange = (e) => {
+        this.setState({
+            newEmail: e.target.value
+        });
+    }
 
 	render() {
 		return (
 			<div>
                 <h3 className="title">Hello  {this.props.user.nickName}</h3>
                 <h3 className="title">Please change your information.</h3>
+                <h5 className="title">(Leave blank if you do not want to change ^_^)</h5>
                 <br/>
 				<div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">First Name: {this.props.user.firstName}</span>
                     </div>
-					<input type="text" className="form-control" ref="changeFirstName" placeholder="firstName"/>
+					<input type="text" className="form-control" placeholder="firstName" 
+                            onChange={this.handleFirstNameChange}
+                            ref="changeFirstName" value={this.state.newFirstName} />
 				</div>
 
 				<div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Last Name: {this.props.user.lastName}</span>
                     </div>
-					<input type="text" className="form-control" placeholder="lastName" ref="changeLastName"/>
+					<input type="text" className="form-control" placeholder="lastName" 
+                            onChange={this.handleLatNameChange}
+                            ref="changeLastName" value={this.state.newLastName}/>
 				</div>
 
 				<div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Nick Name: {this.props.user.nickName}</span>
                     </div>
-					<input type="text" className="form-control" placeholder="nickName" ref="changeNickName" />
+					<input type="text" className="form-control" placeholder="nickName" 
+                            onChange={this.handleNickNameChange}
+                            ref="changeNickName" value={this.state.newNickName} />
 				</div>
 
 				<div className="input-group mb-3">
                     <div className="input-group-prepend">
                         <span className="input-group-text">Email: {this.props.user.email}</span>
                     </div>
-					<input type="text" className="form-control" placeholder="email" ref="changeEmail"/>
+					<input type="text" className="form-control" placeholder="email" 
+                            onChange={this.handleEmailChange}
+                            ref="changeEmail" value={this.state.newEmail} />
 				</div>
 				<button className="btn btn-danger" onClick={this.handleSave}>Save</button>
 

@@ -11,6 +11,14 @@ import { login, saveUserInfo, showAlert, dismissAlert } from '../../actions/user
 class Register extends Component {
     constructor() {
         super();
+        this.state = {
+            firstNameInput: "",
+            lastNameInput: "",
+            nickNameInput: "",
+            emailInput: "",
+            passwordInput: "",
+            reEnterPasswordInput: "",
+        };
     }
 
     componentWillMount = () => {
@@ -20,52 +28,111 @@ class Register extends Component {
         }
     }
 
-    handleChangeID = (e) => {
+    handleChangeFirstNameInput = (e) => {
+        this.setState({
+            firstNameInput: e.target.value
+        });
+    }
 
+    handleChangeLastNameInput = (e) => {
+        this.setState({
+            lastNameInput: e.target.value
+        });
+    }
+
+    handleChangeNickNameInput = (e) => {
+        this.setState({
+            nickNameInput: e.target.value
+        });
+    }
+
+    handleChangeEmailInput = (e) => {
+        this.setState({
+            emailInput: e.target.value
+        });
+    }
+
+    handleChangePasswordInput = (e) => {
+        this.setState({
+            passwordInput: e.target.value
+        });
+    }
+
+    handleChangeReEnterPasswordInput = (e) => {
+        this.setState({
+            reEnterPasswordInput: e.target.value
+        });
     }
 
     handleRegister = (e) => {
-        console.log("clicked login");
-        console.log(this.props);
         e.preventDefault();
-        if(ReactDOM.findDOMNode(this.refs.password).value === ReactDOM.findDOMNode(this.refs.reEnteredPassword).value) {
+        const inputFirstName = this.state.firstNameInput; 
+        const inputLastName = this.state.lastNameInput;
+        const inputNickName = this.state.nickNameInput;
+        const inputEmail = this.state.emailInput;
+        const inputPassword = this.state.passwordInput;
+        const inputReEnterPassword = this.state.reEnterPasswordInput;
 
-            let newUser = {
-                firstName: ReactDOM.findDOMNode(this.refs.firstName).value,
-                lastName: ReactDOM.findDOMNode(this.refs.lastName).value,
-                nickName: ReactDOM.findDOMNode(this.refs.nickName).value,
-                email: ReactDOM.findDOMNode(this.refs.email).value,
-                password: ReactDOM.findDOMNode(this.refs.password).value,
-            }
-            console.log(newUser);
-            axios.post('/api/account/signup', newUser).then(res => {
-                console.log("registered");
-                console.log(res.data);
-                const userInfo = res.data.user;
-                const id = res.data.id;
-                const token = res.data.token;
-                console.log(userInfo);
-                localStorage.setItem('token', token);
-                localStorage.setItem('user', JSON.stringify(userInfo));
-                localStorage.setItem('id', id);
-                this.props.doLogin();
-                this.props.saveUserInfo(userInfo, id);
-                this.props.history.push('/Home');
-            }).catch((error) => {
-                console.log("err");
-                console.log(error);
-            });
-        } else {
+        if(inputFirstName === "" || inputLastName === "" || inputNickName === "" ||
+            inputEmail === "" || inputPassword === "" || inputReEnterPassword === "" ) {
+            this.props.showAlert("Please Input all required fields.");
+            setTimeout(() => {
+                this.props.dismissAlert();
+            }, 2000);
+            return;
+        }
+
+        // vadilate email
+        if(!this.validateEmail(inputEmail)) {
+            this.props.showAlert("Email is Invalid .");
+            setTimeout(() => {
+                this.props.dismissAlert();
+            }, 2000);
+            return;
+        }
+
+        if(inputPassword !== inputReEnterPassword) {
             console.log("different");
             this.props.showAlert("Password and Re-Enter Password is different.");
             setTimeout(() => {
                 this.props.dismissAlert();
             }, 2000);
+            return;
         }
+
+        let newUser = {
+            firstName: inputFirstName,
+            lastName: inputLastName,
+            nickName: inputNickName,
+            email: inputEmail,
+            password: inputPassword
+        }
+        axios.post('/api/account/signup', newUser).then(res => {
+            console.log("registered");
+            console.log(res.data);
+            const userInfo = res.data.user;
+            const id = res.data.id;
+            const token = res.data.token;
+            console.log(userInfo);
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(userInfo));
+            localStorage.setItem('id', id);
+            this.props.doLogin();
+            this.props.saveUserInfo(userInfo, id);
+            this.props.history.push('/Home');
+        }).catch((error) => {
+            console.log("err");
+            console.log(error);
+        });
     }
 
     handleLogin = (e) => {
         this.props.history.push('/');
+    }
+
+    validateEmail = (email) => {
+        var emailReg = new RegExp("^[a-z0-9]+([._\\-]*[a-z0-9])*@([a-z0-9]+[-a-z0-9]*[a-z0-9]+.){1,63}[a-z0-9]+$");
+        return emailReg.test(email);
     }
 
     render() {
@@ -91,7 +158,7 @@ class Register extends Component {
                                         <span className="input-group-text">First Name</span>
                                     </div>
                                     <input type="text" className="form-control" placeholder="First Name" ref="firstName"
-                                           onChange={this.handleChangeID} required title="First Name is needed"/>
+                                           onChange={this.handleChangeFirstNameInput} required title="First Name is needed"/>
                                 </div>
                             </form>
 
@@ -101,7 +168,7 @@ class Register extends Component {
                                         <span className="input-group-text">Last Name</span>
                                     </div>
                                     <input type="text" className="form-control" placeholder="Last Name" ref="lastName"
-                                           onChange={this.handleChangeID} required title="Last Name is needed"/>
+                                           onChange={this.handleChangeLastNameInput} required title="Last Name is needed"/>
                                 </div>
                             </form>
 
@@ -111,7 +178,7 @@ class Register extends Component {
                                         <span className="input-group-text">Nick Name</span>
                                     </div>
                                     <input type="text" className="form-control" placeholder="Nick Name" ref="nickName"
-                                           onChange={this.handleChangeID} required title="Nick Name is needed"/>
+                                           onChange={this.handleChangeNickNameInput} required title="Nick Name is needed"/>
                                 </div>
                             </form>
 
@@ -121,7 +188,7 @@ class Register extends Component {
                                         <span className="input-group-text">eMail</span>
                                     </div>
                                     <input type="email" className="form-control" placeholder="email" ref="email"
-                                           onChange={this.handleChangeID} pattern=".+@.+" size="30" required
+                                           onChange={this.handleChangeEmailInput} pattern=".+@.+" size="30" required
                                            title="Must be a email address"/>
                                 </div>
                             </form>
@@ -132,7 +199,7 @@ class Register extends Component {
                                         <span className="input-group-text">Password</span>
                                     </div>
                                     <input type="password" className="form-control" placeholder="Password" ref="password"
-                                           onChange={this.handleChangePassword} required title="Password is needed"/>
+                                           onChange={this.handleChangePasswordInput} required title="Password is needed"/>
                                 </div>
                             </form>
 
@@ -142,7 +209,7 @@ class Register extends Component {
                                         <span className="input-group-text">Re-Enter Password</span>
                                     </div>
                                     <input type="password" className="form-control" placeholder="Password" ref="reEnteredPassword"
-                                           onChange={this.handleChangePassword} required title="Password is needed"/>
+                                           onChange={this.handleChangeReEnterPasswordInput} required title="Password is needed"/>
                                 </div>
                             </form>
                             <div >
@@ -165,9 +232,6 @@ class Register extends Component {
             
         );
     }
-    
-    
-
 };
 
 

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 
-const GameScoreInfo = () => {
+const GameScoreInfo = (props) => {
     const { ID, Score, Index } = this.props.info;
 
     return (
