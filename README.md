@@ -17,42 +17,77 @@
 2. Multiple users drawing game
 3. Could do the real-time chat at same time
 
-## 3. Technologies
-1. Web technology
-	+ front-end: React for user interface
-	+ back-end: Node.js 
-	+ database: Mongo DB
+## 3. Main Tech
+	1. Web technology
+		+ front-end: React for user interface
+		+ back-end: Node.js 
+		+ database: Mongo DB
 
-2. Web socket
-	+ web socket for real time connection with different user by using socket.io
+	2. Web socket
+		+ web socket for real time connection with different user by using socket.io
 
-3. Version Control
-	+ Github
+	3. Version Control
+		+ Github
 
-4. Deploing
-	+ Heroku for deploying the final project
+	4. Deploying
+		+ Deploying on AWS EC2. (Unfortunetly, we already closed the server)
 
 ## 4. Running App
  + install node.js and react.js on your OS
- + only first time, open root folder in terminal, run "npm install" to set modules
- + open root folder in terminal, run "npm start" to open the app
- >**Webpage is on port 3000 (localhost: 3000) and back-end server is on 3001.**
+ + only first time, open root folder in terminal, run "npm install" to install all required modules
+ + for better using in the future, install webpack globally would be a choice (npm isntall -g webpack --save)
+ + open root folder in terminal, run "npm run production" to start the server
+ + open browser, localhost:3001
+ >**Production is on port 3001. If you run npm start would start development mode, and it would start on port 3000.**
  
 ### 4.1 Script
-You should install MongoDB at first
+You should install MongoDB on your OS at first.
 And then clone our project and start it
 ``` javascript
 >>> git clone https://github.com/andyChenzt/LeisureGame-Group.git
 >>> cd LeisureGame-Group
 >>> npm install
->>> npm start
+>>> npm -g webpack --save
+>>> npm run production / (npm start)
 ```
 ## 5. File Structure
 The following picture is the general structure of our project
 
-![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-165840.png)
-
-## 6.Screen Shot
+|-- LeisureGame-Group
+   |   
+   |--- node_modules
+   |--- public
+   |    |--- bundle
+   |    |--- css
+   |    |--- index.html
+   |      
+   |--- server
+   |    |--- models
+   |    |--- routes
+   |    |--- socket
+   |    |--- server.js
+   |
+   |--- src
+   |    |--- app
+   |    |    |--- actions
+   |    |    |--- assert
+   |    |    |--- components
+   |    |    |--- containers
+   |    |    |--- reducers
+   |    |    |--- router
+   |    |    |--- store
+   |    |    |--- types
+   |    |    |--- indes.js
+   |    |
+   |    |--- test
+   |      
+   |--- .babelrc
+   |--- package-lock.json
+   |--- package.json
+   |--- README.md
+   |--- webpack.config.js
+   
+## 6.Simple Screen Shot
 ![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171227.png)
 
 ![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171246.png)
