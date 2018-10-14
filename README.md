@@ -52,7 +52,7 @@ And then clone our project and start it
 ```
 ## 5. File Structure
 The following picture is the general structure of our project
-
+```
 |-- LeisureGame-Group
    |   
    |--- node_modules
@@ -86,7 +86,8 @@ The following picture is the general structure of our project
    |--- package.json
    |--- README.md
    |--- webpack.config.js
-   
+```
+
 ## 6.Simple Screen Shot
 ![](https://github.com/andyChenzt/LeisureGame-Group/blob/master/src/app/assert/image/WX20181010-171227.png)
 
