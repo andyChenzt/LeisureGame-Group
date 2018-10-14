@@ -54,38 +54,46 @@ And then clone our project and start it
 The following picture is the general structure of our project
 ```
 |-- LeisureGame-Group
-   |   
-   |--- node_modules
-   |--- public
-   |    |--- bundle
-   |    |--- css
-   |    |--- index.html
-   |      
-   |--- server
-   |    |--- models
-   |    |--- routes
-   |    |--- socket
-   |    |--- server.js
-   |
-   |--- src
-   |    |--- app
-   |    |    |--- actions
-   |    |    |--- assert
-   |    |    |--- components
-   |    |    |--- containers
-   |    |    |--- reducers
-   |    |    |--- router
-   |    |    |--- store
-   |    |    |--- types
-   |    |    |--- indes.js
-   |    |
-   |    |--- test
-   |      
-   |--- .babelrc
-   |--- package-lock.json
-   |--- package.json
-   |--- README.md
-   |--- webpack.config.js
+    |   
+    |--- node_modules
+    |--- public
+    |    |--- bundle
+    |    |--- css
+    |    └─── index.html
+    |      
+    |--- server
+    |    |--- models
+    |    |--- routes
+    |    |--- socket
+    |    └─── server.js
+    |
+    |--- src
+    |    |--- app
+    |    |    |--- actions
+    |    |    |--- assert
+    |    |    └─── components
+    |    |    |    |--- Alert
+    |    |    |    |--- Frame
+    |    |    |    |--- Game
+    |    |    |    |--- GameScore
+    |    |    |    |--- Landing
+    |    |    |    |--- Navigation
+    |    |    |    └─── User
+    |    |    |    
+    |    |    |--- containers
+    |    |    |--- reducers
+    |    |    |--- router
+    |    |    |--- store
+    |    |    |--- types
+    |    |    └─── indes.js
+    |    |
+    |    └─── test
+    |      
+    |--- .babelrc
+    |--- package-lock.json
+    |--- package.json
+    |--- README.md
+    └─── webpack.config.js
 ```
 
 ## 6.Simple Screen Shot
