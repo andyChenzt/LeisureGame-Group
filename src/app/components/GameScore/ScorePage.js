@@ -11,8 +11,6 @@ class Score extends Component {
         if(!this.props.isLogin) {
             // this.props.history.push('/');
         }
-
-        
     }
 
     render() {

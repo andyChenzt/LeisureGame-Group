@@ -19,11 +19,13 @@ export const roomname = "room name";
 class DrawCon extends Component {
     constructor() {
         super();
-        this.state = {board: null};
+        this.state = {
+            board: null
+        };
     }
 
-
 	componentWillMount = () => {
+        // check token first, 
         const token = localStorage.getItem('token');
         if(!token) {
             this.props.history.push('/');
@@ -34,7 +36,6 @@ class DrawCon extends Component {
             this.props.saveUserInfo(JSON.parse(user), id, token);
             this.props.doLogin();
         }
-        
     }
 
     componentDidMount = () => {
@@ -50,6 +51,8 @@ class DrawCon extends Component {
         console.log("unmount ", this.socket);
     }
 
+    // initial socket for game, 
+    // and listen to all the room and socket action
     socketConnect = () => {
         console.log("try to connect");
         console.log(socket);
@@ -60,10 +63,11 @@ class DrawCon extends Component {
         socket.on('getRoom', (roomName) => {
             console.log("get room ",roomName);
             this.roomname = roomname;
+
             // join the room
             socket.emit('joinRoom',roomName);
-            // change state in reducer -> pending
-            // loading, and set isPlayer1 = true
+
+            // set isPlayer1 
             this.props.setPlayer1();
 
         });
@@ -73,7 +77,7 @@ class DrawCon extends Component {
             this.roomname = roomname;
             // join the room
             socket.emit('joinRoom',roomName);
-            // change the state to isPlayer1 = false
+            // set Player2
             this.props.setPlayer2();
         });
 
@@ -105,8 +109,6 @@ class DrawCon extends Component {
         })
 
         socket.on('getQuestion', (msg) => {
-            // count down
-            
             // change the title to the question
             this.props.getQuestion(msg);
             console.log(msg);
@@ -119,12 +121,14 @@ class DrawCon extends Component {
 
     }
 
+    // handle refresh button for refresh the socket 
     handleRefresh = (e) => {
         console.log("refresh");
         e.preventDefault();
         location.reload();
     }
 
+    // start game
     handleStart = (e) => {
         if(this.props.hasQuestion) {
             console.log("clicked start");
@@ -139,6 +143,7 @@ class DrawCon extends Component {
         
     }
 
+    // for clean the sketch 
     handleClean = (e) => {
         console.log("clicked clean");
         e.preventDefault();
@@ -149,22 +154,18 @@ class DrawCon extends Component {
         console.log(this.state.board);
     }
 
+    // handle back button to go out of the playing room
     handleBack = (e) => {
         e.preventDefault();
         this.props.setWaiting();
         socket.emit('exit', "player exit");
     }
 
+    // handle to exit the game and go back to home
     handleExit = (e) => {
         e.preventDefault();
         const nickName = this.props.user.nickName
         this.props.history.push('/Home/' + nickName);
-    }
-
-    re = () => {
-        return (
-            <P5Wrapper sketch={drawSketch} />
-        )
     }
 
 	render() {
@@ -172,6 +173,7 @@ class DrawCon extends Component {
         const question = this.props.hasQuestion ? "Question: " + this.props.question : "Waiting..."; 
 
         if(this.props.isWaiting) {
+            // different status of the game room
             return (
                 <div className="container-fluid h-100">
                     <div className="row justify-content-center h-100">
@@ -212,6 +214,7 @@ class DrawCon extends Component {
                 </div>
             );
         } else {
+            // game start
             return (
                 <div className="container-fluid h-100">
                     <div className="row justify-content-center h-100">
@@ -224,7 +227,6 @@ class DrawCon extends Component {
                         </div>
 
                         <div className="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
-                            {/*<P5Wrapper sketch={sketch} />*/}
                             {this.state.board}
                         </div>
 

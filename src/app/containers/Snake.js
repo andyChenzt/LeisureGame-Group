@@ -15,6 +15,7 @@ import { login, saveUserInfo } from '../actions/userActions'
 class Snake extends Component {
 
     componentWillMount = () => {
+        // check the token 
         const token = localStorage.getItem('token');
         if(!token) {
             this.props.history.push('/');
@@ -34,14 +35,11 @@ class Snake extends Component {
                 <div className="row justify-content-center h-100">
 
                     <div className="col-1 col-sm-1 col-md-1 col-lg-1 col-xl-1">
-                        {/*<User />*/}
-                        {/*<OtherUser />*/}
 
                     </div>
 
                     <div className="col-10 col-sm-10 col-md-10 col-lg-10 col-xl-10">
                         <br/>
-                        {/*score = {score}*/}
                         <P5Wrapper sketch={sketch} />
                     </div>
 

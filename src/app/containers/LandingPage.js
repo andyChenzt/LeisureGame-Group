@@ -15,7 +15,6 @@ class Landing extends Component {
     }
 
     componentWillMount = () => {
-        console.log("will mout");
         if(this.props.isLogin) {
             this.props.history.push('/Home');
         }
@@ -49,13 +48,7 @@ class Landing extends Component {
         console.log(this.props);
         // prevent page reloding 
         e.preventDefault();
-        // const firstName = 
     }
-    // componentDidMount() {
-    //     // check is login or not, if not redirect to login page, 
-    //     console.log("did mout");
-    //     console.log(this.props);
-    // }
 
 
     render() {

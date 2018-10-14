@@ -62,7 +62,7 @@ function sketch(p) {
 				snake.dir = p.RIGHT_ARROW;
 			}
 		}
-		socket.emit('newMove', p.keyCode);
+		// socket.emit('newMove', p.keyCode);
 	}
 
 	p.foodLocation = function() {
