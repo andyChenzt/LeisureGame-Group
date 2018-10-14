@@ -28,6 +28,7 @@ class Register extends Component {
         }
     }
 
+    // hadndle the input change 
     handleChangeFirstNameInput = (e) => {
         this.setState({
             firstNameInput: e.target.value
@@ -64,6 +65,7 @@ class Register extends Component {
         });
     }
 
+    // handle login
     handleRegister = (e) => {
         e.preventDefault();
         const inputFirstName = this.state.firstNameInput; 

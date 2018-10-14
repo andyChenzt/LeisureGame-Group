@@ -9,7 +9,7 @@ class Score extends Component {
 	componentWillMount = () => {
         console.log("will mount");
         if(!this.props.isLogin) {
-            // this.props.history.push('/');
+            this.props.history.push('/');
         }
     }
 

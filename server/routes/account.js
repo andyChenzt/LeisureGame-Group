@@ -26,9 +26,8 @@ router.get("/account", function(req, res, next) {
 // search id or nick name (unique)
 // input finish editing check directly
 // otherwise cannot register
-router.get("/account/:nickName", function(req, res, next) {
-    User.find({nickName: req.params.nickName}).count(function(err, results) {
-        console.log(results);
+router.get("/account/:nickName", (req, res, next) => {
+    User.find({nickName: req.params.nickName}).count((err, results) => {
         if(results < 1) {
             res.send({ success: 1 });
         } else {
@@ -45,8 +44,7 @@ router.get("/account/:nickName", function(req, res, next) {
 });
 
 // sign up
-router.post("/account/signup", function(req, res, next) {
-    console.log(req.body);
+router.post("/account/signup", (req, res, next) => {
     //do logic to check 
     var user = new User({
         firstName: req.body.firstName,
@@ -56,20 +54,16 @@ router.post("/account/signup", function(req, res, next) {
         password: req.body.password
     });
 
-    user.save().then(function() {
+    user.save().then(() => {
         const info = user.deleteSensitiveInfo();
         const id = user._id;
-        console.log("id", id);  
         jwt.sign({user: info}, 'secretKey', (err, token) => {
-            console.log("token", token);
             res.send({ success: 1,
-                user: info,//user.deleteSensitiveInfo(),
+                user: info,
                 id: id,
                 token: token
             });
         })
-        // res.send({success: 1,
-        //           user: user.deleteSensitiveInfo()});
     }).catch((next) => {
         res.status(500).json({
             success: 0,
@@ -80,20 +74,18 @@ router.post("/account/signup", function(req, res, next) {
 
 // login in
 // maybe verify at here, doing auth
-router.post("/account/login", function(req, res, next) {
-    console.log("body: " + req.body.password, req.body.email);
+router.post("/account/login", (req, res, next) => {
 
-    User.findOne({email: req.body.email}).then(function(user) {
+    User.findOne({email: req.body.email}).then((user) => {
         
         if(!user) {
-            console.log("found user: " + user);
             res.status(403).json({
                     success: 0,
                     error: 'invaild username or password'
             });
         }
         // validation password
-        var isMatch = user.validPassword(req.body.password, function(err, isMatch) {
+        var isMatch = user.validPassword(req.body.password, (err, isMatch) => {
             if(err) {
                 res.status(500).json({
                     success: 0,
@@ -101,23 +93,15 @@ router.post("/account/login", function(req, res, next) {
                 });
             }
             if(isMatch) {
-                console.log("correct");
                 const info = user.deleteSensitiveInfo();
                 const id = user._id;
-                console.log("id", id);
-                // generate token
-                console.log("generate token");
                 jwt.sign({user: info}, 'secretKey', (err, token) => {
-                    console.log(token);
                     res.send({ success: 1,
                         user: {info:info},//user.deleteSensitiveInfo(),
                         id: id,
                         token: token
                     });
                 })
-                // res.send({ success: 1,
-                //     user: {info} 
-                // });
             } else {
                 res.status(403).json({
                     success: 0,
@@ -135,11 +119,10 @@ router.post("/account/login", function(req, res, next) {
 });
 
 // change name or information
-router.put("/account/:id", verifyToken, function(req, res, next) {
+router.put("/account/:id", verifyToken, (req, res, next) => {
     jwt.verify(req.token, 'secretKey', (err, authData) => {
         
         if(err) {
-            console.log(err);
             res.status(403).json({
                 success: 0,
                 error: err
@@ -151,10 +134,9 @@ router.put("/account/:id", verifyToken, function(req, res, next) {
                 lastName: req.body.lastName,
                 nickName: req.body.nickName,
                 email: req.body.email,
-                // password: req.body.password
             };
 
-            User.findOneAndUpdate({_id: req.params.id}, newInfo).then(function() {
+            User.findOneAndUpdate({_id: req.params.id}, newInfo).then(() => {
                 res.send({ success: 1,
                             user: newInfo });
             }).catch(() => {

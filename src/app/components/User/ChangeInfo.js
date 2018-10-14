@@ -22,6 +22,7 @@ class ChangeInfo extends Component {
         this.handleEmailChange = this.handleEmailChange.bind(this);
     }
 
+    // handle save changes
 	handleSave = (e) => {
 		console.log("save clicked");
 		var changeFirstName = this.state.newFirstName;
@@ -59,12 +60,20 @@ class ChangeInfo extends Component {
         console.log(config);
         axios.put('/api/account/' + this.props.userID, newInfo, config).then(res => {
             const userInfo = res.data.user;
+            const token = res.data.token;
+            const id = res.data.id;
+            
+            // save in local storage for refresh
+            localStorage.setItem('token', token);
+            localStorage.setItem('user', JSON.stringify(userInfo.info));
+            localStorage.setItem('id', id);
             this.props.updateInfo(userInfo);
             this.props.backChangeInfo();
         }).catch((error) => {
-        });
+            });
 	}
 
+    // handle input change
     handleFirstNameChange = (e) => {
         this.setState({
             newFirstName: e.target.value

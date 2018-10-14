@@ -77,24 +77,3 @@ export const dismissAlert = () => {
 	}
 }
 
-// need to do
-export const register = () => {
-	console.log("register");
-}
-
-export const fetchInfo = () => {
-	console.log("fetchInfo");
-
-}
-
-
-
-export const fetchScores = () => {
-	console.log("fetchScores");
-
-}
-
-export const changePassword = () => {
-	console.log("changePassword");
-
-}

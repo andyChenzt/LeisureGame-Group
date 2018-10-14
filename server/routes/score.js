@@ -12,7 +12,7 @@ mongoose.Promise = global.Promise;
 const games = ["drawingGame", "snakeGame"];
 function initHighScore() {
 	for(var i = 0; i <= games.length - 1; i++) {
-		HighScore.findOne({game: games[i]}).countDocuments(function(error, result) {
+		HighScore.findOne({game: games[i]}).countDocuments((error, result) => {
 			if(error) {
 				res.status(500).json({
                     error: 'server error'
@@ -22,8 +22,7 @@ function initHighScore() {
 				var gameScore = new HighScore({
 			        game: games[i],
 			    });
-			    gameScore.save().then(function() {
-			    	console.log("save success");
+			    gameScore.save().then(() => {
 			    });
 			}
 		});
@@ -31,26 +30,24 @@ function initHighScore() {
 }
 
 // create scores collection first
-router.get("/score/init", function(req, res, next) {
+router.get("/score/init", (req, res, next) => {
 	for(var i = 0; i <= games.length - 1; i++) {
 		var gameScore = new HighScore({
 	        game: games[i],
 	    });
-	    gameScore.save().then(function(error) {
+	    gameScore.save().then((error) => {
 	    	if(error) {
 	    		res.status(500).json({
                     error: 'server error'
                 });
 	    	}
-	    	console.log("save success");
 	    });
 	}
 });
 
 // get high score from db
-router.get("/score/", function(req, res, next) {
-	HighScore.find({}).then(function(error, result) {
-		console.log(result.length);
+router.get("/score/", (req, res, next) => {
+	HighScore.find({}).then((error, result) => {
 		if(error) {
 			res.status(500).json({
                 error: 'server error'
@@ -63,8 +60,8 @@ router.get("/score/", function(req, res, next) {
 });
 
 // get player high score, for specific player
-router.get("/score/:nickName", function(req, res, next) {
-	User.findOne({nickName: req.params.nickName}).then(function(error, result) {
+router.get("/score/:nickName", (req, res, next) => {
+	User.findOne({nickName: req.params.nickName}).then((error, result) => {
 		if(error) {
 			res.status(500).json({
                 error: 'server error'
@@ -83,7 +80,7 @@ router.get("/score/:nickName", function(req, res, next) {
 });
 
 // update player score after game
-router.post("/score/:game/", function(req, res, next) {
+router.post("/score/:game/", (req, res, next) => {
 	initHighScore();
 	var game = req.params.game;
 	var playerScore = {
@@ -92,7 +89,7 @@ router.post("/score/:game/", function(req, res, next) {
 	};
 
 	// save score in player scoreboard
-	User.findOne({nickName: playerScore.nickName}).then(function(error, result) {
+	User.findOne({nickName: playerScore.nickName}).then((error, result) => {
 		if(error) {
 			res.status(500).json({
                 error: 'server error'
@@ -102,15 +99,13 @@ router.post("/score/:game/", function(req, res, next) {
 			result.drawingGame.scores.push(playerScore.score);
 			result.save();
 			User.update({nickName: playerScore.nickName}, {$inc: {'drawingGame.times': 1}})
-				.then(function() {
-					console.log("saved in person");
+				.then(() => {
 				});
 		} else if(game === "snakeGame"){
 			result.snakeGame.scores.push(playerScore.score);
 			result.save();
 			User.update({nickName: playerScore.nickName}, {$inc: {'snakeGame.times': 1}})
-				.then(function() {
-					console.log("saved in person");
+				.then(() => {
 				});
 		}
 	});
@@ -123,12 +118,10 @@ router.post("/score/:game/", function(req, res, next) {
 		
 		// update number
 		HighScore.update({game: req.params.game}, {$inc: {'scores.count': 1}})
-			.then(function(result){
-				console.log(result);
+			.then((result) => {
 			});
 		res.send({sucess: 1});
 	}).catch(function(error) {
-		console.log(error);
 		res.status(500).json({
             error: 'server error'
         });

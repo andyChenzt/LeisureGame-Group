@@ -25,6 +25,7 @@ class Home extends Component {
         
     }
 
+    // handle logout
     handleLogout = (e) => {
         console.log("clicked");
         e.preventDefault();

@@ -32,23 +32,19 @@ class DrawCon extends Component {
         } else {
             const user = localStorage.getItem('user');
             const id = localStorage.getItem('id');
-            console.log(JSON.parse(user));
             this.props.saveUserInfo(JSON.parse(user), id, token);
             this.props.doLogin();
         }
     }
 
     componentDidMount = () => {
-        console.log("set up socket");
         this.socketConnect();
         // call server for a room
-        console.log("find room");
         socket.emit('findRoom');
     }
 
     componentWillUnmount = () => {
         socket.disconnect();
-        console.log("unmount ", this.socket);
     }
 
     // initial socket for game, 
@@ -57,11 +53,9 @@ class DrawCon extends Component {
         console.log("try to connect");
         console.log(socket);
         socket.on('connect', () => {
-            console.log(socket, "connect to drawingGameSocket");
         });
 
         socket.on('getRoom', (roomName) => {
-            console.log("get room ",roomName);
             this.roomname = roomname;
 
             // join the room
@@ -73,7 +67,6 @@ class DrawCon extends Component {
         });
 
         socket.on('findRoom', (roomName) => {
-            console.log("find room ",roomName);
             this.roomname = roomname;
             // join the room
             socket.emit('joinRoom',roomName);
@@ -82,26 +75,20 @@ class DrawCon extends Component {
         });
 
         socket.on('pending', (data) => {
-            console.log(data);
-            console.log(socket);
             socket.emit('testRoom', "testRoom");
         });
 
         socket.on('getPlayer', (msg) => {
-            console.log(msg);
         });
 
         socket.on('waitDrawing', (msg) => {
-            console.log(msg);
         });
 
         socket.on('readyToWatch', (msg) => {
-            console.log(msg);
             this.props.startGame();
         });
 
         socket.on('s', (msg) => {
-            console.log(msg);
         });
 
         socket.on('findPlayer', () => {
@@ -111,7 +98,6 @@ class DrawCon extends Component {
         socket.on('getQuestion', (msg) => {
             // change the title to the question
             this.props.getQuestion(msg);
-            console.log(msg);
         })
 
         socket.on('exit', (msg) => {

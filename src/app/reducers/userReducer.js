@@ -15,13 +15,12 @@ const initState = {
 };
 
 const userReducer = (state = initState, action) => {
-	// console.log(action);
 	switch (action.type) {
 		case types.USER_LOGIN:
 			console.log("reducer login");
 			return {
 				...state,
-				isLogin: action.payload	//true // 
+				isLogin: action.payload	
 			}
 		case types.USER_LOGOUT:
 			console.log("reducer logout");

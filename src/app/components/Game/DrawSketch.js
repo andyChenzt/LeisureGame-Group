@@ -7,9 +7,7 @@ import {socket, roomname} from '../../containers/Draw';
 
 
 function sketch(p) {
-	console.log("sketch sok: ", socket);
-	console.log("roomname: ",roomname);
-
+	// setup the draw sketch in p5.js 
 	p.setup = function() {
 		p.createCanvas(1100, 600);
 		p.background(51);

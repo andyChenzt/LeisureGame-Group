@@ -14,29 +14,25 @@ getQuestion = () => {
 	return question[index];
 }
 
-module.exports.drawingSocketServer = function(server) {
+// set up drawing socket server
+module.exports.drawingSocketServer = (server) => {
 	console.log("start drawing socker server");
 	drawingGame = io(server).of('/drawingGameSocket');
 
-	drawingGame.on('connection', function(socket) {
-	    console.log('socket connect ' + socket.id + " drawingGame");
+	drawingGame.on('connection', (socket) => {
 	    drawingGame.emit('newMsg', "hello");
 
-	    socket.on('disconnect', function() {
-	        console.log(socket.id, ' socket disconnect');
+	    socket.on('disconnect', () => {
 	    });
 
-	    socket.on('findRoom', function(){
+	    socket.on('findRoom', () => {
 	    	// find a room in pending room,
-	    	console.log(emptyRoom);
 	    	if(pendingRoom.length === 0) {
 	    		// no pendin room, get one available room
-	    		console.log("new room")
 				var room = "new-room";
 				pendingRoom.push(room);
 		    	drawingGame.to(socket.id).emit('getRoom', room);
 	    	} else {
-	    		console.log("find room")
 	    		var waitingRoom = pendingRoom.pop();
 	    		// pendingRoom.pop();
 	    		drawingGame.to(socket.id).emit('findRoom', waitingRoom);
@@ -44,67 +40,54 @@ module.exports.drawingSocketServer = function(server) {
 	    		socket.broadcast.in("new-room").emit('getPlayer', "get player2: "+socket.id);
 	    		drawingGame.to(socket.id).emit('waitDrawing',"wait drawing");
 
-	    		const question = "bike";//getQuestion();
-	    		console.log("question: " + question);
+	    		const question = "bike";
 	    		socket.broadcast.in("new-room").emit('getQuestion', question);
 	    	}
 	    });
 
-	    socket.on('joinRoom', function(roomName) {
-	    	console.log("join room");
+	    socket.on('joinRoom', (roomName) => {
 	    	socket.join(roomName);
-	    	console.log(Object.keys(socket.rooms));
 	    	drawingGame.to(socket.id).emit('pending', "waiting");
 
 	    });
 
-	    socket.on('testRoom', function(testRoom) {
-	    	console.log(testRoom);
-	    	console.log(Object.keys(socket.rooms));
+	    socket.on('testRoom', (testRoom) => {
 
 	    });
 
 	    socket.on('startGame', (msg) => {
-	    	console.log(msg);
 	    	let rooms = Object.keys(socket.rooms);
 	    	socket.broadcast.to(rooms[1]).emit('readyToWatch', "player 1 start drawing");
 
 	    });
 
 	    socket.on('testSok', (msg) => {
-	    	console.log(msg);
 	    	let rooms = Object.keys(socket.rooms);
-	    	console.log(rooms);
 	    });
 
 	    socket.on('exit', (msg) => {
-	    	console.log(msg);
 	    	let rooms = Object.keys(socket.rooms);
 	    	socket.broadcast.to(rooms[1]).emit('exit', "player exit");
 	    })
 
 
-	    socket.on('data', function (data) {
-	        console.log(socket.id +': ' + data.msg);
+	    socket.on('data', (data) => {
 	        var message = {from: socket.id,
 	                        msg: data.msg};
 	        socket.emit('newMsg', message);
 	    });
 
-	    socket.on('mouseMove', function (data) {
+	    socket.on('mouseMove', (data) => {
 	        // console.log(socket.id + data ); //+ ': x' + data.x + ', y' + data.y
 	        // socket.broadcast.emit('newMove', data);
 	        let rooms = Object.keys(socket.rooms);
-	        console.log(rooms);
 	        socket.broadcast.to(rooms[1]).emit('newMove', data);
 	    });
 
-	    socket.on('snakeMove', function(keyCode) {
+	    socket.on('snakeMove', (keyCode) => {
 
 	        socket.broadcast.emit('moveOnOtherSide', keyCode);
 	    });
 
 	});
 }
-
-// module.exports drawingSocketServer;

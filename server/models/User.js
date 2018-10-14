@@ -37,10 +37,6 @@ const UserSchema = new mongoose.Schema({
         },
         scores: [Number]
     }
-    // isDeleted: {
-    //     type: Boolean,
-    //     default: false
-    // }
 });
 
 // crypt password before save

@@ -26,6 +26,7 @@ class Login extends Component {
         }
     }
 
+    // hadndle the input change 
     handleChangeEmail = (e) => {
         this.setState({
             emailInput: e.target.value
@@ -38,7 +39,7 @@ class Login extends Component {
         });
     }
 
-
+    // handle login
     handleSubmit = (e) => {
         e.preventDefault();
         const inputEmail = this.state.emailInput;
@@ -60,6 +61,7 @@ class Login extends Component {
             const token = res.data.token;
             const id = res.data.id;
             
+            // save in local storage for refresh
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(userInfo.info));
             localStorage.setItem('id', id);

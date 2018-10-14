@@ -17,13 +17,6 @@ function sketch(p) {
 		
 		food = p.foodLocation();
 
-		// socket = io('http://localhost:3001');
-  //   	socket.on('connect', function () {
-  //       	console.log("connect success")
-  //   	})
-  //   	socket.on('moveOnOtherSide', function (keyCode) {
-  //   		snake.moveOnOtherSide(keyCode);
-  //   	})
 	}
 
 	p.draw = function() {
@@ -35,7 +28,6 @@ function sketch(p) {
 			food = p.foodLocation();
 		}
 
-		// console.log("draw food", food.x, food.y);
 		p.fill(255, 0, 100);
 		p.rect(food.x, food.y, snakeScale, snakeScale);
 	}
@@ -62,7 +54,6 @@ function sketch(p) {
 				snake.dir = p.RIGHT_ARROW;
 			}
 		}
-		// socket.emit('newMove', p.keyCode);
 	}
 
 	p.foodLocation = function() {

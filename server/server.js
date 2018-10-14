@@ -11,7 +11,7 @@ const {drawingSocketServer} = require("./socket/drawingSocketServer");
 const {snakeSocketServer} = require("./socket/snakeSocketServer");
 const {socketServer} = require("./socket/index.js");
 
-// app.set('view engine', 'ejs');
+app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({ extended: false}));
 app.use(bodyParser.json());
 

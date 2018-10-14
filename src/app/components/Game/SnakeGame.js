@@ -3,6 +3,7 @@ import p5 from 'p5';
 export var snakeScale = 10;
 export var score = 0;
 
+// set up for snake game
 export function Snake(p) {
 	this.x = 0;
 	this.y = 0;
