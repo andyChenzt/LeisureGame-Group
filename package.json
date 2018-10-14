@@ -10,7 +10,7 @@
     "startbabel": "babel-node ./server/server.js --presets es2015,stage-2,react",
     "build": "webpack-dev-server --hot",
     "start_server": "nodemon ./server/server.js",
-    "production": "webpack | node server/server.js"
+    "production": "webpack & node server/server.js"
   },
   "repository": {
     "type": "git",
