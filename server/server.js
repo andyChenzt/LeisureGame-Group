@@ -34,17 +34,13 @@ app.get('/*', function(req, res) {
   })
 })
 
-// app.use("*", (req, res) => {
-// 	res.sendFile(path.join(__dirname + '/public/index.html'));  // try this
-// });
 
 // send error message and change the status
 app.use(function(err, req, res, next) {
 	res.status(422).send({error: err.message})
 });
 
-// init socket
-
+// init socket server
 const myServer = server.listen(process.env.port || 3001, () => {
   console.log("listening 3001");
 });
