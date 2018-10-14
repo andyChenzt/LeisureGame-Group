@@ -3,10 +3,10 @@ import ReactDOM from 'react-dom';
 import P5Wrapper from 'react-p5-wrapper';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import "../../../../public/css/App.css";
-import { login, logout, removeUserInfo, goChangeInfo, backChangeInfo, saveUserInfo } from '../../actions/userActions';
-import UserInfo from './UserInfo';
-import ChangeInfo from './ChangeInfo';
+import "../../../public/css/App.css";
+import { login, logout, removeUserInfo, goChangeInfo, backChangeInfo, saveUserInfo } from '../actions/userActions';
+import UserInfo from '../components/User/UserInfo';
+import ChangeInfo from '../components/User/ChangeInfo';
 
 class Home extends Component {
 

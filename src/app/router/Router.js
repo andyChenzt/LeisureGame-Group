@@ -5,7 +5,7 @@ import Login from '../components/Landing/Login';
 import Register from '../components/Landing/Register';
 import {Draw} from '../containers/Draw';
 import Snake from '../containers/Snake';
-import Home from "../components/User/Home";
+import Home from "../containers/Home";
 
 const MainRouter = () => {
 	return (
