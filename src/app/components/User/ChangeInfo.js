@@ -30,19 +30,15 @@ class ChangeInfo extends Component {
 		var changeNickName = this.state.newNickName;
 		var changeEmailName = this.state.newEmail;
 		if(changeFirstName === "") {
-            console.log("no change");
 			changeFirstName = this.props.user.firstName;
 		}
 		if(changeLastName === "") {
-            console.log("no change");
 			changeLastName = this.props.user.lastName;
 		}
 		if(changeNickName === "") {
-            console.log("no change");
 			changeNickName = this.props.user.nickName;
 		}
 		if(changeEmailName === "") {
-            console.log("no change");
 			changeEmailName = this.props.user.email;
 		}
 
@@ -57,8 +53,9 @@ class ChangeInfo extends Component {
         const config = {
         	 headers: {'Authorization': "bearer " + token},
         }
-        console.log(config);
+        // console.log(config);
         axios.put('/api/account/' + this.props.userID, newInfo, config).then(res => {
+            console.log(res.data);
             const userInfo = res.data.user;
             const token = res.data.token;
             const id = res.data.id;
@@ -145,7 +142,6 @@ class ChangeInfo extends Component {
             </div>
 	    );
 	}
-	
 }
 
 const mapStateToProps = (state, ownProps) => {

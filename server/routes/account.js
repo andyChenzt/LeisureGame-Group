@@ -84,7 +84,7 @@ router.post("/account/login", (req, res, next) => {
                     error: 'invaild username or password'
             });
         }
-        // validation password
+        // validation password with hashed password
         var isMatch = user.validPassword(req.body.password, (err, isMatch) => {
             if(err) {
                 res.status(500).json({
@@ -97,7 +97,7 @@ router.post("/account/login", (req, res, next) => {
                 const id = user._id;
                 jwt.sign({user: info}, 'secretKey', (err, token) => {
                     res.send({ success: 1,
-                        user: {info:info},//user.deleteSensitiveInfo(),
+                        user: {info:info},
                         id: id,
                         token: token
                     });
@@ -137,8 +137,7 @@ router.put("/account/:id", verifyToken, (req, res, next) => {
             };
 
             User.findOneAndUpdate({_id: req.params.id}, newInfo).then(() => {
-                res.send({ success: 1,
-                            user: newInfo });
+                res.send({ success: 1 });
             }).catch(() => {
                 res.status(403).json({
                     success: 0,

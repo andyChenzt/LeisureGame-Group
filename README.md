@@ -36,6 +36,7 @@
  + install node.js and react.js on your OS
  + only first time, open root folder in terminal, run "npm install" to install all required modules
  + for better using in the future, install webpack globally would be a choice (npm isntall -g webpack --save)
+ + start your mongodb server on your OS
  + open root folder in terminal, run "npm run production" to start the server
  + open browser, localhost:3001
  >**Production is on port 3001. If you run npm start would start development mode, and it would start on port 3000.**
@@ -48,6 +49,7 @@ And then clone our project and start it
 >>> cd LeisureGame-Group
 >>> npm install
 >>> npm -g webpack --save
+>>> start your mongodb server: cd path/of/mongod => ./mongod --dbpath your/db/path
 >>> npm run production / (npm start)
 ```
 ## 5. File Structure
