@@ -50,8 +50,6 @@ class DrawCon extends Component {
     // initial socket for game, 
     // and listen to all the room and socket action
     socketConnect = () => {
-        console.log("try to connect");
-        console.log(socket);
         socket.on('connect', () => {
         });
 
@@ -109,7 +107,6 @@ class DrawCon extends Component {
 
     // handle refresh button for refresh the socket 
     handleRefresh = (e) => {
-        console.log("refresh");
         e.preventDefault();
         location.reload();
     }
@@ -117,8 +114,6 @@ class DrawCon extends Component {
     // start game
     handleStart = (e) => {
         if(this.props.hasQuestion) {
-            console.log("clicked start");
-            console.log(this.props);
             e.preventDefault();
             socket.emit('startGame',"player1 startDrawing");
             this.props.setPlaying();
@@ -131,13 +126,11 @@ class DrawCon extends Component {
 
     // for clean the sketch 
     handleClean = (e) => {
-        console.log("clicked clean");
         e.preventDefault();
         const newBoard = this.props.isPlayer1 ? <P5Wrapper sketch={drawSketch} /> : <P5Wrapper sketch={guessSketch} />;
         this.setState(
             { board: newBoard }
         );
-        console.log(this.state.board);
     }
 
     // handle back button to go out of the playing room

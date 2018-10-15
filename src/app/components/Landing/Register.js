@@ -94,7 +94,6 @@ class Register extends Component {
         }
 
         if(inputPassword !== inputReEnterPassword) {
-            console.log("different");
             this.props.showAlert("Password and Re-Enter Password is different.");
             setTimeout(() => {
                 this.props.dismissAlert();
@@ -110,12 +109,9 @@ class Register extends Component {
             password: inputPassword
         }
         axios.post('/api/account/signup', newUser).then(res => {
-            console.log("registered");
-            console.log(res.data);
             const userInfo = res.data.user;
             const id = res.data.id;
             const token = res.data.token;
-            console.log(userInfo);
             localStorage.setItem('token', token);
             localStorage.setItem('user', JSON.stringify(userInfo));
             localStorage.setItem('id', id);
@@ -123,8 +119,10 @@ class Register extends Component {
             this.props.saveUserInfo(userInfo, id);
             this.props.history.push('/Home');
         }).catch((error) => {
-            console.log("err");
-            console.log(error);
+            this.props.showAlert("Sorry cannot register. Try later");
+            setTimeout(() => {
+                this.props.dismissAlert();
+            }, 2000);
         });
     }
 

@@ -24,7 +24,6 @@ class ChangeInfo extends Component {
 
     // handle save changes
 	handleSave = (e) => {
-		console.log("save clicked");
 		var changeFirstName = this.state.newFirstName;
 		var changeLastName = this.state.newLastName;
 		var changeNickName = this.state.newNickName;
@@ -53,9 +52,9 @@ class ChangeInfo extends Component {
         const config = {
         	 headers: {'Authorization': "bearer " + token},
         }
-        // console.log(config);
+
         axios.put('/api/account/' + this.props.userID, newInfo, config).then(res => {
-            console.log(res.data.success);
+            
             const userInfo = res.data.user;
             const token = res.data.token;
             const id = res.data.id;
@@ -64,7 +63,7 @@ class ChangeInfo extends Component {
             storageUser.firstName = newInfo.firstName;
             storageUser.lastName = newInfo.lastName;
             storageUser.nickName = newInfo.nickName;
-            console.log("storageUser", storageUser);
+            
             // save in local storage for refresh
             localStorage.setItem('user', JSON.stringify(storageUser));
             this.props.updateInfo(newInfo);

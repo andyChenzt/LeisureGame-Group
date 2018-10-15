@@ -11,14 +11,12 @@ import ChangeInfo from '../components/User/ChangeInfo';
 class Home extends Component {
 
     componentWillMount = () => {
-        console.log("will mount");
         const token = localStorage.getItem('token');
         if(!token) {
             this.props.history.push('/');
         } else {
             const user = localStorage.getItem('user');
             const id = localStorage.getItem('id');
-            console.log(JSON.parse(user));
             this.props.saveUserInfo(JSON.parse(user), id, token);
             this.props.doLogin();
         }
@@ -27,7 +25,6 @@ class Home extends Component {
 
     // handle logout
     handleLogout = (e) => {
-        console.log("clicked");
         e.preventDefault();
         this.props.removeUserInfo();
         this.props.doLogout();
@@ -38,7 +35,6 @@ class Home extends Component {
     }
 
     handleChangeButton = (e) => {
-        console.log("clicked");
         e.preventDefault();
         if(this.props.isChangeInfo) {
             this.props.backChangeInfo();
@@ -48,7 +44,6 @@ class Home extends Component {
     }
 
     render() {
-        console.log(this.props);
         const component = this.props.isChangeInfo ? <ChangeInfo user={this.props.user}/> 
                                                 : <UserInfo user={this.props.user}/>;
         const backChangeBtn = this.props.isChangeInfo ? "Back" : "Change";

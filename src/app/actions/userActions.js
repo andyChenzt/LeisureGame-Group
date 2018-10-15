@@ -1,7 +1,6 @@
 import * as types from '../types/userTypes';
 
 export const login = () => {
-	console.log("login action");
 	return {
 		type: types.USER_LOGIN,
 		payload: true
@@ -9,7 +8,6 @@ export const login = () => {
 }
 
 export const saveUserInfo = (userInfo, id, token) => {
-	console.log("update user info");
 	const info = {
 		userInfo: userInfo,
 		id: id,
@@ -22,7 +20,6 @@ export const saveUserInfo = (userInfo, id, token) => {
 }
 
 export const logout = () => {
-	console.log("logout action");
 	return {
 		type: types.USER_LOGOUT,
 		payload: false
@@ -30,7 +27,6 @@ export const logout = () => {
 }
 
 export const removeUserInfo = () => {
-	console.log("remove user info");
 	return {
 		type: types.USER_REMOVEUSERINFO,
 		payload: {}
@@ -38,7 +34,6 @@ export const removeUserInfo = () => {
 }
 
 export const goChangeInfo = () => {
-	console.log("change info");
 	return {
 		type: types.USER_GOCHANGEINFO,
 		payload: true
@@ -46,7 +41,6 @@ export const goChangeInfo = () => {
 }
 
 export const backChangeInfo = () => {
-	console.log("change info");
 	return {
 		type: types.USER_BACKCHANGEINFO,
 		payload: false
@@ -54,7 +48,6 @@ export const backChangeInfo = () => {
 }
 
 export const updateInfo = (newInfo) => {
-	console.log("updateInfo");
 	return {
 		type: types.USER_UPDATEINFO,
 		payload: newInfo
@@ -62,7 +55,6 @@ export const updateInfo = (newInfo) => {
 }
 
 export const showAlert = (errMsg) => {
-	console.log("showAlert");
 	return {
 		type: types.USER_SHOWALERT,
 		payload: errMsg
@@ -70,7 +62,6 @@ export const showAlert = (errMsg) => {
 }
 
 export const dismissAlert = () => {
-	console.log("updateInfo");
 	return {
 		type: types.USER_DISMISSALERT,
 		payload: false

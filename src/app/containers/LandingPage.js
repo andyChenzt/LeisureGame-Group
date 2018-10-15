@@ -21,7 +21,6 @@ class Landing extends Component {
     }
 
     handleSubmit = (e) => {
-        console.log("clicked login");
         e.preventDefault();
         const user = {
             email: ReactDOM.findDOMNode(this.refs.email).value,
@@ -29,7 +28,6 @@ class Landing extends Component {
         }
 
         axios.post('/api/account/login', user).then(res => {
-            console.log("login success");
             const userInfo = res.data.user;
             console.log(userInfo);
             this.props.doLogin();
@@ -44,15 +42,12 @@ class Landing extends Component {
     }
 
     handleRegister = (e) => {
-        console.log("clicked login");
-        console.log(this.props);
         // prevent page reloding 
         e.preventDefault();
     }
 
 
     render() {
-        console.log(this.props);
         const { onSubmitClick } = this.props;
         const component = this.props.isRegister ? <Register /> : <Login handleSubmit={this.handleSubmit}/>;
 
