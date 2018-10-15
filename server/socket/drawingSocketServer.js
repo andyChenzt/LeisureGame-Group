@@ -16,7 +16,6 @@ getQuestion = () => {
 
 // set up drawing socket server
 module.exports.drawingSocketServer = (server) => {
-	console.log("start drawing socker server");
 	drawingGame = io(server).of('/drawingGameSocket');
 
 	drawingGame.on('connection', (socket) => {
@@ -36,7 +35,7 @@ module.exports.drawingSocketServer = (server) => {
 	    		var waitingRoom = pendingRoom.pop();
 	    		// pendingRoom.pop();
 	    		drawingGame.to(socket.id).emit('findRoom', waitingRoom);
-	    		// console.log("test broadcast")
+
 	    		socket.broadcast.in("new-room").emit('getPlayer', "get player2: "+socket.id);
 	    		drawingGame.to(socket.id).emit('waitDrawing',"wait drawing");
 
@@ -78,7 +77,7 @@ module.exports.drawingSocketServer = (server) => {
 	    });
 
 	    socket.on('mouseMove', (data) => {
-	        // console.log(socket.id + data ); //+ ': x' + data.x + ', y' + data.y
+	    	
 	        // socket.broadcast.emit('newMove', data);
 	        let rooms = Object.keys(socket.rooms);
 	        socket.broadcast.to(rooms[1]).emit('newMove', data);

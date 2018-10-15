@@ -55,16 +55,19 @@ class ChangeInfo extends Component {
         }
         // console.log(config);
         axios.put('/api/account/' + this.props.userID, newInfo, config).then(res => {
-            console.log(res.data);
+            console.log(res.data.success);
             const userInfo = res.data.user;
             const token = res.data.token;
             const id = res.data.id;
-            
+            const storageUser = JSON.parse(localStorage.getItem('user'));
+            storageUser.email = newInfo.email;
+            storageUser.firstName = newInfo.firstName;
+            storageUser.lastName = newInfo.lastName;
+            storageUser.nickName = newInfo.nickName;
+            console.log("storageUser", storageUser);
             // save in local storage for refresh
-            localStorage.setItem('token', token);
-            localStorage.setItem('user', JSON.stringify(userInfo.info));
-            localStorage.setItem('id', id);
-            this.props.updateInfo(userInfo);
+            localStorage.setItem('user', JSON.stringify(storageUser));
+            this.props.updateInfo(newInfo);
             this.props.backChangeInfo();
         }).catch((error) => {
             });

@@ -57,6 +57,7 @@ class Login extends Component {
         }
 
         axios.post('/api/account/login', user).then(res => {
+            console.log(res.data);
             const userInfo = res.data.user;
             const token = res.data.token;
             const id = res.data.id;

@@ -3,7 +3,6 @@ const io = require("./index");
 
 module.exports.snakeSocketServer = (server) => {
 	console.log("start snake socker server");
-	// const snakeGame = io(server).of('/snakeGame');
 
 	snakeGame.on('connection', (socket) => {
 		console.log('socket connect' + socket.id);
@@ -21,7 +20,6 @@ module.exports.snakeSocketServer = (server) => {
 	    });
 
 	    socket.on('mouseMove', (data) => {
-	        // console.log(socket.id + data ); //+ ': x' + data.x + ', y' + data.y
 	        socket.broadcast.emit('newMove', data);
 	    });
 
