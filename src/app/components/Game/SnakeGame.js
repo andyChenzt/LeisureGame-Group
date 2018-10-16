@@ -46,7 +46,6 @@ export function Snake(p) {
 		if (dist < 1) {
 			this.total++;
 			score++;
-			console.log(score);
 			return true;
 		} else {
 			return false;
@@ -83,12 +82,10 @@ export function Snake(p) {
 }
 
 export function Food(p) {
-	console.log("new food")
 	var food;
 	var column = p.floor(p.width / snakeScale);
 	var rows = p.floor(p.height / snakeScale);
 	food = p.createVector(p.floor(p.random(p.width)), p.floor(p.random(p.height)));
-	console.log(food.x, food.y);
 	// food.mult(snakeScale)
 	return food
 }

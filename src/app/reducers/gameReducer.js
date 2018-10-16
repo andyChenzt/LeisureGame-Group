@@ -10,7 +10,6 @@ const initState = {
 };
 
 const gameReducer = (state = initState, action) => {
-	// console.log(action);
 	switch (action.type) {
 		case types.GAME_STARTGAME:
 			return {

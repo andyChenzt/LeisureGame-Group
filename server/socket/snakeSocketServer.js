@@ -5,15 +5,12 @@ module.exports.snakeSocketServer = (server) => {
 	console.log("start snake socker server");
 
 	snakeGame.on('connection', (socket) => {
-		console.log('socket connect' + socket.id);
 	    socketServer.emit('newMsg', "hello");
 
 	    socket.on('disconnect', () => {
-	        console.log('socket disconnect');
 	    });
 
 	    socket.on('data', (data) => {
-	        console.log(socket.id +': ' + data.msg);
 	        var message = {from: socket.id,
 	                        msg: data.msg};
 	        socket.emit('newMsg', message);

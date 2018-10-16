@@ -12,15 +12,14 @@ function sketch(p) {
 		p.createCanvas(1100, 600);
 		p.background(51);
 		socket.emit("testSok", "from imported sok");
-    	socket.on('connect', function (data) {
-        	console.log("sketch connect" + socket);
+    	socket.on('connect', (data) => {
     	})
-    	socket.on('newMove', function (data) {
+    	socket.on('newMove', (data) => {
         	p.newDraw(data)
     	})
 	}
 
-	p.draw = function() {
+	p.draw = () => {
 		p.noStroke();
 		p.fill(255);
 	 	if (p.mouseIsPressed) {
@@ -28,17 +27,16 @@ function sketch(p) {
 	  	}
 	}
 
-	p.mouseDragged = function() {
+	p.mouseDragged = () => {
 		
 		var mousePosition = {
 			x: p.mouseX,
 			y: p.mouseY
 		}
-		console.log(mousePosition)
 		socket.emit('mouseMove', mousePosition);
 	}
 
-	p.newDraw = function (data) {
+	p.newDraw = (data) => {
 		p.noStroke();
 		p.fill(255,0,0);
 	 	p.ellipse(data.x, data.y, 20, 20);

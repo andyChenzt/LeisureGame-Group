@@ -96,7 +96,6 @@ router.post("/account/login", (req, res, next) => {
                 const info = user.deleteSensitiveInfo();
                 const id = user._id;
                 jwt.sign({user: info}, 'secretKey', (err, token) => {
-                    console.log(token);
                     res.send({ success: 1,
                         user: {info:info},
                         id: id,

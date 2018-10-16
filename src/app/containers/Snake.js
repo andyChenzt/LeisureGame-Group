@@ -22,7 +22,6 @@ class Snake extends Component {
         } else {
             const user = localStorage.getItem('user');
             const id = localStorage.getItem('id');
-            console.log(JSON.parse(user));
             this.props.saveUserInfo(JSON.parse(user), id, token);
             this.props.doLogin();
         }

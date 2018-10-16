@@ -57,15 +57,11 @@ function sketch(p) {
 	}
 
 	p.foodLocation = function() {
-		console.log("location called")
-		console.log(snakeScale);
-		var columns = p.floor(p.width / snakeScale)
-		var rows = p.floor(p.height / snakeScale)
-		console.log(columns, rows)
-		food = p.createVector(p.floor(p.random(columns)), p.floor(p.random(rows)))
-		console.log(food)
-		food.mult(snakeScale)
-		return food
+		var columns = p.floor(p.width / snakeScale);
+		var rows = p.floor(p.height / snakeScale);
+		food = p.createVector(p.floor(p.random(columns)), p.floor(p.random(rows)));
+		food.mult(snakeScale);
+		return food;
 	}
 
 }

@@ -1,5 +1,3 @@
-
-// import userReducer from './userReducer';
 import * as types from '../types/userTypes';
 
 const initState = {
@@ -10,7 +8,6 @@ const initState = {
 	token: "",
 	isChangeInfo: false,
 	isError: false,
-	// loginFailedMsg: "Wrong email or password.",
 	errorMsg: ""
 };
 
@@ -25,7 +22,6 @@ const userReducer = (state = initState, action) => {
 			return initState;
 			
 		case types.USER_SAVEUSERINFO:
-			console.log("reducer getUserInfo");
 			return {
 				...state,
 				user: action.payload.userInfo,

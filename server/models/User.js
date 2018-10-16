@@ -57,16 +57,10 @@ UserSchema.pre('save', function(next) {
 
 // create validate password instance method
 UserSchema.methods.validPassword = function(password, cb) {
-    console.log("valid");
-    console.log("before compare");
-    console.log(password, this.password);
     bcrypt.compare(password, this.password, function(err, isMatch) {
         if(err) {
             return err;
         }
-        console.log("after compare");
-        console.log(password, this.password);
-        console.log(isMatch);
         cb(err, isMatch);
     });
 };

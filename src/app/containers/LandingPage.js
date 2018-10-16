@@ -29,14 +29,11 @@ class Landing extends Component {
 
         axios.post('/api/account/login', user).then(res => {
             const userInfo = res.data.user;
-            console.log(userInfo);
             this.props.doLogin();
             this.props.saveUserInfo(userInfo);
             
             this.props.history.push('/Home');
         }).catch((error) => {
-            console.log("err");
-            console.log(error.response.data);
         });
 
     }

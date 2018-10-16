@@ -22,7 +22,6 @@ class Register extends Component {
     }
 
     componentWillMount = () => {
-        console.log("will mout register");
         if(this.props.isLogin) {
             this.props.history.push('/Home');
         }

@@ -8,13 +8,12 @@ import {socket, roomname} from '../../containers/Draw';
 
 function sketch(p) {
 	// set up the sketch for watch user
-	p.setup = function() {
+	p.setup = () => {
 		p.createCanvas(1100, 600);
 		p.background(51);
 		socket.emit("testSok", "from imported sok");
 		
     	socket.on('connect', function (data) {
-        	console.log("sketch connect" + socket);
     	})
 
     	socket.on('newMove', function (data) {
